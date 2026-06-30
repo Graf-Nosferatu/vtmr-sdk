@@ -1,0 +1,27 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": ".NET Launch (Debug Eng)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "Build Eng",
+			"program": "${workspaceFolder}/../vtmr-build/bin/Debug_Eng/net10.0/Sdk.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"console": "internalConsole"
+		},
+		{
+			"name": ".NET Launch (Debug Rus)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "Build Rus",
+			"program": "${workspaceFolder}/../vtmr-build/bin/Debug_Rus/net10.0/Sdk.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"console": "internalConsole"
+		}
+	]
+}
