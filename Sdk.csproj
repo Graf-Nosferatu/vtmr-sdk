@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug_Eng'">
+		<Optimize>false</Optimize>
+		<DebugSymbols>true</DebugSymbols>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ModDir>..\vtmr-mod\eng</ModDir>
+		<Localization>Eng</Localization>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug_Rus'">
+		<Optimize>false</Optimize>
+		<DebugSymbols>true</DebugSymbols>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ModDir>..\vtmr-mod\rus</ModDir>
+		<Localization>Rus</Localization>
+	</PropertyGroup>
+
+	<Target Name="AddModPathAttribute" BeforeTargets="BeforeCompile">
+		<PropertyGroup>
+			<ModPath Condition="'$(ModDir)' != ''">$([System.IO.Path]::GetFullPath('$(ProjectDir)$(ModDir)'))</ModPath>
+		</PropertyGroup>
+
+		<!-- <RemoveDir Condition="'$(ModPath)' != '' And Exists('$(ModPath)')" Directories="$(ModPath)" /> -->
+
+		<ItemGroup Condition="'$(ModDir)' != ''">
+			<AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+				<_Parameter1>ModPath</_Parameter1>
+				<_Parameter2>$(ModPath)</_Parameter2>
+			</AssemblyAttribute>
+			<AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+				<_Parameter1>Localization</_Parameter1>
+				<_Parameter2>$(Localization)</_Parameter2>
+			</AssemblyAttribute>
+		</ItemGroup>
+	</Target>
+
+	<Target Name="GenerateMaps" BeforeTargets="BeforeCompile">
+		<Message Importance="High" Text="Maps: generating..." />
+		<Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir).vscode\generateMaps.ps1&quot;" />
+	</Target>
+
+	<Target Name="BuildCodex" AfterTargets="Build" Condition="'$(ModDir)' != ''">
+		<Message Importance="High" Text="Codex: building..." />
+		<Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir).vscode\buildCodexList.ps1&quot; -outPath &quot;$(ProjectDir)$(ModDir)\Codex&quot;" />
+	</Target>
+
+	<Target Name="CopyCommonAssets" AfterTargets="Build" Condition="'$(ModDir)' != ''">
+		<Message Importance="High" Text="Assets (common): copying..." />
+		<ItemGroup>
+			<SourceFiles Include="$(ProjectDir)Assets\Common\**\*.*" />
+		</ItemGroup>
+		<Copy
+			SourceFiles="@(SourceFiles)"
+			DestinationFolder="$(ProjectDir)$(ModDir)\%(RecursiveDir)"
+			SkipUnchangedFiles="true" />
+	</Target>
+
+	<Target Name="CopyLocalizedAssets" AfterTargets="Build" Condition="'$(ModDir)' != ''">
+		<Message Importance="High" Text="Assets (localized): copying..." />
+		<ItemGroup Condition="'$(Localization)' == 'Eng'">
+			<LocFiles Include="$(ProjectDir)Assets\Eng\**\*.*" />
+		</ItemGroup>
+		<ItemGroup Condition="'$(Localization)' == 'Rus'">
+			<LocFiles Include="$(ProjectDir)Assets\Rus\**\*.*" />
+		</ItemGroup>
+		
+		<Copy
+			SourceFiles="@(LocFiles)"
+			DestinationFolder="$(ProjectDir)$(ModDir)\%(RecursiveDir)"
+			SkipUnchangedFiles="true"
+			Condition="'@(LocFiles)' != ''" />
+	</Target>
+
+</Project>

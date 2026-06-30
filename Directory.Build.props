@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+		<MSBuildProjectExtensionsPath>$(MSBuildThisFileDirectory)..\vtmr-build\obj\</MSBuildProjectExtensionsPath>
+		<BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\vtmr-build\obj\</BaseIntermediateOutputPath>
+		<BaseOutputPath>$(MSBuildThisFileDirectory)..\vtmr-build\bin\</BaseOutputPath>
+	</PropertyGroup>
+</Project>
