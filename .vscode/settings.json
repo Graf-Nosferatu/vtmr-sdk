@@ -1,0 +1,41 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "never"
+	},
+	"java.inlayHints.parameterNames.enabled": "none",
+	"java.autobuild.enabled": false,
+	"java.completion.enabled": true,
+	"java.format.onType.enabled": false,
+	"java.project.sourcePaths": [
+		"Codex\\core",
+		"Codex\\disciplines",
+		"Codex\\disciplines\\animalism",
+		"Codex\\disciplines\\auspex",
+		"Codex\\disciplines\\bloodpath",
+		"Codex\\disciplines\\celerity",
+		"Codex\\disciplines\\common",
+		"Codex\\disciplines\\dementation",
+		"Codex\\disciplines\\dominate",
+		"Codex\\disciplines\\faith",
+		"Codex\\disciplines\\fortitude",
+		"Codex\\disciplines\\handsofdestruction",
+		"Codex\\disciplines\\lureofflame",
+		"Codex\\disciplines\\mortis",
+		"Codex\\disciplines\\numina",
+		"Codex\\disciplines\\obfuscate",
+		"Codex\\disciplines\\obtenebration",
+		"Codex\\disciplines\\potence",
+		"Codex\\disciplines\\presence",
+		"Codex\\disciplines\\protean",
+		"Codex\\disciplines\\rituals",
+		"Codex\\disciplines\\serpentis",
+		"Codex\\sp",
+		"Codex\\sp\\london",
+		"Codex\\sp\\new_york",
+		"Codex\\sp\\prague",
+		"Codex\\sp\\vienna",
+		"Codex\\mp",
+		"Codex\\other"
+	],
+	"java.project.outputPath": "temp"
+}
