@@ -1,142 +1,117 @@
 /**
  * Old Town 7.4 script
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
 */
-
 public class OLDT_7_4 extends Codex
 {
-	private PragueChronicle	chronScript;
+	public static String _params[] = { "Embrace region" };
 
-	private static final int TIMER_ID_RUN		= 1;
+	private CodexRegion embraceRegion;
+	private CodexPlayer christof;
 
-	private	CodexRegion		_EmbraceRegion;
 
-	private CodexPlayer		chris;
-
-	private float[]			pos;
-
-	public static String _params[] = {"Embrace region"};
-
-	public OLDT_7_4(CodexRegion EmbraceRegion)
+	public OLDT_7_4( CodexRegion EmbraceRegion )
 	{
-		chronScript = (PragueChronicle)GetChronicleScript(0);
-
-		_EmbraceRegion = new CodexRegion(EmbraceRegion.GetGUID());
-
-		CaptureThing(_EmbraceRegion.GetGUID());
-
-		pos = new float[3];
+		embraceRegion = new CodexRegion( EmbraceRegion.GetGUID() );
+		CaptureThing( embraceRegion.GetGUID() );
 	}
 
-	public void beginscene(int clientGuid, int captureID)
-	{
-		chris = new CodexPlayer(CodexThing.GuidFromCastID("christof"));
 
-		if(!CodexSequence.GetChronicleFlag(chronScript.OLDT_ECATERINAREGION))
+	public void beginscene( int clientGuid, int captureID )
+	{
+		christof = new CodexPlayer( CodexThing.GuidFromCastID( "christof" ) );
+
+		if( !CodexSequence.GetChronicleFlag( PragueChronicle.OLDT_ECATERINAREGION ) )
 		{
-			// close exit to convent 
-			CodexSequence.CloseExit("OldTown", 4);
+			// close exit to convent
+			CodexSequence.CloseExit( "OldTown", 4 );
 
 			// Fade in
-			CodexCamera.AddFade(CodexPlayer.GetCurrentPlayer(), (float)0.0, (float)255.0, (float)1.0, false);
+			CodexCamera.AddFade( CodexPlayer.GetCurrentPlayer(), 0f, 255f, 1f, false );
 
 			// play path tracking christof running into ecaterina's region
-			CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Embrace.ncp", 150);
+			CodexCamera.PlayPath( CodexPlayer.GetCurrentPlayer(), GetGUID(), "Embrace.ncp", 150f );
 
-			SetTimer(1, TIMER_ID_RUN);
+			SetTimer( 1f );
 		}
 	}
 
-	public void timer(int timerID, float arg0, float arg1, float arg2, float arg3)
+
+	public void timer( int timerID, float arg0, float arg1, float arg2, float arg3 )
 	{
-		switch(timerID)
-		{
-			case TIMER_ID_RUN:
-				// send christof to ecaterina
-				pos = _EmbraceRegion.GetPosition();
-				chris.SendActorToPos(pos, (float)220);
-				break;
-		}
+		// send christof to ecaterina
+		christof.SendActorToPos( embraceRegion.GetPosition(), 220f );
 	}
 
-	public void entered(int guid, int causeGUID, int captureID)
+
+	public void entered( int guid, int causeGUID, int captureID )
 	{
-		if((IsPlayerGuid(causeGUID) &&
-			guid == _EmbraceRegion.GetGUID()) &&
-			!CodexSequence.GetChronicleFlag(chronScript.OLDT_ECATERINAREGION))
+		if( IsPlayerGuid( causeGUID ) &&
+			guid == embraceRegion.GetGUID() &&
+			!CodexSequence.GetChronicleFlag( PragueChronicle.OLDT_ECATERINAREGION ) )
 		{
 			// ALERT!! THIS CHRON FLAG IS CHECKED IN UNORNA SCRIPT TO SEE WHICH CONVERSATION TO PLAY
-			CodexSequence.SetChronicleFlag(chronScript.OLDT_ECATERINAREGION);
+			CodexSequence.SetChronicleFlag( PragueChronicle.OLDT_ECATERINAREGION );
 
 			// Fade out
-			CodexCamera.AddFade(CodexPlayer.GetCurrentPlayer(), (float)255.0, (float)0.0, (float)2.0, false);
+			CodexCamera.AddFade( CodexPlayer.GetCurrentPlayer(), 255f, 0f, 2f, false );
 
 			// remove quests on log prior to being embraced
-			CodexQuest q = new CodexQuest(CodexQuest.Load("P1_PragueByNight"));
-			q.Destroy();
-			CodexQuest q2 = new CodexQuest(CodexQuest.Load("P1_SilverMines"));
-			q2.Destroy();
-			CodexQuest q3 = new CodexQuest(CodexQuest.Load("P1_Geza"));
-			q3.Destroy();
-			CodexQuest q4 = new CodexQuest(CodexQuest.Load("P1_AnezkaVisit"));
-			q4.Destroy();
-
-			// change stats here
-			
-			// roughly convert any XP they've spent on faith back to XP they can use
-			chris.AwardPlayerExperience((int)(chris.GetActorStat(ACTOR_STAT_FAITH) - 50) * 275);
+			new CodexQuest( CodexQuest.Load( "P1_PragueByNight" ) ).Destroy();
+			new CodexQuest( CodexQuest.Load( "P1_SilverMines" ) ).Destroy();
+			new CodexQuest( CodexQuest.Load( "P1_Geza" ) ).Destroy();
+			new CodexQuest( CodexQuest.Load( "P1_AnezkaVisit" ) ).Destroy();
 
 			// make him a vampire
-			chris.SetActorType(ACTOR_TYPE_VAMPIRE);
-			chris.RemoveActorEffect("ef_increasemanaot");
-			chris.RemoveActorEffect("ef_increasebloodot");
-			chris.AddActorEffectByLevel("ef_decreasefrenzy", 0, 0, 0, 0);
+			christof.SetActorType( ACTOR_TYPE_VAMPIRE );
+			christof.RemoveActorEffect( "ef_increasemanaot" );
+			christof.RemoveActorEffect( "ef_increasebloodot" );
+			christof.AddActorEffectByLevel( "ef_decreasefrenzy", 0, 0, 0, 0 );
 
 			// make christof use the vampire model
-			chris.SetModel("christof.nod");
-			chris.SetPlayerHeadModel("christofH.nod");
-
-			chris.SetFoley("playerChristof.nag");
+			christof.SetModel( "christof.nod" );
+			christof.SetPlayerHeadModel( "christofH.nod" );
+			christof.SetFoley( "playerChristof.nag" );
 
 			// give him his starting disciplines
-			chris.SetActorDisciplineLevel("Feed", 0);
-			chris.SetActorDisciplineSlot("Feed", 0);
-			chris.SetActorDisciplineLevel("BloodHealing", 0);
-			chris.SetActorDisciplineSlot("BloodHealing", 1);
-			chris.SetActorDisciplineLevel("BloodStrength", 0);
-			chris.SetActorDisciplineSlot("BloodStrength", 2);
-			chris.SetActorDisciplineLevel("Awe", 0);
-			chris.SetActorDisciplineSlot("Awe", 3);
-			chris.SetActorDisciplineLevel("Potence", 0);
-			chris.SetActorDisciplineSlot("Potence", 4);
-			chris.SetActorDisciplineLevel("Celerity", 0);
-			chris.SetActorDisciplineSlot("Celerity", 5);
-			
+			christof.SetActorDisciplineLevel( "Feed", 0 );
+			christof.SetActorDisciplineSlot( "Feed", 0 );
+			christof.SetActorDisciplineLevel( "BloodHealing", 0 );
+			christof.SetActorDisciplineSlot( "BloodHealing", 1 );
+			christof.SetActorDisciplineLevel( "BloodStrength", 0 );
+			christof.SetActorDisciplineSlot( "BloodStrength", 2 );
+			christof.SetActorDisciplineLevel( "Awe", 0 );
+			christof.SetActorDisciplineSlot( "Awe", 3 );
+			christof.SetActorDisciplineLevel( "Potence", 0 );
+			christof.SetActorDisciplineSlot( "Potence", 4 );
+			christof.SetActorDisciplineLevel( "Celerity", 0 );
+			christof.SetActorDisciplineSlot( "Celerity", 5 );
+
+			// roughly convert any XP they've spent on faith back to XP they can use
+			christof.AwardPlayerExperience( ((int)christof.GetActorStat( ACTOR_STAT_FAITH ) - 50) * 275 );
+
 			// set blood pool size and blood level
-			chris.SetActorBaseStat(ACTOR_STAT_BLOODPOOL, 80);
-			chris.SetActorStat(ACTOR_STAT_BLOODPOOL, 80);
-			chris.SetActorBaseStat(ACTOR_STAT_BLOOD, 30);
-			chris.SetActorStat(ACTOR_STAT_BLOOD, 30);
-			
+			christof.SetActorBaseStat( ACTOR_STAT_BLOOD, 45f );
+			christof.SetActorStat( ACTOR_STAT_BLOOD, 45f );
 
 			// close exit to st thomas
-			CodexSequence.CloseExit("OldTown", 5);
+			CodexSequence.CloseExit( "OldTown", 5 );
 
 			// change scene in haven to set up for awakening
-			CodexSequence.ChangeScene("Haven", "HAVN_7_4.nsd");
+			CodexSequence.ChangeScene( "Haven", "HAVN_7_4.nsd" );
 
 			// set this so we get the proper conversation with unorna if the
 			// player hasn't been to visit her yet
-			CodexSequence.SetChronicleFlag(chronScript.UNORD_TALKEDONCE);
+			CodexSequence.SetChronicleFlag( PragueChronicle.UNORD_TALKEDONCE );
 
-			PlayVideo("embrace.bik");
+			PlayVideo( "embrace.bik" );
 		}
 	}
 
-	public void videoended(int id)
+
+	public void videoended( int id )
 	{
 		// jump to the haven for the recovery scene
-		CodexSequence.Jump("Haven", 1);
+		CodexSequence.Jump( "Haven", 1 );
 	}
 }
