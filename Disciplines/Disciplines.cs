@@ -5,102 +5,82 @@ partial class Discipline
 	public static readonly DisciplineGroup
 		dgrp_common = new( dgrp_common ) {
 			Icon	= "TABcommonIcon.tga",
-			XpCost	= 0,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_animalism = new( dgrp_animalism ) {
 			Icon	= "TABanimalismIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_auspex = new( dgrp_auspex ) {
 			Icon	= "TABauspexIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_celerity = new( dgrp_celerity ) {
 			Icon	= "TABcelerityIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_obfuscate = new( dgrp_obfuscate ) {
 			Icon	= "TABobfuscateIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_dementation = new( dgrp_dementation ) {
 			Icon	= "TABdementationIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_dominate = new( dgrp_dominate ) {
 			Icon	= "TABdominateIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_fortitude = new( dgrp_fortitude ) {
 			Icon	= "TABfortitudeIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_potence = new( dgrp_potence ) {
 			Icon	= "TABpotenceIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_protean = new( dgrp_protean ) {
 			Icon	= "TABproteanIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_presence = new( dgrp_presence ) {
 			Icon	= "TABpresenceIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.None
 		},
 		dgrp_mortis = new( dgrp_mortis ) {
 			Icon	= "TABmortisIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_thau_bloodpath = new( dgrp_thau_bloodpath ) {
 			Icon	= "TABthau_BloodPathIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_thau_lureofflames = new( dgrp_thau_lureofflames ) {
 			Icon	= "TABthau_LureFlamesIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_thau_handsofdestruction = new( dgrp_thau_handsofdestruction ) {
 			Icon	= "TABthau_HandsDestructIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_thau_rituals = new( dgrp_thau_rituals ) {
 			Icon	= "TABthau_RitualsIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_numina = new( dgrp_numina ) {
 			Icon	= "TABnuminaIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_faith = new( dgrp_faith ) {
 			Icon	= "TABfaithIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_obtenebration = new( dgrp_obtenebration ) {
 			Icon	= "TABobtenebrationIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		},
 		dgrp_serpentis = new( dgrp_serpentis ) {
 			Icon	= "TABserpentisIcon.tga",
-			XpCost	= 1000,
 			Flags	= DisciplineGroupFlags.NotAllDisciplineGroup
 		};
 

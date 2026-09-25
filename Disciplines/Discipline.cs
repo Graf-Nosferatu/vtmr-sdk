@@ -20,7 +20,7 @@ public class DisciplineGroup
 	public required String Icon { get; set; }
 
 	/// <summary> additional xp cost to pay to buy the first discipline of the group </summary>
-	public required Int32 XpCost { get; set; }
+	public Int32 XpCost { get; set; } = 0;
 
 	/// <summary> modifier flags </summary>
 	public required DisciplineGroupFlags Flags { get; set; }
