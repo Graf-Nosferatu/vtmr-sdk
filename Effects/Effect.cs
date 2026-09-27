@@ -22,7 +22,7 @@ public partial class Effect
 	/// <summary> The row the icon has to be displayed on (0 = disciplines, 1 = others) </summary>
 	public IconsRow Row { get; set; } = IconsRow.Others;
 
-	/// <summary> Script to use for the visual/sound of the effect, or null or the keyword 'none' </summary>
+	/// <summary> Script (filename without extension) to use for the visual/sound of the effect, or null or the keyword 'none' </summary>
 	public String? Script { get; set; }
 
 	/// <summary> Type of effect (see list) and Subtype of effect inside each type (see list) </summary>

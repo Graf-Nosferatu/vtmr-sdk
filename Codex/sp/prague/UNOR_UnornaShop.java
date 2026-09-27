@@ -1,565 +1,369 @@
 /**
  * UNOR_UnornaShop script.
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
- * @author YB
 */
-
-public class UNOR_UnornaShop extends Codex
+public class UNOR_UnornaShop extends CodexBuySell
 {
-	private PragueChronicle	chronScript;
+	public static String _params[] = { "Anezka's letter" };
 
-	private CodexThing	_anezkaLetter;
 
-	private int			ownerGuid = 0;
-	private CodexActor	owner;
+	private CodexThing _anezkaLetter;
 
-	private int			christofGUID;
-	private int			unornaGUID;
+	private int christofGUID;
+	private int unornaGUID;
 
-	// --------------------------------------------------------------------------------------------
+	private boolean bUnornaFirstConversation		= false;
+	private boolean bUnornaFirstGoodbyeConversation	= false;
+	private boolean bQAUnornaAskConversation		= false;
+	private boolean bQAUnornaConversation			= false;
+	private boolean bUnornaVampireConversation		= false;
+	private boolean bUnornaLetterConversation		= false;
 
-	private String				descriptionID			= "UNORNASHOP";
-	private int					flags					= 0;
-	private float				buyRate					= (float)1.25;
-	private float				sellRate				= (float)0.80;
-	private	int					sellFlags				= BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_BLOODITEM + BUYSELL_ITEM_POTION + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_MAGICWEAPON + BUYSELL_ITEM_SCROLLBOOK;
 
-	private String		greetingLine[]			= {"Unorna_0_0_1904.wav", "Unorna_0_0_1925.wav", "Unorna_0_0_95.wav", ""};
-	private int			numGreetingLines		= 3;
-	private String		byeLine[]				= {"Unorna_0_0_1905.wav", "Unorna_0_0_1928.wav", "Unorna_0_0_96.wav", ""};
-	private int			numByeLines				= 3;
-
-	private boolean				bActive					= false;
-
-	private boolean				bUnornaFirstConversation		= false;
-	private boolean				bUnornaFirstGoodbyeConversation = false;
-	private boolean				bQAUnornaAskConversation		= false;
-	private boolean				bQAUnornaConversation			= false;
-	private boolean				bUnornaVampireConversation		= false;
-	private boolean				bUnornaLetterConversation		= false;
-
-	public static String _params[] = {"Anezka's letter"};
-
-	public UNOR_UnornaShop(CodexThing anezkaLetter)
+	public UNOR_UnornaShop( CodexThing anezkaLetter )
 	{
-		chronScript = (PragueChronicle)GetChronicleScript(0);
+		_anezkaLetter = new CodexThing( anezkaLetter.GetGUID() );
 
-		_anezkaLetter = new CodexThing(anezkaLetter.GetGUID());
+		greetingLine = new String[]{ "Unorna_0_0_1904.wav", "Unorna_0_0_1925.wav", "Unorna_0_0_95.wav", "Unorna_0_0_1927" };
+		numGreetingLines = 3;
+		byeLine = new String[]{ "Unorna_0_0_1905.wav", "Unorna_0_0_1928.wav", "Unorna_0_0_96.wav", "Unorna_0_0_1906" };
+		numByeLines = 3;
+
+		shopName = "UNORNASHOP";
+		shopFileName = "UnornaShop.nbs";
+		sellFlags = BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_BLOODITEM + BUYSELL_ITEM_POTION + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_MAGICWEAPON + BUYSELL_ITEM_SCROLLBOOK;
 	}
 
-	public void beginscene(int clientGuid, int captureID)
+
+	public void beginscene( int clientGuid, int captureID )
 	{
-		christofGUID = CodexThing.GuidFromCastID("Christof");
-		unornaGUID = CodexThing.GuidFromCastID("Unorna");
+		InitializeOwner();
+
+		christofGUID = CodexThing.GuidFromCastID( "Christof" );
+		unornaGUID = CodexThing.GuidFromCastID( "Unorna" );
 		
-		if(CodexSequence.GetChronicleFlag(chronScript.SIM4_AHZRADEAD))
-		{
+		if( CodexSequence.GetChronicleFlag( PragueChronicle.SIM4_AHZRADEAD ) ) {
 			// add in Unorna_0_0_1927 hello
-			greetingLine[3] = "Unorna_0_0_1927";
 			numGreetingLines = 4;
 		}
 
-		if(CodexSequence.GetChronicleFlag(chronScript.UNORD_LETTER))
-		{
+		if( CodexSequence.GetChronicleFlag( PragueChronicle.UNORD_LETTER ) ) {
 			// add in Unorna_0_0_1906 goodbye
-			byeLine[3] = "Unorna_0_0_1906";
 			numByeLines = 4;
 		}
 
-		if(!CodexSequence.GetChronicleFlag(chronScript.UNORD_FLYTHROUGH))
-		{
-			CodexSequence.SetChronicleFlag(chronScript.UNORD_FLYTHROUGH);
+		if( CodexSequence.GetChronicleFlag( PragueChronicle.OLDT_ECATERINAREGION ) ) {
+			shopFileName = "UnornaVampireShop.nbs";
 		}
 
-		if(!CodexSequence.GetChronicleFlag(chronScript.UNORD_LETTER))
+		if( !CodexSequence.GetChronicleFlag( PragueChronicle.UNORD_LETTER ) )
 		{
 			// hide the anezka letter
-			_anezkaLetter.SetRenderFlags(THING_RENDERFLAG_DONTRENDER);
-			_anezkaLetter.SetThingFlags(THING_FLAG_NOHIGHLIGHT);		
+			_anezkaLetter.SetRenderFlags( THING_RENDERFLAG_DONTRENDER );
+			_anezkaLetter.SetThingFlags( THING_FLAG_NOHIGHLIGHT );
 		}
-
-		ownerGuid = GetClassThing();
-
-		if(IsActorGuid(ownerGuid))
-			owner = new CodexActor(ownerGuid);
 	}
 
-	public void endscene(int clientGuid, int captureID, int exitNum)
-	{
-		bActive = false;
-		owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-	}
 
-	public void timer(int timerID, float arg0, float arg1, float arg2, float arg3)
+	public void clicked( int guid, int clickerGuid, int captureID )
 	{
-		UnornaLetterConversation(CodexPlayer.GetCurrentPlayer(), 0);
-	}
-
-	public void BuySellInterface(int shopperGuid)
-	{
-		if(CodexSequence.GetChronicleFlag(chronScript.OLDT_ECATERINAREGION))
+		if( CodexSequence.GetChronicleFlag( PragueChronicle.ANZK_LOCKETSCENE ) &&
+			!CodexSequence.GetChronicleFlag( PragueChronicle.UNORD_LETTER ) )
 		{
-			AddBuySell("UnornaVampireShop.nbs", ownerGuid, descriptionID, flags, buyRate, sellRate, sellFlags);
+			CodexSequence.SetChronicleFlag( PragueChronicle.UNORD_LETTER );
+
+			// show the letter from anezka
+			_anezkaLetter.ClearRenderFlags( THING_RENDERFLAG_DONTRENDER );
+			_anezkaLetter.ClearThingFlags( THING_FLAG_NOHIGHLIGHT );
+
+			UnornaLetterConversation();
 		}
-		else
+		else if( CodexSequence.GetChronicleFlag(PragueChronicle.OLDT_ECATERINAREGION ) &&
+			!CodexSequence.GetChronicleFlag( PragueChronicle.UNORD_VAMPIREGREETING ) )
 		{
-			AddBuySell("UnornaShop.nbs", ownerGuid, descriptionID, flags, buyRate, sellRate, sellFlags);
+			CodexSequence.SetChronicleFlag( PragueChronicle.UNORD_VAMPIREGREETING );
+
+			UnornaVampireConversation();
 		}
-
-		ExecuteBuySell(ownerGuid, shopperGuid, BUYSELL_XFLAG_WANTFEEDBACK);
-	}
-
-	public void clicked(int guid, int clickerGuid, int captureID)
-	{
-		if(bActive)
-			return;
-
-		if(IsActorGuid(ownerGuid))
+		else if( CodexSequence.GetChronicleFlag( PragueChronicle.SIM4_AHZRADEAD ) &&
+			!CodexSequence.GetChronicleFlag( PragueChronicle.OLDT_ECATERINAREGION ) )
 		{
-			// play the talk animation on the owner
-			owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			bActive = true;
-			owner.SetThingFlags(THING_FLAG_NOHIGHLIGHT);
-
-			if(CodexSequence.GetChronicleFlag(chronScript.ANZK_LOCKETSCENE) &&
-				!CodexSequence.GetChronicleFlag(chronScript.UNORD_LETTER))
+			if( !CodexSequence.GetChronicleFlag( PragueChronicle.UNOR_ASK ) )
 			{
-				CodexSequence.SetChronicleFlag(chronScript.UNORD_LETTER);
+				CodexSequence.SetChronicleFlag( PragueChronicle.UNOR_ASK );
 
-				// show the letter from anezka
-				_anezkaLetter.ClearRenderFlags(THING_RENDERFLAG_DONTRENDER);
-				_anezkaLetter.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-
-				UnornaLetterConversation(clickerGuid, 0);
+				QAUnornaAskConversation();
 			}
-			else if(CodexSequence.GetChronicleFlag(chronScript.OLDT_ECATERINAREGION) &&
-				!CodexSequence.GetChronicleFlag(chronScript.UNORD_VAMPIREGREETING))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.UNORD_VAMPIREGREETING);
-
-				UnornaVampireConversation(clickerGuid, 0);
-			}
-			else if(CodexSequence.GetChronicleFlag(chronScript.SIM4_AHZRADEAD) &&
-				!CodexSequence.GetChronicleFlag(chronScript.OLDT_ECATERINAREGION))
-			{
-				if(!CodexSequence.GetChronicleFlag(chronScript.UNOR_ASK))
-				{
-					CodexSequence.SetChronicleFlag(chronScript.UNOR_ASK);
-
-					QAUnornaAskConversation(clickerGuid, 0);
-				}
-				else
-				{
-					QAUnornaConversation(clickerGuid, 0);
-				}
-			}
-			else if(!CodexSequence.GetChronicleFlag(chronScript.UNORD_TALKEDONCE))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.UNORD_TALKEDONCE);
-
-				UnornaFirstConversation(clickerGuid, 0);
-			}
-			else
-			{
-				// play the greeting sound
-				new CodexSound(greetingLine[(int)(Math.random() * numGreetingLines)], 300, 600, 100, 0, 0, ownerGuid);
-
-				BuySellInterface(clickerGuid);
+			else {
+				QAUnornaConversation();
 			}
 		}
-	}
-
-	// --------------------------------------------------------------------------------------------
-
-	public void buysellended(boolean bAborted)
-	{
-		if(IsActorGuid(ownerGuid))
+		else if( !CodexSequence.GetChronicleFlag( PragueChronicle.UNORD_TALKEDONCE ) )
 		{
-			if(!CodexSequence.GetChronicleFlag(chronScript.UNORD_FIRSTGOODBYE) &&
-				!CodexSequence.GetChronicleFlag(chronScript.OLDT_ECATERINAREGION))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.UNORD_FIRSTGOODBYE);
+			CodexSequence.SetChronicleFlag( PragueChronicle.UNORD_TALKEDONCE );
 
-				// play first bye line "go with god..."
-				//new CodexSound("Unorna_0_0_1928.wav", 300, 600, 100, 0, 0, ownerGuid);
-				UnornaFirstGoodbyeConversation(christofGUID, 0);
-			}
-			else
-			{
-				// play random bye line
-				new CodexSound(byeLine[(int)(Math.random() * numByeLines)], 300, 600, 100, 0, 0, ownerGuid);
-			
-				// stop the talk animation on the owner
-				owner.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
-			}
-
-			bActive = false;
-			owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
+			UnornaFirstConversation();
+		}
+		else {
+			BeginBuySell( true );
 		}
 	}
 
-	public void UnornaFirstConversation(int starterGuid, int npcGuid)
+
+	public void buysellended( boolean bAborted )
 	{
-		CodexSound.PushMusic("DA_Conversation_1.mp3", 50);
-		AIOff();
-		bUnornaFirstConversation = true;
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "4_1_Unorna", "4_1_Unorna.nco", CONV_XFLAG_WANTFEEDBACK);
+		EndBuySell( false );
+
+		if( !CodexSequence.GetChronicleFlag( PragueChronicle.UNORD_FIRSTGOODBYE ) &&
+			!CodexSequence.GetChronicleFlag( PragueChronicle.OLDT_ECATERINAREGION ) )
+		{
+			CodexSequence.SetChronicleFlag( PragueChronicle.UNORD_FIRSTGOODBYE );
+
+			// play first bye line "go with god..."
+			UnornaFirstGoodbyeConversation();
+		}
+		else {
+			PlayByeSound();
+		}
 	}
 
-	public void UnornaVampireConversation(int starterGuid, int npcGuid)
+
+	public void UnornaFirstConversation()
 	{
-		AIOff();
-		bUnornaVampireConversation = true;
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "8_1_Unorna", "8_1_Unorna.nco", CONV_XFLAG_WANTFEEDBACK);
+		CodexSound.PushMusic( "DA_Conversation_1.mp3", 50 );
+		bUnornaFirstConversation = BeginConversation( "4_1_Unorna" );
 	}
 
-	public void UnornaFirstGoodbyeConversation(int starterGuid, int npcGuid)
+
+	public void UnornaVampireConversation()
 	{
-		bUnornaFirstGoodbyeConversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "4_1_UnornaFirstGoodbye", "4_1_UnornaFirstGoodbye.nco", CONV_XFLAG_WANTFEEDBACK);
+		bUnornaVampireConversation = BeginConversation( "8_1_Unorna" );
 	}
 
-	public void QAUnornaAskConversation(int starterGuid, int npcGuid)
+
+	public void UnornaFirstGoodbyeConversation()
 	{
-		AIOff();
-		bQAUnornaAskConversation = true;
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "6_1_UnornaAsk", "6_1_UnornaAsk.nco", CONV_XFLAG_WANTFEEDBACK);
+		bUnornaFirstGoodbyeConversation = BeginConversation( "4_1_UnornaFirstGoodbye" );
 	}
 
-	public void QAUnornaConversation(int starterGuid, int npcGuid)
+
+	public void QAUnornaAskConversation()
 	{
-		CodexSound.PushMusic("DA_Conversation_1.mp3", 50);
-		AIOff();
-		bQAUnornaConversation = true;
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "6_1_Unorna", "6_1_Unorna.nco", CONV_XFLAG_WANTFEEDBACK);
+		bQAUnornaAskConversation = BeginConversation( "6_1_UnornaAsk" );
 	}
 
-	public void UnornaLetterConversation(int starterGuid, int npcGuid)
+
+	public void QAUnornaConversation()
 	{
-		bUnornaLetterConversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "11_1_UnornaLetter", "11_1_UnornaLetter.nco", CONV_XFLAG_WANTFEEDBACK);
+		CodexSound.PushMusic( "DA_Conversation_1.mp3", 50 );
+		bQAUnornaConversation = BeginConversation( "6_1_Unorna" );
 	}
 
-	public void convended(int starterGuid,  boolean bAborted , int returnValue)
+
+	public void UnornaLetterConversation()
 	{
-		if(bUnornaFirstConversation)
+		bUnornaLetterConversation = BeginConversation( "11_1_UnornaLetter" );
+	}
+
+
+	public void convended( int starterGuid, boolean bAborted, int returnValue )
+	{
+		if( bUnornaFirstConversation )
 		{
 			CodexSound.PopMusic();
-			CodexCamera.Release(starterGuid);
-			bUnornaFirstConversation = false;
-			AIOn();
+			bUnornaFirstConversation = EndConversation();
 
 			// award conversation XP
-			CodexPlayer.AwardPartyExperience(25);
+			CodexPlayer.AwardPartyExperience( 25 );
 		}
 
-		if(bUnornaVampireConversation)
-		{
-			CodexCamera.Release(starterGuid);
-			bUnornaFirstConversation = false;
-			AIOn();
+		if( bUnornaVampireConversation ) {
+			bUnornaFirstConversation = EndConversation();
 		}
 
-		if(bUnornaFirstGoodbyeConversation)
+		if( bUnornaFirstGoodbyeConversation )
 		{
-			AIOn();
-			bUnornaFirstGoodbyeConversation = false;
-			CodexCamera.Release(starterGuid);
+			bUnornaFirstGoodbyeConversation = EndConversation();
 
 			// skip buy/sell
-			bActive = false;
-			owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
 			return;
 		}
 
-		if(bQAUnornaAskConversation)
+		if( bQAUnornaAskConversation )
 		{
 			bQAUnornaAskConversation = false;
 
 			// award conversation XP
-			CodexPlayer.AwardPartyExperience(50);
+			CodexPlayer.AwardPartyExperience( 50 );
 
-			QAUnornaConversation(starterGuid, 0);
+			QAUnornaConversation();
 
 			// skip buy/sell
-			bActive = false;
-			owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
 			return;
 		}
-		else if(bQAUnornaConversation)
+		else if( bQAUnornaConversation )
 		{
 			CodexSound.PopMusic();
 
-			if(returnValue == 1)
-			{
-				CodexCamera.Release(starterGuid);
-				bQAUnornaConversation = false;
-				AIOn();
+			if( returnValue == 1 ) {
+				bQAUnornaConversation = EndConversation();
 			}
 			else
 			{
-				QAUnornaConversation(starterGuid, 0);
+				QAUnornaConversation();
 
 				// skip buy/sell
-				bActive = false;
-				owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
 				return;
 			}
 		}
 
-		if(bUnornaLetterConversation)
+		if( bUnornaLetterConversation )
 		{
-			AIOn();
-			bUnornaLetterConversation = false;
-			CodexCamera.Release(starterGuid);
-
-			//ExecuteText(starterGuid, guid, "AnezkaLetter");
+			bUnornaLetterConversation = EndConversation();
 
 			// without pulling up buy/sell interface
-			bActive = false;
-			owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
 			return;
 		}
 
-		BuySellInterface(starterGuid);
+		BeginBuySell( false );
 	}
 
-	public void convreached(int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid)
+
+	public void convreached( int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid )
 	{
-		if(bUnornaFirstConversation)
+		if( bUnornaFirstConversation )
 		{
-			switch(curLine)
+			switch( curLine )
 			{
 				case 0:
-
-					CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 					break;
 
 				case 1:
-
-					CodexCamera.SetupCutscene(starterGuid, christofGUID, 0);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0);
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 
 				case 2:
-
-					CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-					//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 
 				case 3:
-
-					CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 					break;
 
 				case 4:
-
-					CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-					//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 			}
 		}
 
-		if(bUnornaFirstGoodbyeConversation)
+		if( bUnornaFirstGoodbyeConversation )
 		{
-			switch(curLine)
+			switch( curLine )
 			{
 				case 0:
-
-					CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-					//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 
 				case 1:
-
-					CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-					break;					
-			}
-		}
-
-		if(bUnornaVampireConversation)
-		{
-			switch(curLine)
-			{
-				case 0:
-
-					CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-					CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-					//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 					break;
 			}
 		}
 
-		if(bQAUnornaAskConversation)
+		if( bUnornaVampireConversation )
 		{
-			switch(curEvent)
-			{
-				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0);
-							break;
-
-						case 2:
-
-							CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-							//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
-							break;
-					}
-			}
+			CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+			CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 		}
 
-		if(bQAUnornaConversation)
+		if( bQAUnornaAskConversation )
 		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-					} // switch(curLine)
-
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 					break;
 
 				case 1:
-
-					switch(curLine)
-
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-							//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
-							break;
-
-					} // switch(curLine)
-
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 
 				case 2:
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
+					break;
+			}
+		}
 
-					switch(curLine)
+		if( bQAUnornaConversation )
+		{
+			switch( curEvent )
+			{
+				case 0:
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
 
-					{
-						case 0:
+				case 1:
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
+					break;
 
-							CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-							//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
-							break;
-
-					} // switch(curLine)
-
+				case 2:
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 
 				case 3:
-
-					switch(curLine)
-
+					switch( curLine )
 					{
 						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
+							CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+							CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 							break;
 
 						case 1:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0);
+							CodexCamera.SetupCutscene( starterGuid, christofGUID, 0 );
+							CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0 );
 							break;
 
 						case 2:
-
-							CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-							//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
+							CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+							CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 							break;
 
 						case 3:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, unornaGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
+							CodexCamera.SetupCutscene( starterGuid, christofGUID, unornaGUID );
+							CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 							break;
 
 						case 4:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
+							CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 							break;
-
-					} // switch(curLine)
-
+					}
 					break;
 
 				case 4:
-
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-							//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
-							break;
-
-					} // switch(curLine)
-
+					CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
+			}
+		}
 
-			} // switch(curEvent)
-		} // if(bQAUnornaConversation)
-
-		if(bUnornaLetterConversation)
+		if( bUnornaLetterConversation )
 		{
-			switch(curEvent)
-			{
-				case 0:
-
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, unornaGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0);
-							//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Unorna.ncp", 30);
-							break;
-
-					} // switch(curLine)
-
-					break;
-
-			} // switch(curEvent)
+			CodexCamera.SetupCutscene( starterGuid, unornaGUID, 0 );
+			CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_CLOSEUP, 0, 0 );
 		}
 	}
 }

@@ -388,15 +388,13 @@ partial class Effect
 			Values	= [5, 10, 15, 20, 25, 30]
 		},
 		ef_stat_manipulation = new( ef_stat_manipulation ) {
-			Icon	= null,
-			Row		= IconsRow.Others,
-			Script	= null,
+			Script	= "EffectStatManipulation",
+			Values	= [5, 10, 15, 20, 25, 30]
+		},
+		ef_stat_manipulation_internal = new( ef_stat_manipulation_internal ) {
 			Type	= EffectType.Manipulation,
 			Compose	= ComposeType.Add,
 			Flags	= EffectFlags.OwnerSynced,
-			Tick	= 0,
-			PC		= 50,
-			DC		= 1,
 			Values	= [5, 10, 15, 20, 25, 30]
 		},
 		ef_stat_appearance = new( ef_stat_appearance ) {

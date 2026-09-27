@@ -1,187 +1,131 @@
 /**
  * EAST_Otto script.
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
 */
-
-public class EAST_Otto extends Codex
+public class EAST_Otto extends CodexBuySell
 {
-	private LondonChronicle	chronScript;
+	public static String _params[] = { "Otto Van" };
 
-	private CodexRegion	_FirstOttoRegion;
 
-	private int			ownerGuid = 0;
-	private CodexActor	owner;
-	private CodexActor	_ottoVan;
+	private CodexActor _ottoVan;
 
-	private String				descriptionID			= "OTTOVAN";
-	private int					flags					= 0;
-	private float				buyRate					= (float)1.25;
-	private float				sellRate				= (float)0.80;
-	private	int					sellFlags				= BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_ARMOR + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_WEAPON + BUYSELL_ITEM_MAGICWEAPON;
-	
-	private static String		greetingLine[]			= {"Otto_0_0_1920_2.wav"};
-	private static final int	numGreetingLines		= 1;
-	private static String		byeLine[]				= {"Otto_0_0_1921.wav"};
-	private static final int	numByeLines				= 1;
+	private boolean bWithAnim = true;
 
-	//////////////////////////////////////////////////
+	private boolean bBrothelLocationConversation = false;
 
-	private boolean				bActive					= false;
 
-	public boolean				bBrothelLocationConversation = false;
-
-	public static String _params[] = {"Otto Van"};
-
-	public EAST_Otto(CodexActor ottoVan)
+	public EAST_Otto( CodexActor ottoVan )
 	{
-		chronScript = (LondonChronicle)GetChronicleScript(0);
+		_ottoVan = new CodexActor( ottoVan.GetGUID() );
+		CaptureThing( _ottoVan.GetGUID() );
 
-		_ottoVan = new CodexActor(ottoVan.GetGUID());
-		
-		CaptureThing(_ottoVan.GetGUID());		
+		greetingLine = new String[]{ "Otto_0_0_1920_2.wav" };
+		numGreetingLines = 1;
+		byeLine = new String[]{ "Otto_0_0_1921.wav" };
+		numByeLines = 1;
+
+		shopName = "OTTOVAN";
+		shopFileName = "OttoVan.nbs";
+		sellFlags = BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_ARMOR + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_WEAPON + BUYSELL_ITEM_MAGICWEAPON;
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public void beginscene(int clientGuid, int captureID)
+	public void beginscene( int clientGuid, int captureID )
 	{
-		ownerGuid = GetClassThing();
+		InitializeOwner();
 
-		if(IsActorGuid(ownerGuid))
-			owner = new CodexActor(ownerGuid);
+		bWithAnim = true;
+
+		owner.ClearThingFlags( THING_FLAG_NOHIGHLIGHT );
+		_ottoVan.ClearThingFlags( THING_FLAG_NOHIGHLIGHT );
 
 		// to force the stand on beginscene
-		owner.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
-		_ottoVan.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
+		owner.PlayActorMotionSetMode( MOTION_STAND, false, 30f );
+		_ottoVan.PlayActorMotionSetMode( MOTION_STAND, false, 30f );
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public void endscene(int clientGuid, int captureID, int exitNum)
+	public void clicked( int guid, int clickerGuid, int captureID )
 	{
-		bActive = false;
-		_ottoVan.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-	}
-
-	public void clicked(int guid, int clickerGuid, int captureID)
-	{
-		if(bActive)
-			return;
-
-		if(IsActorGuid(_ottoVan.GetGUID()))
+		if( bWithAnim )
 		{
-			new CodexSound("leverLarge_02.wav", 300, 600, 100, 0, 0, _ottoVan.GetGUID());
-			int duration = owner.PlayActorMotionSetMode(MOTION_SPECIAL1, false, (float)30.0);
-			CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "EASTOttoVan.ncp", 30);
-			_ottoVan.PlayActorMotionSetMode(MOTION_SPECIAL1, false, (float)30.0);
+			new CodexSound( "leverLarge_02.wav", 300, 600, 100, 0, 0, _ottoVan.GetGUID() );
+			CodexCamera.PlayPath( CodexPlayer.GetCurrentPlayer(), GetGUID(), "EASTOttoVan.ncp", 30 );
+			float duration = owner.PlayActorMotionSetMode( MOTION_SPECIAL1, false, 30f );
+			_ottoVan.PlayActorMotionSetMode( MOTION_SPECIAL1, false, 30f);
 
-			SetTimer((float)5.0, 1, clickerGuid);
+			SetTimer( duration / 1000f, 1 );
+		}
+		else {
+			BeginBuySell( true );
 		}
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public void buysellended(boolean bAborted)
+	public void buysellended( boolean bAborted )
 	{
-		if(IsActorGuid(ownerGuid))
+		EndBuySell( true );
+
+		if( bWithAnim )
 		{
-			// play bye line
-			new CodexSound(byeLine[(int)(Math.random() * numByeLines)], 300, 600, 100, 0, 0, ownerGuid);
-			int duration = owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			_ottoVan.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			SetTimer((float)(duration / 1000), 2);
+			bWithAnim = false;
+			SetTimer( 0.5f, 2 );
 		}
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public void BuySellInterface(int shopperGuid)
+	public void timer( int timerID, float arg0, float arg1, float arg2, float arg3 )
 	{
-		// Release the camera from the van-opening shot
-		CodexCamera.Release(shopperGuid);
-
-		AddBuySell("OttoVan.nbs", ownerGuid, descriptionID, flags, buyRate, sellRate, sellFlags);
-
-		ExecuteBuySell(ownerGuid, shopperGuid, BUYSELL_XFLAG_WANTFEEDBACK);
-	}
-
-	public void timer(int timerID, float arg0, float arg1, float arg2, float arg3)
-	{
-		if(timerID == 1)
+		if( timerID == 1 )
 		{
-			// play the talk animation on the owner
-			owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			_ottoVan.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			bActive = true;
-			_ottoVan.SetThingFlags(THING_FLAG_NOHIGHLIGHT);
+			owner.SetThingFlags( THING_FLAG_NOHIGHLIGHT );
+			_ottoVan.SetThingFlags( THING_FLAG_NOHIGHLIGHT );
 
-			// play the greeting sound
-			new CodexSound(greetingLine[(int)(Math.random() * numGreetingLines)], 300, 600, 100, 0, 0, ownerGuid);
-
-			BuySellInterface((int)arg0);
+			BeginBuySell( true/*play the greeting sound*/ );
 		}
-		else
-		if(timerID == 2)
+		else if( timerID == 2 )
 		{
-			new CodexSound("leverLarge_02.wav", 300, 600, 100, 0, 0, _ottoVan.GetGUID());
-			int duration = owner.PlayActorMotionSetMode(MOTION_SPECIAL2, false, (float)30.0);
-			_ottoVan.PlayActorMotionSetMode(MOTION_SPECIAL2, false, (float)30.0);
-			SetTimer((float)(duration / 1000), 3);	
+			new CodexSound( "leverLarge_02.wav", 300, 600, 100, 0, 0, _ottoVan.GetGUID() );
+			float duration = owner.PlayActorMotionSetMode( MOTION_SPECIAL2, false, 30f );
+			_ottoVan.PlayActorMotionSetMode( MOTION_SPECIAL2, false, 30f );
+			SetTimer( duration / 1000f, 3 );
 		}
-		else
-		if(timerID == 3)
+		else if( timerID == 3 )
 		{
-			// stop the special animation on the owner
-			owner.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
-			_ottoVan.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
+			owner.ClearThingFlags( THING_FLAG_NOHIGHLIGHT );
+			_ottoVan.ClearThingFlags( THING_FLAG_NOHIGHLIGHT );
 
-			bActive = false;
-			_ottoVan.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-
-			if(CodexSequence.GetChronicleFlag(chronScript.TEN1_MEETPINK) &&
-				!CodexSequence.GetChronicleFlag(chronScript.EAST_BROTHELLOCATION) &&
-				!CodexSequence.GetChronicleFlag(chronScript.BROT_MEETLILY))
+			if( CodexSequence.GetChronicleFlag( LondonChronicle.TEN1_MEETPINK ) &&
+				!CodexSequence.GetChronicleFlag( LondonChronicle.EAST_BROTHELLOCATION ) &&
+				!CodexSequence.GetChronicleFlag( LondonChronicle.BROT_MEETLILY ) )
 			{
-				CodexSequence.SetChronicleFlag(chronScript.EAST_BROTHELLOCATION);
+				CodexSequence.SetChronicleFlag( LondonChronicle.EAST_BROTHELLOCATION );
 
-				BrothelLocationConversation(CodexPlayer.GetCurrentPlayer(), 0);
+				BrothelLocationConversation();
 			}
 		}
 	}
 
-	public void BrothelLocationConversation(int starterGuid, int npcGuid)
+
+	public void BrothelLocationConversation()
 	{
-		bBrothelLocationConversation = true;
 		AIOff();
-		ExecuteConversation(starterGuid, npcGuid, "28_4_BrothelLocation", "28_4_BrothelLocation.nco", CONV_XFLAG_WANTFEEDBACK);
+		bBrothelLocationConversation = true;
+		ExecuteConversation( CodexPlayer.GetCurrentPlayer(), 0, "28_4_BrothelLocation", "28_4_BrothelLocation.nco", CONV_XFLAG_WANTFEEDBACK );
 	}
 
-	public void convended(int starterGuid, boolean bAborted , int returnValue)
+
+	public void convended( int starterGuid, boolean bAborted, int returnValue )
 	{
-		if(bBrothelLocationConversation)
-		{
-			AIOn();
-			bBrothelLocationConversation = false;
-			CodexCamera.Release(starterGuid);
+		if( bBrothelLocationConversation ) {
+			bBrothelLocationConversation = EndConversation();
 		}
 	}
 
-	public void convreached(int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid)
+
+	public void convreached( int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid )
 	{
-		switch(curEvent)
-		{
-			case 0:
-				switch(curLine)
-				{
-					case 0:
-						CodexCamera.SetupCutscene(starterGuid, speakerGuid, 0);
-						CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMLOW, CAM_DIST_MEDIUM, 0, 0);
-						break;
-				} // switch(curLine)
-				break;
-		} // switch(curEvent)
+		CodexCamera.SetupCutscene( starterGuid, speakerGuid, 0 );
+		CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUMLOW, CAM_DIST_MEDIUM, 0, 0 );
 	}
 }
-
-

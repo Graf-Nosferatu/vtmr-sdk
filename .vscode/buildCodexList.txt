@@ -3,3 +3,13 @@
 # Codex\core
 
 Codex\sp\prague\OLDT_7_4.java
+Codex\sp\prague\SMTY_JiriShop.java
+Codex\sp\prague\UNOR_UnornaShop.java
+Codex\sp\vienna\WEAP_Friedrich.java
+Codex\sp\vienna\ORDR_Orvus.java
+Codex\sp\london\EAST_Otto.java
+Codex\sp\london\CURI_Sumner.java
+Codex\sp\london\TEN1_Bartender.java
+Codex\sp\new_york\GUNH_Hank.java
+Codex\sp\new_york\NEWM_Emelia.java
+Codex\other\EffectStatManipulation.java

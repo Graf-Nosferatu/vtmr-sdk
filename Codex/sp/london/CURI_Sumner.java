@@ -1,470 +1,311 @@
 /**
  * CURI_Sumner script.
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
 */
-
-public class CURI_Sumner extends Codex
+public class CURI_Sumner extends CodexBuySell
 {
-	private LondonChronicle	chronScript;
+	private int christofGUID;
+	private int pinkGUID;
+	private int sumnerGUID;
 
-	private int			ownerGuid = 0;
-	private CodexActor	owner;
+	private boolean bSumner1Conversation		= false;
+	private boolean bSumner2Conversation		= false;
+	private boolean bMeetSumner2Conversation	= false;
+	private boolean bSecondSumner2Conversation	= false;
 
-	private String				descriptionID			= "CURIOSHOP";
-	private int					flags					= 0;
-	private float				buyRate					= (float)1.25;
-	private float				sellRate				= (float)0.80;
-	private	int					sellFlags				= BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_BLOODITEM + BUYSELL_ITEM_POTION + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_MAGICWEAPON + BUYSELL_ITEM_SCROLLBOOK;
-	private	int					numItems				= 20;
-
-	private int					christofGUID;
-	private int					pinkGUID;
-	private int					sumnerGUID;
-
-	private static String		greetingLine[]			= {"Sumner_Hello.wav"};
-	private static final int	numGreetingLines		= 1;
-	private static String		byeLine[]				= {"Sumner_GoodDay.wav"};
-	private static final int	numByeLines				= 1;
-
-	private static String		firstByeLine[]			= {"Sumner_28_4_1042.mp3"};
-	private static final int	numFirstByeLine			= 1;
-
-	//////////////////////////////////////////////////
-
-	private boolean				bActive					= false;
-
-	private boolean				bSumner1Conversation = false;
-	private boolean				bSumner2Conversation = false;
-	public boolean				bMeetSumner2Conversation = false;
-	public boolean				bSecondSumner2Conversation = false;
-
-	// --------------------------------------------------------------------------------------------
 
 	public CURI_Sumner()
 	{
-		chronScript = (LondonChronicle)GetChronicleScript(0);
+		greetingLine = new String[]{ "Sumner_Hello.wav" };
+		numGreetingLines = 1;
+		byeLine = new String[]{ "Sumner_GoodDay.wav" };
+		numByeLines = 1;
+
+		shopName = "CURIOSHOP";
+		shopFileName = "CurioShop.nbs";
+		sellFlags = BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_BLOODITEM + BUYSELL_ITEM_POTION + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_MAGICWEAPON + BUYSELL_ITEM_SCROLLBOOK;
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public void beginscene(int clientGuid, int captureID)
+	public void beginscene( int clientGuid, int captureID )
 	{
-		christofGUID = CodexThing.GuidFromCastID("Christof");
-		pinkGUID = CodexThing.GuidFromCastID("Pink");
-		sumnerGUID = CodexThing.GuidFromCastID("Sumner");
-		
-		ownerGuid = GetClassThing();
+		InitializeOwner();
 
-		if(IsActorGuid(ownerGuid))
-			owner = new CodexActor(ownerGuid);
+		christofGUID = CodexThing.GuidFromCastID( "Christof" );
+		pinkGUID = CodexThing.GuidFromCastID( "Pink" );
+		sumnerGUID = CodexThing.GuidFromCastID( "Sumner" );
 	}
 
-	// --------------------------------------------------------------------------------------------
-
-	public void endscene(int clientGuid, int captureID, int exitNum)
-	{
-		bActive = false;
-		owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-	}
-
-	public void BuySellInterface(int shopperGuid)
-	{
-		AddBuySell("CurioShop.nbs", ownerGuid, descriptionID, flags, buyRate, sellRate, sellFlags);
-
-		ExecuteBuySell(ownerGuid, shopperGuid, BUYSELL_XFLAG_WANTFEEDBACK);
-	}
 
 	public void clicked(int guid, int clickerGuid, int captureID)
 	{
-		if(bActive)
-			return;
-
-		if(IsActorGuid(ownerGuid))
+		if( CodexSequence.GetChronicleFlag( LondonChronicle.TEN1_MEETPINK ) )
 		{
-			// play the talk animation on the owner
-			int duration = owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			bActive = true;
-			owner.SetThingFlags(THING_FLAG_NOHIGHLIGHT);
-
-			if(CodexSequence.GetChronicleFlag(chronScript.TEN1_MEETPINK))
+			if( !CodexSequence.GetChronicleFlag( LondonChronicle.CURI_SUMNER_NOPINK ) )
 			{
-				if(!CodexSequence.GetChronicleFlag(chronScript.CURI_SUMNER_NOPINK))
+				// see if this is his first visit
+				if( !CodexSequence.GetChronicleFlag( LondonChronicle.CURI_SUMNER_TALKEDONCE ) )
 				{
-					// see if this is his first visit
-					if(!CodexSequence.GetChronicleFlag(chronScript.CURI_SUMNER_TALKEDONCE))
-					{
-						CodexSequence.SetChronicleFlag(chronScript.CURI_SUMNER_TALKEDONCE);
+					CodexSequence.SetChronicleFlag( LondonChronicle.CURI_SUMNER_TALKEDONCE );
 
-						Sumner1Conversation(clickerGuid, 0);
+					Sumner1Conversation();
 
-						return;
-					}
-					// see if this is his second visit for follow up lines
-					else if(!CodexSequence.GetChronicleFlag(chronScript.SUMNER_TALKEDTWICE) &&
-						CodexSequence.GetChronicleFlag(chronScript.WEST_AFTERCURIO))
-					{
-						CodexSequence.SetChronicleFlag(chronScript.SUMNER_TALKEDTWICE);
-
-						Sumner2Conversation(clickerGuid, 0);
-
-						return;
-					}
-					else
-					{
-						SetTimer((float)(duration / 1000), 1, clickerGuid);
-					}
+					return;
 				}
-				else if(!CodexSequence.GetChronicleFlag(chronScript.CURI_SUMNER_ALTERNATEPINK))
+				// see if this is his second visit for follow up lines
+				else if( !CodexSequence.GetChronicleFlag(LondonChronicle.SUMNER_TALKEDTWICE ) &&
+					CodexSequence.GetChronicleFlag( LondonChronicle.WEST_AFTERCURIO ) )
 				{
-					CodexSequence.SetChronicleFlag(chronScript.CURI_SUMNER_ALTERNATEPINK);
+					CodexSequence.SetChronicleFlag( LondonChronicle.SUMNER_TALKEDTWICE );
 
-					// sumner after meeting pink if you've already talked to him once without pink
-					SecondSumner2Conversation(clickerGuid, 0);
-				}
-				else
-				{
-					SetTimer((float)0.5, 1, clickerGuid);
+					Sumner2Conversation();
+
+					return;
 				}
 			}
-			else
+			else if( !CodexSequence.GetChronicleFlag( LondonChronicle.CURI_SUMNER_ALTERNATEPINK ) )
 			{
-				if(!CodexSequence.GetChronicleFlag(chronScript.CURI_SUMNER_NOPINK))
-				{
-					CodexSequence.SetChronicleFlag(chronScript.CURI_SUMNER_NOPINK);
+				CodexSequence.SetChronicleFlag( LondonChronicle.CURI_SUMNER_ALTERNATEPINK );
 
-					// first sumner conversation occuring before meeting pink
-					MeetSumner2Conversation(clickerGuid, 0);
-				}
-				else
-				{
-					SetTimer((float)0.5, 1, clickerGuid);
-				}
+				// sumner after meeting pink if you've already talked to him once without pink
+				SecondSumner2Conversation();
+
+				return;
 			}
-		}
-
-	}
-
-	// --------------------------------------------------------------------------------------------
-
-	public void buysellended(boolean bAborted)
-	{
-		if(IsActorGuid(ownerGuid))
-		{
-			if(!CodexSequence.GetChronicleFlag(chronScript.SUMNER_FIRSTGOODBYE))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.SUMNER_FIRSTGOODBYE);
-
-				// play first bye line
-				CodexSound.PlayVoice(sumnerGUID, "Sumner_28_4_1042", 100);
-			}
-			else
-			{
-				// play generic bye line
-				new CodexSound(byeLine[(int)(Math.random() * numByeLines)], 300, 600, 100, 0, 0, ownerGuid);
-			}
-
-			SetTimer((float)(2.0), 2);
-		}
-	}
-
-	// --------------------------------------------------------------------------------------------
-
-	public void timer(int timerID, float arg0, float arg1, float arg2, float arg3)
-	{
-		if(timerID == 1)
-		{
-			// play the greeting sound
-			new CodexSound(greetingLine[(int)(Math.random() * numGreetingLines)], 300, 600, 100, 0, 0, ownerGuid);
-
-			BuySellInterface((int)arg0);
 		}
 		else
-		if(timerID == 2)
 		{
-			int duration = owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			SetTimer((float)(duration / 1000), 3);	
+			if( !CodexSequence.GetChronicleFlag(LondonChronicle.CURI_SUMNER_NOPINK ) )
+			{
+				CodexSequence.SetChronicleFlag( LondonChronicle.CURI_SUMNER_NOPINK );
+
+				// first sumner conversation occuring before meeting pink
+				MeetSumner2Conversation();
+
+				return;
+			}
 		}
-		else
-		if(timerID == 3)
+
+		BeginBuySell( true );
+	}
+
+
+	public void buysellended( boolean bAborted )
+	{
+		EndBuySell( false );
+
+		if( !CodexSequence.GetChronicleFlag( LondonChronicle.SUMNER_FIRSTGOODBYE ) )
 		{
-			// stop the special animation on the owner
-			owner.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
-			bActive = false;
-			owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
+			CodexSequence.SetChronicleFlag( LondonChronicle.SUMNER_FIRSTGOODBYE );
+
+			// play first bye line
+			CodexSound.PlayVoice( sumnerGUID, "Sumner_28_4_1042", 100 );
+		}
+		else {
+			PlayByeSound();
 		}
 	}
 
-	public void Sumner1Conversation(int starterGuid, int npcGuid)
+
+	public void Sumner1Conversation()
 	{
-		CodexSound.PushMusic("MD_Conversation_1.mp3", 50);
-		AIOff();
-		bSumner1Conversation = true;
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "28_4_MeetSumner", "28_4_MeetSumner.nco", CONV_XFLAG_WANTFEEDBACK);
+		CodexSound.PushMusic( "MD_Conversation_1.mp3", 50 );
+		bSumner1Conversation = BeginConversation( "28_4_MeetSumner" );
 	}
 
-	public void Sumner2Conversation(int starterGuid, int npcGuid)
+
+	public void Sumner2Conversation()
 	{
-		AIOff();
-		bSumner2Conversation = true;
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "28_4_SecondSumner", "28_4_SecondSumner.nco", CONV_XFLAG_WANTFEEDBACK);
+		bSumner2Conversation = BeginConversation( "28_4_SecondSumner" );
 	}
 
-	public void MeetSumner2Conversation(int starterGuid, int npcGuid)
+
+	public void MeetSumner2Conversation()
 	{
-		bMeetSumner2Conversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "28_4_MeetSumner2", "28_4_MeetSumner2.nco", CONV_XFLAG_WANTFEEDBACK);
+		bMeetSumner2Conversation = BeginConversation( "28_4_MeetSumner2" );
 	}
 
-	public void SecondSumner2Conversation(int starterGuid, int npcGuid)
+
+	public void SecondSumner2Conversation()
 	{
-		CodexSound.PushMusic("MD_Conversation_1.mp3", 50);
-		bSecondSumner2Conversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "28_4_SecondSumner2", "28_4_SecondSumner2.nco", CONV_XFLAG_WANTFEEDBACK);
+		CodexSound.PushMusic( "MD_Conversation_1.mp3", 50 );
+		bSecondSumner2Conversation = BeginConversation( "28_4_SecondSumner2" );
 	}
 
-	public void convended(int starterGuid,  boolean bAborted , int returnValue)
+
+	public void convended( int starterGuid, boolean bAborted, int returnValue )
 	{
-		if(bSumner1Conversation)
+		if( bSumner1Conversation )
 		{
 			CodexSound.PopMusic();
-			CodexCamera.Release(starterGuid);
-			bSumner1Conversation = false;
-			AIOn();
+			bSumner1Conversation = EndConversation();
 
 			// add conversation XP
-			CodexPlayer.AwardPartyExperience(50);
+			CodexPlayer.AwardPartyExperience( 50 );
 		}
 
-		if(bSumner2Conversation)
-		{
-			CodexCamera.Release(starterGuid);
-			bSumner2Conversation = false;
-			AIOn();
+		if( bSumner2Conversation ) {
+			bSumner2Conversation = EndConversation();
 		}
 
-		if(bMeetSumner2Conversation)
+		if( bMeetSumner2Conversation )
 		{
-			AIOn();
-			bMeetSumner2Conversation = false;
-			CodexCamera.Release(starterGuid);
+			bMeetSumner2Conversation = EndConversation();
 
 			// add conversation XP
 			CodexPlayer.AwardPartyExperience(100);
 		}
 
-		if(bSecondSumner2Conversation)
+		if( bSecondSumner2Conversation )
 		{
 			CodexSound.PopMusic();
-			AIOn();
-			bSecondSumner2Conversation = false;
-			CodexCamera.Release(starterGuid);
+			bSecondSumner2Conversation = EndConversation();
 		}
 
-		BuySellInterface(starterGuid);
+		BeginBuySell( false );
 	}
 
-	public void convreached(int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid)
+	public void convreached( int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid )
 	{
-		if(bSumner1Conversation)
+		if( bSumner1Conversation )
 		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 2:
-
-							CodexCamera.SetupCutscene(starterGuid, pinkGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 3:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 4:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 5:
-
-							CodexCamera.SetupCutscene(starterGuid, pinkGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 6:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 7:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 8:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 9:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 10:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 11:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-					} // switch(curLine)
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
 					break;
-			} // switch(curEvent)
+
+				case 1:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 2:
+					CodexCamera.SetupCutscene( starterGuid, pinkGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 3:
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 4:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 5:
+					CodexCamera.SetupCutscene( starterGuid, pinkGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 6:
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 7:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 8:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 9:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 10:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 11:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+			}
 		}
 
-		if(bSumner2Conversation)
+		if( bSumner2Conversation )
 		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-					} // switch(curLine)
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
 					break;
-			} // switch(curEvent)
+
+				case 1:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+			}
 		}
 
-		if(bMeetSumner2Conversation)
+		if( bMeetSumner2Conversation )
 		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 2:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 3:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-					} // switch(curLine)
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
 					break;
-			} // switch(curEvent)
+
+				case 1:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 2:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 3:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+			}
 		}
 
-		if(bSecondSumner2Conversation)
+		if( bSecondSumner2Conversation )
 		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, pinkGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, sumnerGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 2:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 3:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 4:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 5:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 6:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-						case 7:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 8:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0);
-							break;
-
-					} // switch(curLine)
+					CodexCamera.SetupCutscene( starterGuid, pinkGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 					break;
-			} // switch(curEvent)
+
+				case 1:
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, sumnerGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 2:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 3:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 4:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 5:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 6:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+
+				case 7:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 8:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_LONG, 0, 0 );
+					break;
+			}
 		}
 	}
-
 }
-
-

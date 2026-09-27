@@ -1,395 +1,265 @@
 /**
  * ORDR 22.5 script.
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
 */
-
-public class ORDR_Orvus extends Codex
+public class ORDR_Orvus extends CodexBuySell
 {
-//	private CodexActor	_Orvus;
-	private ViennaChronicle	chronScript;
+	public static String _params[] = { "Lure of Flames Tome" };
 
-	private int			christofGUID;
-	private int			erikGUID;
-	private int			orvusGUID;
-	private int			wilhemGUID;
-	
-	private int			ownerGuid = 0;
-	private CodexActor	owner;
 
-	private CodexThing	_lureFlamesTome;
+	private CodexThing _lureFlamesTome;
 
-	private String				descriptionID			= "ORDEROFHERMES";
-	private int					flags					= 0;
-	private float				buyRate					= (float)1.25;
-	private float				sellRate				= (float)0.80;
-	private	int					sellFlags				= BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_BLOODITEM + BUYSELL_ITEM_POTION + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_MAGICWEAPON + BUYSELL_ITEM_SCROLLBOOK;
+	private int christofGUID;
+	private int erikGUID;
+	private int orvusGUID;
+	private int wilhemGUID;
 
-	private static String		greetingLine[]			= {"Orvus_0_0_1922.wav"};
-	private static final int	numGreetingLines		= 1;
-	private static String		byeLine[]				= {"Orvus_0_0_1923.wav"};
-	private static final int	numByeLines				= 1;
+	private boolean bFirstOrvusConversation		= false;
+	private boolean bOrvusAmuletConversation	= false;
+	private boolean bReturnJournalConversation	= false;
 
-	//////////////////////////////////////////////////
 
-	private boolean				bActive					= false;
-
-	private boolean		bFirstOrvusConversation = false;
-	private boolean		bOrvusAmuletConversation = false;
-	private boolean		bReturnJournalConversation = false;
-
-	public static String _params[] = {"Lure of Flames Tome"};
-
-	public ORDR_Orvus(CodexThing lureFlamesTome)
+	public ORDR_Orvus( CodexThing lureFlamesTome )
 	{
-		chronScript = (ViennaChronicle)GetChronicleScript(0);
+		_lureFlamesTome = new CodexThing( lureFlamesTome.GetGUID() );
+		CaptureThing( _lureFlamesTome.GetGUID() );
 
-		_lureFlamesTome = new CodexThing(lureFlamesTome.GetGUID());
+		greetingLine = new String[]{ "Orvus_0_0_1922.wav" };
+		numGreetingLines = 1;
+		byeLine = new String[]{ "Orvus_0_0_1923.wav" };
+		numByeLines = 1;
 
-		CaptureThing(_lureFlamesTome.GetGUID());
+		shopName = "ORDEROFHERMES";
+		shopFileName = "Orvus.nbs";
+		sellFlags = BUYSELL_ITEM_MUNDANE + BUYSELL_ITEM_TREASURE + BUYSELL_ITEM_BLOODITEM + BUYSELL_ITEM_POTION + BUYSELL_ITEM_MAGICARMOR + BUYSELL_ITEM_MAGICWEAPON + BUYSELL_ITEM_SCROLLBOOK;
 	}
+
 
 	public void beginscene(int clientGuid, int captureID)
 	{
-		ownerGuid = GetClassThing();
+		InitializeOwner();
 
-		christofGUID = CodexThing.GuidFromCastID("Christof");
-		erikGUID = CodexThing.GuidFromCastID("Erik");
-		orvusGUID = CodexThing.GuidFromCastID("Orvus");
-		wilhemGUID = CodexThing.GuidFromCastID("Wilhem");
+		christofGUID = CodexThing.GuidFromCastID( "Christof" );
+		erikGUID = CodexThing.GuidFromCastID( "Erik" );
+		orvusGUID = CodexThing.GuidFromCastID( "Orvus" );
+		wilhemGUID = CodexThing.GuidFromCastID( "Wilhem" );
 
-		if(IsActorGuid(ownerGuid))
-			owner = new CodexActor(ownerGuid);
-
-		if(!CodexSequence.GetChronicleFlag(chronScript.ORDR_JOURNALCONV))
+		if( !CodexSequence.GetChronicleFlag( ViennaChronicle.ORDR_JOURNALCONV ) )
 		{
-			_lureFlamesTome.SetThingFlags(THING_RENDERFLAG_DONTRENDER);
-			_lureFlamesTome.SetThingFlags(THING_FLAG_NOHIGHLIGHT);
+			_lureFlamesTome.SetThingFlags( THING_RENDERFLAG_DONTRENDER );
+			_lureFlamesTome.SetThingFlags( THING_FLAG_NOHIGHLIGHT );
 		}
 	}
 
-	public void endscene(int clientGuid, int captureID, int exitNum)
-	{
-		bActive = false;
-		owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-	}
-
-	public void BuySellInterface(int shopperGuid)
-	{
-		AddBuySell("Orvus.nbs", ownerGuid, descriptionID, flags, buyRate, sellRate, sellFlags);
-
-		ExecuteBuySell(ownerGuid, shopperGuid, BUYSELL_XFLAG_WANTFEEDBACK);
-	}
 
 	public void clicked(int guid, int clickerGuid, int captureId)
 	{
-		if(bActive)
-			return;
-
-		if(IsActorGuid(ownerGuid))
+		// see if this is his first visit
+		if( !CodexSequence.GetChronicleFlag( ViennaChronicle.ORDR_TALKEDONCE ) )
 		{
-			// play the talk animation on the owner
-			int duration = owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			bActive = true;
-			owner.SetThingFlags(THING_FLAG_NOHIGHLIGHT);
+			CodexSequence.SetChronicleFlag( ViennaChronicle.ORDR_TALKEDONCE );
 
-			// see if this is his first visit
-			if(!CodexSequence.GetChronicleFlag(chronScript.ORDR_TALKEDONCE))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.ORDR_TALKEDONCE);
+			FirstOrvusConversation();
+		}
+		else if( CodexSequence.GetChronicleFlag( ViennaChronicle.TEU2_AMULETRECOVERED ) &&
+			!CodexSequence.GetChronicleFlag( ViennaChronicle.ORDR_AMULETCHARGED ) )
+		{
+			CodexSequence.SetChronicleFlag( ViennaChronicle.ORDR_AMULETCHARGED );
 
-				FirstOrvusConversation(clickerGuid, 0);
-			}
-			else if(CodexSequence.GetChronicleFlag(chronScript.TEU2_AMULETRECOVERED) &&
-				!CodexSequence.GetChronicleFlag(chronScript.ORDR_AMULETCHARGED))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.ORDR_AMULETCHARGED);
+			new CodexQuest( CodexQuest.Load( "V1_ReturnAmulet" ) ).Complete();
 
-				CodexQuest q = new CodexQuest(CodexQuest.Load("V1_ReturnAmulet"));
-				q.Complete();
+			OrvusAmuletConversation();
+		}
+		else if( CodexSequence.GetChronicleFlag( ViennaChronicle.ORDR_ETRIUSJOURNAL ) &&
+			!CodexSequence.GetChronicleFlag( ViennaChronicle.ORDR_JOURNALCONV ) )
+		{
+			CodexSequence.SetChronicleFlag( ViennaChronicle.ORDR_JOURNALCONV );
 
-				OrvusAmuletConversation(clickerGuid, 0);
-			}
-			else if((CodexSequence.GetChronicleFlag(chronScript.ORDR_ETRIUSJOURNAL)) &&
-				(!CodexSequence.GetChronicleFlag(chronScript.ORDR_JOURNALCONV)))
-			{
-				CodexSequence.SetChronicleFlag(chronScript.ORDR_JOURNALCONV);
-
-				ReturnJournalConversation(clickerGuid, 0);
-			}
-			else
-			{
-				SetTimer((float)0.5, 1, clickerGuid);
-			}
+			ReturnJournalConversation();
+		}
+		else {
+			BeginBuySell( true );
 		}
 	}
 
 
 	public void buysellended(boolean bAborted)
 	{
-		if(IsActorGuid(ownerGuid))
-		{
-			// play bye line
-			new CodexSound(byeLine[(int)(Math.random() * numByeLines)], 300, 600, 100, 0, 0, ownerGuid);
-			SetTimer((float)(2.0), 2);
-		}
+		EndBuySell( true );
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public void timer(int timerID, float arg0, float arg1, float arg2, float arg3)
+	public void FirstOrvusConversation()
 	{
-		if(timerID == 1)
-		{
-			// play the greeting sound
-			new CodexSound(greetingLine[(int)(Math.random() * numGreetingLines)], 300, 600, 100, 0, 0, ownerGuid);
-
-			BuySellInterface((int)arg0);
-		}
-		else
-		if(timerID == 2)
-		{
-			int duration = owner.PlayActorMotionSetMode(MOTION_TALK, false, (float)30.0);
-			//SetTimer((float)(duration / 1000), 3);
-			SetTimer((float)0.5, 3);
-		}
-		else
-		if(timerID == 3)
-		{
-			// stop the special animation on the owner
-			owner.PlayActorMotionSetMode(MOTION_STAND, false, (float)30.0);
-			bActive = false;
-			owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-		}
+		bFirstOrvusConversation = BeginConversation( "20_1_Orvus" );
 	}
 
 
-	public void FirstOrvusConversation(int starterGuid, int npcGuid)
-	{
-		bFirstOrvusConversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "20_1_Orvus", "20_1_Orvus.nco", CONV_XFLAG_WANTFEEDBACK);
-	}
-
-	public void OrvusAmuletConversation(int starterGuid, int npcGuid)
+	public void OrvusAmuletConversation()
 	{
 		CodexSound.PushMusic("DA_Conversation_1.mp3", 50);
-		bOrvusAmuletConversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "22_5_Orvus", "22_5_Orvus.nco", CONV_XFLAG_WANTFEEDBACK);
+		bOrvusAmuletConversation = BeginConversation( "22_5_Orvus" );
 	}
 
-	public void ReturnJournalConversation(int starterGuid, int npcGuid)
+
+	public void ReturnJournalConversation()
 	{
-		bReturnJournalConversation = true;
-		AIOff();
-		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
-		ExecuteConversation(starterGuid, npcGuid, "23_1_ReturnJournal", "23_1_ReturnJournal.nco", CONV_XFLAG_WANTFEEDBACK);
+		bReturnJournalConversation = BeginConversation( "23_1_ReturnJournal" );
 	}
 
-	public void convended(int starterGuid,  boolean bAborted , int returnValue)
+
+	public void convended( int starterGuid, boolean bAborted, int returnValue )
 	{
-		if(bFirstOrvusConversation)
+		if( bFirstOrvusConversation )
 		{
-			bFirstOrvusConversation = false;
+			bFirstOrvusConversation = EndConversation();
 
-			if(CodexSequence.GetChronicleFlag(chronScript.TEU2_AMULETRECOVERED) &&
-				!CodexSequence.GetChronicleFlag(chronScript.ORDR_AMULETCHARGED))
+			if( CodexSequence.GetChronicleFlag( ViennaChronicle.TEU2_AMULETRECOVERED ) &&
+				!CodexSequence.GetChronicleFlag( ViennaChronicle.ORDR_AMULETCHARGED ) )
 			{
-				CodexSequence.SetChronicleFlag(chronScript.ORDR_AMULETCHARGED);
+				CodexSequence.SetChronicleFlag( ViennaChronicle.ORDR_AMULETCHARGED );
 
-				CodexQuest q = new CodexQuest(CodexQuest.Load("V1_ReturnAmulet"));
-				q.Complete();
+				new CodexQuest( CodexQuest.Load( "V1_ReturnAmulet" ) ).Complete();
 
-				OrvusAmuletConversation(starterGuid, 0);
+				OrvusAmuletConversation();
 
 				// skip buy/sell
-				bActive = false;
-				owner.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
 				return;
 			}
-			else
+		}
+
+		if( bOrvusAmuletConversation )
+		{
+			CodexSound.PopMusic();
+			bOrvusAmuletConversation = EndConversation();
+
+			// add conversation XP
+			CodexPlayer.AwardPartyExperience( 50 );
+
+			new CodexQuest( CodexQuest.Load( "V1_EtriusJournal" ) );
+
+			// show southern ring and haus on map
+			CodexSequence.SetLocationFlags( "HausDeHexe1", LOCATION_FLAG_SHOWINMAP );
+			CodexSequence.SetLocationFlags( "SouthernRingStrasse", LOCATION_FLAG_SHOWINMAP );
+		}
+
+		if( bReturnJournalConversation )
+		{
+			bReturnJournalConversation = EndConversation();
+
+			_lureFlamesTome.ClearThingFlags( THING_RENDERFLAG_DONTRENDER );
+			_lureFlamesTome.ClearThingFlags( THING_FLAG_NOHIGHLIGHT );
+		}
+
+		BeginBuySell( false );
+	}
+
+
+	public void convreached( int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid )
+	{
+		if( bFirstOrvusConversation )
+		{
+			switch( curLine )
 			{
-				AIOn();
-				CodexCamera.Release(starterGuid);
+				case 0:
+					CodexCamera.PlayPath( CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30 );
+					break;
+
+				case 1:
+					CodexCamera.SetupCutscene( starterGuid, erikGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 2:
+					CodexCamera.SetupCutscene( starterGuid, wilhemGUID, 0 );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 3:
+					CodexCamera.PlayPath( CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30 );
+					break;
+
+				case 4:
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, orvusGUID);
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
 			}
 		}
 
-		if(bOrvusAmuletConversation)
+		if( bOrvusAmuletConversation )
 		{
-			CodexSound.PopMusic();
-			AIOn();
-			bOrvusAmuletConversation = false;
-			CodexCamera.Release(starterGuid);
-
-			// add conversation XP
-			CodexPlayer.AwardPartyExperience(50);
-
-			CodexQuest q = new CodexQuest(CodexQuest.Load("V1_EtriusJournal"));
-
-			// show southern ring and haus on map
-			CodexSequence.SetLocationFlags("HausDeHexe1", LOCATION_FLAG_SHOWINMAP);
-			CodexSequence.SetLocationFlags("SouthernRingStrasse", LOCATION_FLAG_SHOWINMAP);
-		}
-
-		if(bReturnJournalConversation)
-		{
-			AIOn();
-			bReturnJournalConversation = false;
-			CodexCamera.Release(starterGuid);
-
-			_lureFlamesTome.ClearThingFlags(THING_RENDERFLAG_DONTRENDER);
-			_lureFlamesTome.ClearThingFlags(THING_FLAG_NOHIGHLIGHT);
-		}
-
-		BuySellInterface(starterGuid);
-	}
-
-	public void convreached(int starterGuid, int curEvent, int curLine, int lineDuration, int speakerGuid)
-	{
-		if(bFirstOrvusConversation)
-		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30);
-							break;
-
-						case 1:
-
-							CodexCamera.SetupCutscene(starterGuid, erikGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 2:
-
-							CodexCamera.SetupCutscene(starterGuid, wilhemGUID, 0);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 3:
-
-							CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30);
-							break;
-
-						case 4:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, orvusGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-					} // switch(curLine)
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, orvusGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0 );
 					break;
-			} // switch(curEvent)
+
+				case 1:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 2:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 3:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 4:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 5:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 6:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 7:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
+					break;
+
+				case 8:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 9:
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0 );
+					break;
+
+				case 10:
+					owner.PlayMotionSetMode( MOTION_SPELL, false, 30f );
+					owner.SpawnThing( "blueMagic" );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0 );
+					break;
+
+				case 11:
+					owner.StopActorAction();
+					break;
+
+				case 12:
+					CodexCamera.PlayPath( CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30 );
+					break;
+			}
 		}
 
-		if(bOrvusAmuletConversation)
+		if( bReturnJournalConversation )
 		{
-			switch(curEvent)
+			switch( curLine )
 			{
 				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, orvusGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 2:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 3:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 4:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 5:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 6:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 7:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 8:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 9:
-
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_FULL, 0, 0);
-							break;
-
-						case 10:
-
-							owner.PlayMotionSetMode(MOTION_SPELL, false, (float)30.0);
-							owner.SpawnThing("blueMagic");
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0);
-							break;
-
-						case 11:
-
-							owner.StopActorAction();
-							break;
-
-						case 12:
-
-							CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30);
-							break;
-
-					} // switch(curLine)
+					CodexCamera.SetupCutscene( starterGuid, christofGUID, orvusGUID );
+					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0 );
 					break;
-			} // switch(curEvent)
-		}
 
-		if(bReturnJournalConversation)
-		{
-			switch(curEvent)
-			{
-				case 0:
-					switch(curLine)
-					{
-						case 0:
-
-							CodexCamera.SetupCutscene(starterGuid, christofGUID, orvusGUID);
-							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
-							break;
-
-						case 1:
-
-							CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30);
-							break;
-
-					} // switch(curLine)
+				case 1:
+					CodexCamera.PlayPath( CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrderOfHermes.ncp", 30 );
 					break;
-			} // switch(curEvent)
+			}
 		}
 	}
 }

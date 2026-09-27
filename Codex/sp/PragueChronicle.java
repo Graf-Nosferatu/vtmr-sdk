@@ -1,9 +1,7 @@
 /**
  * Prague Chronicle script
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
 */
-
 public class PragueChronicle extends Codex
 {
 	//////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +21,6 @@ public class PragueChronicle extends Codex
 	public static final int CTDY_FIRSTTIME						= 18;
 
 	public static final int ANZK_LOCKETSCENE					= 19;
-
 
 	public static final int OLDT_ECATERINAREGION				= 20;
 	public static final int OLDT_ATTACKREGION					= 21;
@@ -46,7 +43,6 @@ public class PragueChronicle extends Codex
 
 	public static final int GOLDD_REGION						= 50;
 	public static final int UNORD_TALKEDONCE					= 51;
-	public static final int UNORD_FLYTHROUGH					= 52;
 	public static final int UNORD_LETTER						= 53;
 	public static final int UNORD_FIRSTGOODBYE					= 54;
 	public static final int UNOR_ASK							= 55;
@@ -169,13 +165,13 @@ public class PragueChronicle extends Codex
 	{
 	}
 
-	public void Step(int stepId)
+
+	public void Step( int stepId )
 	{
 	}
 
-	public void advance(int scene, int subscene)
+
+	public void advance( int scene, int subscene )
 	{
 	}
-
-
 }
