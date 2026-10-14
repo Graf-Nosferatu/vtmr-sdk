@@ -1177,42 +1177,22 @@ partial class Effect
 			DC		= 1,
 			Values	= [5, 10, 15, 20, 25, 50]
 		},
-		ef_disc_bloodstrength = new( ef_disc_bloodstrength ) {
+#region Disciplines
+	#region Common
+		ef_disc_bloodhealing = new( ef_disc_bloodhealing ) {
+			Script	= "EffectDiscBloodHealing",
+			Type	= EffectType.HealInstant,
+			Compose	= ComposeType.Add,
+			Values	= [20, 30, 40, 60, 80, 100]
+		},
+		ef_disc_bloodpower = new( ef_disc_bloodpower ) {
 			Icon	= "bloodStrengthIcon",
 			Row		= IconsRow.Disciplines,
-			Script	= "EffectDiscBloodStrength",
-			Type	= EffectType.Strength,
-			Compose	= ComposeType.Add,
+			Script	= "EffectDiscBloodPower",
 			Flags	= EffectFlags.Cancellable,
-			Tick	= 0,
-			PC		= 0,
-			DC		= 0,
 			Values	= [5, 10, 15, 20, 25, 30]
 		},
-		ef_disc_blooddexterity = new( ef_disc_blooddexterity ) {
-			Icon	= "bloodDexterityIcon",
-			Row		= IconsRow.Disciplines,
-			Script	= "EffectDiscBloodDexterity",
-			Type	= EffectType.Dexterity,
-			Compose	= ComposeType.Add,
-			Flags	= EffectFlags.Cancellable,
-			Tick	= 0,
-			PC		= 0,
-			DC		= 0,
-			Values	= [5, 10, 15, 20, 25, 30]
-		},
-		ef_disc_bloodstamina = new( ef_disc_bloodstamina ) {
-			Icon	= "bloodStaminaIcon",
-			Row		= IconsRow.Disciplines,
-			Script	= "EffectDiscBloodStamina",
-			Type	= EffectType.Stamina,
-			Compose	= ComposeType.Add,
-			Flags	= EffectFlags.Cancellable,
-			Tick	= 0,
-			PC		= 0,
-			DC		= 0,
-			Values	= [5, 10, 15, 20, 25, 30]
-		},
+	#endregion Common
 		ef_disc_potence = new( ef_disc_potence ) {
 			Icon	= "potenceIcon",
 			Row		= IconsRow.Disciplines,
@@ -1356,18 +1336,6 @@ partial class Effect
 			PC		= 0,
 			DC		= 0,
 			Values	= [-4, -8, -12, -16, -20, -24]
-		},
-		ef_disc_bloodhealing = new( ef_disc_bloodhealing ) {
-			Icon	= null,
-			Row		= IconsRow.Disciplines,
-			Script	= "EffectDiscBloodHealing",
-			Type	= EffectType.HealInstant,
-			Compose	= ComposeType.Add,
-			Flags	= EffectFlags.None,
-			Tick	= 0,
-			PC		= 0,
-			DC		= 0,
-			Values	= [20, 30, 40, 60, 80, 100]
 		},
 		ef_disc_dreadgaze = new( ef_disc_dreadgaze ) {
 			Icon	= "FXafraidIcon",
@@ -2244,5 +2212,44 @@ partial class Effect
 			PC		= 0,
 			DC		= 0,
 			Values	= [1000, 1000, 1000, 1000, 1000, 1000]
+		},
+	#region Obsolete
+		ef_disc_bloodstrength = new( ef_disc_bloodstrength ) {
+			Icon	= "bloodStrengthIcon",
+			Row		= IconsRow.Disciplines,
+			Script	= "EffectDiscBloodStrength",
+			Type	= EffectType.Strength,
+			Compose	= ComposeType.Add,
+			Flags	= EffectFlags.Cancellable,
+			Tick	= 0,
+			PC		= 0,
+			DC		= 0,
+			Values	= [5, 10, 15, 20, 25, 30]
+		},
+		ef_disc_blooddexterity = new( ef_disc_blooddexterity ) {
+			Icon	= "bloodDexterityIcon",
+			Row		= IconsRow.Disciplines,
+			Script	= "EffectDiscBloodDexterity",
+			Type	= EffectType.Dexterity,
+			Compose	= ComposeType.Add,
+			Flags	= EffectFlags.Cancellable,
+			Tick	= 0,
+			PC		= 0,
+			DC		= 0,
+			Values	= [5, 10, 15, 20, 25, 30]
+		},
+		ef_disc_bloodstamina = new( ef_disc_bloodstamina ) {
+			Icon	= "bloodStaminaIcon",
+			Row		= IconsRow.Disciplines,
+			Script	= "EffectDiscBloodStamina",
+			Type	= EffectType.Stamina,
+			Compose	= ComposeType.Add,
+			Flags	= EffectFlags.Cancellable,
+			Tick	= 0,
+			PC		= 0,
+			DC		= 0,
+			Values	= [5, 10, 15, 20, 25, 30]
 		};
+	#endregion Obsolete
+#endregion Disciplines
 }

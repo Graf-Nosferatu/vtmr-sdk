@@ -63,9 +63,7 @@ partial class Player
 			},
 			Disciplines		= [
 				new( Discipline.bloodhealing, 1, 0 ),
-				new( Discipline.bloodstrength, 1, 1 ),
-				new( Discipline.blooddexterity, 1, 2 ),
-				new( Discipline.bloodstamina, 1, 3 ),
+				new( Discipline.bloodpower, 1, 1 ),
 				new( Discipline.fireball, 1, 4 ),
 				new( Discipline.celerity, 1, 5 ),
 				new( Discipline.feed, 1, -1 ),
@@ -115,7 +113,7 @@ partial class Player
 			},
 			Disciplines		= [
 				new( Discipline.bloodhealing, 0, 0 ),
-				new( Discipline.bloodstrength, 0, 1 ),
+				new( Discipline.bloodpower, 0, 1 ),
 				new( Discipline.feed, 0, 3 ),
 				new( Discipline.awe, 0, -1 ),
 				new( Discipline.dreadgaze, 0, -1 ),
@@ -617,9 +615,7 @@ partial class Player
 			Disciplines		= [
 				new( Discipline.feed, 3, -1 ),
 				new( Discipline.bloodhealing, 3, 0 ),
-				new( Discipline.bloodstrength, 3, -1 ),
-				new( Discipline.blooddexterity, 3, -1 ),
-				new( Discipline.bloodstamina, 3, -1 ),
+				new( Discipline.bloodpower, 3, -1 ),
 				new( Discipline.awaken, 2, -1 ),
 				new( Discipline.awe, 3, -1 ),
 				new( Discipline.dreadgaze, 2, -1 ),

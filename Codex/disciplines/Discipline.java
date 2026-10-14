@@ -69,9 +69,6 @@ public class Discipline extends Codex
 	// (*) do not change this duration without also changing the timers in exp_truefaith[n] templates, and truefaith[n].nex explosion files
 
 	// OTHER DISCIPLINE CONSTANTS
-	protected	static final float[]	AWAKEN_HEALTHS						= { 0.15f, 0.30f, 0.45f, 0.60f, 0.75f };
-	protected	static final float[]	AWAKEN_BLOODS						= { 0.15f, 0.15f, 0.20f, 0.20f, 0.25f };
-
 	protected	static final float[]	SHAMBLINGHORDES_BLOODS				= { 0.05f, 0.10f, 0.15f, 0.20f, 0.25f };
 	protected	static final float[]	SHAMBLINGHORDES_HEALTHS				= { 0.05f, 0.10f, 0.15f, 0.20f, 0.25f };
 

@@ -13,3 +13,5 @@ Codex\sp\london\TEN1_Bartender.java
 Codex\sp\new_york\GUNH_Hank.java
 Codex\sp\new_york\NEWM_Emelia.java
 Codex\other\EffectStatManipulation.java
+
+Codex\disciplines\common

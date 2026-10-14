@@ -4500,10 +4500,6 @@ partial class NLString
 			Eng	= "Scroll of Aura Perception",
 			Rus	= "Свиток: Восприятие Ауры"
 		},
-		scrollawaken = new( Game, scrollawaken ) {
-			Eng	= "Scroll of Awaken",
-			Rus	= "Свиток: Пробуждение"
-		},
 		scrollawe = new( Game, scrollawe ) {
 			Eng	= "Scroll of Awe",
 			Rus	= "Свиток: Благоговение"
@@ -4516,29 +4512,13 @@ partial class NLString
 			Eng	= "Scroll of Black Death",
 			Rus	= "Свиток: Черная Смерть"
 		},
-		scrollblooddexterity = new( Game, scrollblooddexterity ) {
-			Eng	= "Scroll of Blood Dexterity",
-			Rus	= "Свиток: Кровавая Ловкость"
-		},
-		scrollbloodhealing = new( Game, scrollbloodhealing ) {
-			Eng	= "Scroll of Blood Healing",
-			Rus	= "Свиток: Лечение Кровью"
-		},
-		scrollbloodstamina = new( Game, scrollbloodstamina ) {
-			Eng	= "Scroll of Blood Stamina",
-			Rus	= "Свиток: Кровавая Выносливость"
-		},
 		scrollbloodofpotency = new( Game, scrollbloodofpotency ) {
 			Eng	= "Scroll of Blood Of Potency",
-			Rus	= "Свиток: Сила Крови"
+			Rus	= "Свиток: Сильная Кровь"
 		},
 		scrollbloodrage = new( Game, scrollbloodrage ) {
 			Eng	= "Scroll of Blood Rage",
 			Rus	= "Свиток: Неистовство Крови"
-		},
-		scrollbloodstrength = new( Game, scrollbloodstrength ) {
-			Eng	= "Scroll of Blood Strength",
-			Rus	= "Свиток: Кровавая Сила"
 		},
 		scrollcalllightning = new( Game, scrollcalllightning ) {
 			Eng	= "Scroll of Call Lightning",
@@ -4743,10 +4723,6 @@ partial class NLString
 		scrollvoiceofmadness = new( Game, scrollvoiceofmadness ) {
 			Eng	= "Scroll of Voice Of Madness",
 			Rus	= "Свиток: Глас Безумия"
-		},
-		scrollwalktheabyss = new( Game, scrollwalktheabyss ) {
-			Eng	= "Scroll of Walk The Abyss",
-			Rus	= "Свиток: Прогулка через Бездну"
 		},
 		numscrollflash = new( Game, numscrollflash ) {
 			Eng	= "Scroll of Flash",
@@ -5580,6 +5556,24 @@ partial class NLString
 			Eng	= "Holy Reliquary",
 			Rus	= "Holy Reliquary"
 		},
+	#region Scrolls
+		scrollbloodhealing = new( Game, scrollbloodhealing ) {
+			Eng	= "Scroll of Blood Healing",
+			Rus	= "Свиток: Лечение Кровью"
+		},
+		scrollbloodpower = new( Game, scrollbloodpower ) {
+			Eng	= "Scroll of Blood Power",
+			Rus	= "Свиток: Сила Крови"
+		},
+		scrollawaken = new( Game, scrollawaken ) {
+			Eng	= "Scroll of Awaken",
+			Rus	= "Свиток: Пробуждение"
+		},
+		scrollwalktheabyss = new( Game, scrollwalktheabyss ) {
+			Eng	= "Scroll of Walk The Abyss",
+			Rus	= "Свиток: Прогулка через Бездну"
+		},
+	#endregion Scrolls
 #endregion Game
 #region Effects
 		item_effect_dread = new( Effects, item_effect_dread ) {
@@ -5779,6 +5773,7 @@ partial class NLString
 		];
 
 		NLString[] disciplines = [
+#region Common
 			new( Effects, Discipline.feed ) {
 				Eng	= "Feed",
 				Rus	= "Питание"
@@ -5795,29 +5790,13 @@ partial class NLString
 				Eng	= "Restores Health",
 				Rus	= "Восстанавливает здоровье"
 			},
-			new( Effects, Discipline.bloodstrength ) {
-				Eng	= "Blood Strength",
-				Rus	= "Кровавая Сила"
+			new( Effects, Discipline.bloodpower ) {
+				Eng	= "Blood Power",
+				Rus	= "Сила Крови"
 			},
-			new( Effects, DisciplineDescription( Discipline.bloodstrength ) ) {
-				Eng	= "Increases Strength",
-				Rus	= "Увеличивает силу"
-			},
-			new( Effects, Discipline.blooddexterity ) {
-				Eng	= "Blood Dexterity",
-				Rus	= "Кровавая Ловкость"
-			},
-			new( Effects, DisciplineDescription( Discipline.blooddexterity ) ) {
-				Eng	= "Increases Dexterity",
-				Rus	= "Увеличивает ловкость"
-			},
-			new( Effects, Discipline.bloodstamina ) {
-				Eng	= "Blood Stamina",
-				Rus	= "Кровавая Выносливость"
-			},
-			new( Effects, DisciplineDescription( Discipline.bloodstamina ) ) {
-				Eng	= "Increases Stamina",
-				Rus	= "Увеличивает выносливость"
+			new( Effects, DisciplineDescription( Discipline.bloodpower ) ) {
+				Eng	= "Increases Physical attributes (5/10/15/20/25) by 1 minute",
+				Rus	= "Увеличивает физические атрибуты (5/10/15/20/25) на 1 минуту"
 			},
 			new( Effects, Discipline.awaken ) {
 				Eng	= "Awaken",
@@ -5832,9 +5811,19 @@ partial class NLString
 				Rus	= "Прогулка через Бездну"
 			},
 			new( Effects, DisciplineDescription( Discipline.walktheabyss ) ) {
-				Eng	= "Creates a Mystic Portal",
-				Rus	= "Создает мистический портал"
+				Eng	= "Creates a Mystic Portal to Haven or Vault",
+				Rus	= "Создает мистический портал в убежище или хранилище"
 			},
+
+			new( Effects, Effect.ef_disc_bloodhealing ) {
+				Eng	= "Blood Healing",
+				Rus	= "Лечение Кровью"
+			},
+			new( Effects, Effect.ef_disc_bloodpower ) {
+				Eng	= "Blood Power",
+				Rus	= "Сила Крови"
+			},
+#endregion Common
 			/*new( Effects, Discipline.nuke ) {
 				Eng	= "Nuke! (debug)",
 				Rus	= "Бабах! (отладка)"
@@ -6149,7 +6138,7 @@ partial class NLString
 			},
 			new( Effects, Discipline.bloodofpotency ) {
 				Eng	= "Blood Of Potency",
-				Rus	= "Сила Крови"
+				Rus	= "Сильная Кровь"
 			},
 			new( Effects, DisciplineDescription( Discipline.bloodofpotency ) ) {
 				Eng	= "Grants Lowered Blood Cost for Discipline Usage",
@@ -6370,7 +6359,33 @@ partial class NLString
 			new( Effects, DisciplineDescription( Discipline.tongueoftheasp ) ) {
 				Eng	= "Steals Vitae From the Target",
 				Rus	= "Крадет витэ из цели"
+			},
+#region Obsolete
+			new( Effects, Discipline.bloodstrength ) {
+				Eng	= "Blood Strength",
+				Rus	= "Кровавая Сила"
+			},
+			new( Effects, DisciplineDescription( Discipline.bloodstrength ) ) {
+				Eng	= "Increases Strength",
+				Rus	= "Увеличивает силу"
+			},
+			new( Effects, Discipline.blooddexterity ) {
+				Eng	= "Blood Dexterity",
+				Rus	= "Кровавая Ловкость"
+			},
+			new( Effects, DisciplineDescription( Discipline.blooddexterity ) ) {
+				Eng	= "Increases Dexterity",
+				Rus	= "Увеличивает ловкость"
+			},
+			new( Effects, Discipline.bloodstamina ) {
+				Eng	= "Blood Stamina",
+				Rus	= "Кровавая Выносливость"
+			},
+			new( Effects, DisciplineDescription( Discipline.bloodstamina ) ) {
+				Eng	= "Increases Stamina",
+				Rus	= "Увеличивает выносливость"
 			}
+#endregion Obsolete
 		];
 
 		NLString[] effects = [
@@ -6686,10 +6701,6 @@ partial class NLString
 				Eng	= "Quell The Beast",
 				Rus	= "Усмирение Зверя"
 			},
-			new( Effects, Effect.ef_disc_bloodhealing ) {
-				Eng	= "Blood Healing",
-				Rus	= "Лечение Кровью"
-			},
 			new( Effects, Effect.ef_disc_dreadgaze ) {
 				Eng	= "Dread Gaze",
 				Rus	= "Взгляд Ужаса"
@@ -6860,7 +6871,7 @@ partial class NLString
 			},
 			new( Effects, Effect.ef_disc_bloodofpotency ) {
 				Eng	= "Blood Of Potency",
-				Rus	= "Сила Крови"
+				Rus	= "Сильная Кровь"
 			},
 			new( Effects, Effect.ef_disc_atrophy ) {
 				Eng	= "Atrophy",

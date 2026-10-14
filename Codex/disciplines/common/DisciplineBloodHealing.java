@@ -1,90 +1,48 @@
 /**
  * Discipline Blood Healing script.
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
- * @author YB
 */
-
-
-public class DisciplineBloodHealing extends Discipline
+public class DisciplineBloodHealing extends CodexDiscipline
 {
-	private static final String	DISCIPLINE_NAME	= "BloodHealing";
-
-	// --------------------------------------------------------------------------------------------
-
 	public DisciplineBloodHealing()
 	{
+		DisciplineName = "BloodHealing";
 	}
 
-	// --------------------------------------------------------------------------------------------
 
-	public boolean cancast(int level, int casterGuid, int targetGuid, float x, float y, float z, boolean bIsPos)
+	public boolean cancast( int level, int casterGuid, int targetGuid, float x, float y, float z, boolean isPos )
 	{
-		if(!CheckCastParameters(level, casterGuid, DISCIPLINE_NAME))
-			return(false);
+		InitializeCaster( casterGuid );
 
 		// Check that the caster doesn't have full health
-		if(casterThing.GetActorHealth() >= casterThing.GetActorMaxHealth())
-		{
-			DisplayNoCast("RPG_DISC_NOBLOODHEALING");
-			//CodexConsole.PrintNLS(casterGuid, 0, "RPG_DISC_NOBLOODHEALING", 0xFFFF00);
-			return(false);
+		if( Caster.GetActorHealth() >= Caster.GetActorMaxHealth() ) {
+			return PrintNoCast( "RPG_DISC_NOBLOODHEALING" );
 		}
 
-		return(true);
+		return true;
 	}
 
 
-	public int cast(int level, int casterGuid)
+	public int cast( int level, int casterGuid )
 	{
-		// do sanity checks
-		if(!CheckCastParameters(level, casterGuid, DISCIPLINE_NAME))
-			return(0);
+		// start the real effect
+		Caster.AddActorEffectByLevel( "ef_disc_bloodhealing", 0, level, casterGuid, EI_FLAG_DISCIPLINE );
 
-		// chance of discipline failure
-		if(Fizzled(level))
+		// bonus at high levels
+		if( level == 2 ) {
+			Caster.AddActorEffectByLevel( "ef_curepoison", 0, 1, casterGuid, EI_FLAG_DISCIPLINE );
+		}
+		else if( level == 3 )
 		{
-			DisplayFizzle(DISCIPLINE_NAME, level);
-			return(0);
+			Caster.AddActorEffectByLevel( "ef_curepoison", 0, 2, casterGuid, EI_FLAG_DISCIPLINE );
+			Caster.AddActorEffectByLevel( "ef_curedisease", 0, 1, casterGuid, EI_FLAG_DISCIPLINE );
+		}
+		else if( level == 4 )
+		{
+			Caster.AddActorEffectByLevel( "ef_curepoison", 0, 3, casterGuid, EI_FLAG_DISCIPLINE );
+			Caster.AddActorEffectByLevel( "ef_curedisease", 0, 2, casterGuid, EI_FLAG_DISCIPLINE );
 		}
 
-		try
-		{
-			// start the real effect
-			casterThing.AddActorEffectByLevel("ef_disc_bloodhealing", 0, level, casterGuid, EI_FLAG_DISCIPLINE);
-
-			// bonus at high levels
-			if(level == 2)
-			{
-				casterThing.AddActorEffectByLevel("ef_curepoison", 0, 1, casterGuid, EI_FLAG_DISCIPLINE);
-			}
-			else if(level == 3)
-			{
-				casterThing.AddActorEffectByLevel("ef_curepoison", 0, 2, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_curedisease", 0, 1, casterGuid, EI_FLAG_DISCIPLINE);
-			}
-			else if(level == 4)
-			{
-				casterThing.AddActorEffectByLevel("ef_curepoison", 0, 3, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_curedisease", 0, 2, casterGuid, EI_FLAG_DISCIPLINE);
-			}
-
-
-			// cast text
-			DisplayCast(DISCIPLINE_NAME, level);
-
-			return(1);
-		}
-		catch(Exception e)
-		{
-			CodexConsole.PrintException(e.getMessage() + " in " + DISCIPLINE_NAME + " [cast]");
-			return(0);
-		}
-		catch(Error e)
-		{
-			CodexConsole.PrintError(e.getMessage() + " in " + DISCIPLINE_NAME + " [cast]");
-			return(0);
-		}
+		return PrintCast();
 	}
 }
-

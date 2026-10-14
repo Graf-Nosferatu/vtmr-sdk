@@ -1213,9 +1213,7 @@ partial class TreasureClass
 		] ),
 		scrollscommon = new( scrollscommon, [
 			nameof( Template.discscroll_bloodhealing_1 ),
-			nameof( Template.discscroll_bloodstrength_1 ),
-			nameof( Template.discscroll_blooddexterity_1 ),
-			nameof( Template.discscroll_bloodstamina_1 ),
+			nameof( Template.discscroll_bloodpower_1 ),
 			nameof( Template.discscroll_awaken_1 ),
 			nameof( Template.discscroll_walktheabyss_1 ),
 			nameof( Template.discscroll_spiritstouch_1 )

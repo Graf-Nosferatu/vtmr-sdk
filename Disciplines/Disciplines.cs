@@ -1,3 +1,5 @@
+using System;
+
 namespace Sdk.Disciplines;
 
 partial class Discipline
@@ -86,6 +88,7 @@ partial class Discipline
 
 
 	public static readonly Discipline
+#region Common
 		feed = new( feed ) {
 			Group			= nameof( dgrp_common ),
 			Icon			= "feedingIcon",
@@ -116,10 +119,10 @@ partial class Discipline
 			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
 			Checks			= [null, null, null]
 		},
-		bloodstrength = new( bloodstrength ) {
+		bloodpower = new( bloodpower ) {
 			Group			= nameof( dgrp_common ),
 			Icon			= "bloodStrengthIcon",
-			Script			= "DisciplineBloodStrength",
+			Script			= "DisciplineBloodPower",
 			Sound			= "actionWhoosh_03.WAV",
 			Flags			= DisciplineFlags.TargetNone,
 			Type			= DisciplineType.Buff,
@@ -127,37 +130,7 @@ partial class Discipline
 			AdditionalData	= 0,
 			Cast			= CastType.General,
 			XpCost			= 500,
-			BloodCosts		= [5, 5, 5, 5, 5],
-			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
-			Checks			= [null, null, null]
-		},
-		blooddexterity = new( blooddexterity ) {
-			Group			= nameof( dgrp_common ),
-			Icon			= "bloodDexterityIcon",
-			Script			= "DisciplineBloodDexterity",
-			Sound			= "actionWhoosh_03.WAV",
-			Flags			= DisciplineFlags.TargetNone,
-			Type			= DisciplineType.Buff,
-			Distance		= new( 0, 9999 ),
-			AdditionalData	= 0,
-			Cast			= CastType.General,
-			XpCost			= 500,
-			BloodCosts		= [5, 5, 5, 5, 5],
-			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
-			Checks			= [null, null, null]
-		},
-		bloodstamina = new( bloodstamina ) {
-			Group			= nameof( dgrp_common ),
-			Icon			= "bloodStaminaIcon",
-			Script			= "DisciplineBloodStamina",
-			Sound			= "actionWhoosh_03.WAV",
-			Flags			= DisciplineFlags.TargetNone,
-			Type			= DisciplineType.Buff,
-			Distance		= new( 0, 9999 ),
-			AdditionalData	= 0,
-			Cast			= CastType.General,
-			XpCost			= 500,
-			BloodCosts		= [5, 5, 5, 5, 5],
+			BloodCosts		= [15, 15, 15, 15, 15],
 			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
 			Checks			= [null, null, null]
 		},
@@ -187,10 +160,11 @@ partial class Discipline
 			AdditionalData	= 0,
 			Cast			= CastType.General,
 			XpCost			= 1250,
-			BloodCosts		= [25, 20, 15, 10, 10],
+			BloodCosts		= [50, 40, 30, 20, 10],
 			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
 			Checks			= [new( Stat.Intelligence, 25 ), new( Stat.Wits, 25 ), null]
 		},
+#endregion Common
 		feralwhispers = new( feralwhispers ) {
 			Group			= nameof( dgrp_animalism ),
 			Icon			= "feralWhispersIcon",
@@ -1181,4 +1155,54 @@ partial class Discipline
 			RecastTimes		= [3000, 3000, 2000, 2000, 1000],
 			Checks			= [null, null, null]
 		};
+
+#region Obsolete
+	[Obsolete]
+	public static readonly Discipline
+		bloodstrength = new( bloodstrength ) {
+			Group			= "dgrp_obsolete",
+			Icon			= "bloodStrengthIcon",
+			Script			= "DisciplineBloodStrength",
+			Sound			= "actionWhoosh_03.WAV",
+			Flags			= DisciplineFlags.TargetNone,
+			Type			= DisciplineType.Buff,
+			Distance		= new( 0, 9999 ),
+			AdditionalData	= 0,
+			Cast			= CastType.General,
+			XpCost			= 500,
+			BloodCosts		= [5, 5, 5, 5, 5],
+			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
+			Checks			= [null, null, null]
+		},
+		blooddexterity = new( blooddexterity ) {
+			Group			= "dgrp_obsolete",
+			Icon			= "bloodDexterityIcon",
+			Script			= "DisciplineBloodDexterity",
+			Sound			= "actionWhoosh_03.WAV",
+			Flags			= DisciplineFlags.TargetNone,
+			Type			= DisciplineType.Buff,
+			Distance		= new( 0, 9999 ),
+			AdditionalData	= 0,
+			Cast			= CastType.General,
+			XpCost			= 500,
+			BloodCosts		= [5, 5, 5, 5, 5],
+			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
+			Checks			= [null, null, null]
+		},
+		bloodstamina = new( bloodstamina ) {
+			Group			= "dgrp_obsolete",
+			Icon			= "bloodStaminaIcon",
+			Script			= "DisciplineBloodStamina",
+			Sound			= "actionWhoosh_03.WAV",
+			Flags			= DisciplineFlags.TargetNone,
+			Type			= DisciplineType.Buff,
+			Distance		= new( 0, 9999 ),
+			AdditionalData	= 0,
+			Cast			= CastType.General,
+			XpCost			= 500,
+			BloodCosts		= [5, 5, 5, 5, 5],
+			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
+			Checks			= [null, null, null]
+		};
+#endregion Obsolete
 }

@@ -3430,37 +3430,27 @@ partial class Template
 							PARENT				= nameof( Template._disciplinescrolls ),
 							ICON				= "scrollBuffIcon",
 							ITEM_BASECOST		= 25,
+							EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
 						},
-							discscroll_awaken_1 = new( Global, discscroll_awaken_1 ) {
-								PARENT				= nameof( Template._discscrolls_common ),
-								DESCRIPTIONID		= nameof( NLString.scrollawaken ),
-								ITEM_SCROLLDISC		= nameof( Discipline.awaken ),
-								ITEM_BASECOST		= 100,
-								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
-							},
-							discscroll_blooddexterity_1 = new( Global, discscroll_blooddexterity_1 ) {
-								PARENT				= nameof( Template._discscrolls_common ),
-								DESCRIPTIONID		= nameof( NLString.scrollblooddexterity ),
-								ITEM_SCROLLDISC		= nameof( Discipline.blooddexterity ),
-								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
-							},
 							discscroll_bloodhealing_1 = new( Global, discscroll_bloodhealing_1 ) {
 								PARENT				= nameof( Template._discscrolls_common ),
 								DESCRIPTIONID		= nameof( NLString.scrollbloodhealing ),
 								ITEM_SCROLLDISC		= nameof( Discipline.bloodhealing ),
-								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
 							},
-							discscroll_bloodstamina_1 = new( Global, discscroll_bloodstamina_1 ) {
+							discscroll_bloodpower_1 = new( Global, discscroll_bloodpower_1 ) {
 								PARENT				= nameof( Template._discscrolls_common ),
-								DESCRIPTIONID		= nameof( NLString.scrollbloodstamina ),
-								ITEM_SCROLLDISC		= nameof( Discipline.bloodstamina ),
-								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
+								DESCRIPTIONID		= nameof( NLString.scrollbloodpower ),
+								ITEM_SCROLLDISC		= nameof( Discipline.bloodpower ),
 							},
-							discscroll_bloodstrength_1 = new( Global, discscroll_bloodstrength_1 ) {
+							discscroll_awaken_1 = new( Global, discscroll_awaken_1 ) {
 								PARENT				= nameof( Template._discscrolls_common ),
-								DESCRIPTIONID		= nameof( NLString.scrollbloodstrength ),
-								ITEM_SCROLLDISC		= nameof( Discipline.bloodstrength ),
-								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
+								DESCRIPTIONID		= nameof( NLString.scrollawaken ),
+								ITEM_SCROLLDISC		= nameof( Discipline.awaken ),
+							},
+							discscroll_walktheabyss_1 = new( Global, discscroll_walktheabyss_1 ) {
+								PARENT				= nameof( Template._discscrolls_common ),
+								DESCRIPTIONID		= nameof( NLString.scrollwalktheabyss ),
+								ITEM_SCROLLDISC		= nameof( Discipline.walktheabyss ),
 							},
 						_discscrolls_dementation = new( Global, _discscrolls_dementation ) {
 							PARENT				= nameof( Template._disciplinescrolls ),
@@ -3860,13 +3850,6 @@ partial class Template
 								ICON				= "scrollControlIcon",
 								ITEM_SCROLLDISC		= nameof( Discipline.summonelemental ),
 								ITEM_BASECOST		= 200,
-								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
-							},
-							discscroll_walktheabyss_1 = new( Global, discscroll_walktheabyss_1 ) {
-								PARENT				= nameof( Template._discscrolls_thaurituals ),
-								DESCRIPTIONID		= nameof( NLString.scrollwalktheabyss ),
-								ICON				= "scrollBuffIcon",
-								ITEM_SCROLLDISC		= nameof( Discipline.walktheabyss ),
 								EDITORCATEGORY		= ENUM_EDITORCATEGORY.Items_Scrolls_Books,
 							},
 					_numinascrolls = new( Global, _numinascrolls ) {
