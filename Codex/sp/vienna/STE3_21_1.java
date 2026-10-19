@@ -96,7 +96,7 @@ public class STE3_21_1 extends Codex
 
 		if(CodexSequence.GetChronicleFlag(chronScript.STE3_LUTHERTALKED))
 		{
-			bGaveSkylightKey = TRUE;
+			bGaveSkylightKey = true;
 		}
 	}
 

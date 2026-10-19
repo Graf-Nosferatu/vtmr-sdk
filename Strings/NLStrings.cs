@@ -6005,8 +6005,8 @@ partial class NLString
 				Rus	= "Стойкость"
 			},
 			new( Effects, DisciplineDescription( Discipline.fortitude ) ) {
-				Eng	= "Grants Added Protection Against Damage",
-				Rus	= "Дает дополнительную защиту от повреждений"
+				Eng	= "Grants Added Protection (5/10/15/20/25) Against Damage by 1 minute",
+				Rus	= "Дает дополнительную защиту (5/10/15/20/25) от повреждений на 1 минуту"
 			},
 			new( Effects, Discipline.potence ) {
 				Eng	= "Potence",

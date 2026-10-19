@@ -1,86 +1,84 @@
 /**
  * Effect DiscFortitude script.
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
- * @author JS
 */
-
-
 public class EffectDiscFortitude extends Codex
 {
-	private int				_creatorGuid;	
-	private int				padGuid;
-	
-	// --------------------------------------------------------------------------------------------
+	private int casterGuid;
+	private int padGuid;
 
-	public EffectDiscFortitude()
+	private float soak;
+
+
+	public void effectstarted( int actorGuid, int effectGuid, int creatorGuid, int duration )
 	{
-	}
+		casterGuid = actorGuid;
+		CodexActor caster = new CodexActor( casterGuid );
 
-	// --------------------------------------------------------------------------------------------
-
-	public void effectstarted(int actorGuid, int effectGuid, int creatorGuid, int duration)
-	{
-		_creatorGuid	= actorGuid;
-		CodexActor _Creator	= new CodexActor(_creatorGuid);
-		
 		// initial effect
-		_Creator.SpawnThing("invshockwave");
-		
+		caster.SpawnThing( "invshockwave" );
+
 		// flash shell at startup
-		_Creator.SetShell("redCloudShell_b", 0x5000, 0, .9f, 1, 1);
+		caster.SetShell( "redCloudShell_b", 0x5000, 0, 0.9f, 1, 1 );
 
 		// running pad effect
-		padGuid = _Creator.SpawnThing("sawToothBlue");
+		padGuid = caster.SpawnThing( "sawToothBlue" );
+		caster.AttachThing( padGuid, -1, ZERO_OFFSET, ATTACH_FLAG_AUTOREMOVE );
 
-		float[] offset = new float[3];
-		offset[0] = offset[1] = offset[2] = 0.0f;
-		_Creator.AttachThing(padGuid, -1, offset, ATTACH_FLAG_AUTOREMOVE);
+		soak = caster.GetActorEffectValue( effectGuid ) * 100f;
 
-		CaptureThing(_creatorGuid);
+		CaptureThing( casterGuid );
 	}
 
-	public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)
+
+	public void effectended( int actorGuid, int effectGuid, int creatorGuid, int reason )
 	{
 		EndEffect();
 	}
 
-	public void killed(int guid, int causeID, int captureID)
+
+	public void killed( int guid, int causeID, int captureID )
 	{
 		EndEffect();
 	}
 
-	public void soaked(int guid, int causeGUID, float damageAmount, int damageType, float soakAmount, int captureID)
-	{
-		CodexActor _Creator	= new CodexActor(_creatorGuid);
 
-		if((soakAmount > 0) && (soakAmount >= damageAmount))
+	public float soaked( int guid, int causeGUID, float damageAmount, int damageType, float soakAmount, int captureID )
+	{
+		soakAmount += soak;
+		if( soakAmount >= damageAmount )
 		{
-			_Creator.SetShell("white", 0x5000, 0, 1, 1, 1);
+			CodexActor caster = new CodexActor( casterGuid );
+			caster.SetShell( "white", 0x5000, 0, 1, 0.5f, 1 );
 		}
+
+		return soakAmount;
 	}
 
-	public void EndEffect()
+
+	private void EndEffect()
 	{
 		// Remove pad and shell
-		CodexThing pad	= new CodexThing(padGuid);
+		CodexThing pad = new CodexThing( padGuid );
 		pad.Remove();
 
-		CodexActor _Creator	= new CodexActor(_creatorGuid);
-		_Creator.EndShell();
+		CodexActor caster = new CodexActor( casterGuid );
+		caster.EndShell();
 	}
 
-	public void save(int flags)
+
+	public void save( int flags )
 	{
-		CodexSequence.SaveInt(padGuid);
-		CodexSequence.SaveInt(_creatorGuid);
+		CodexSequence.SaveInt( padGuid );
+		CodexSequence.SaveInt( casterGuid );
+		CodexSequence.SaveFloat( soak );
 	}
 
-	public void restore(int flags)
+
+	public void restore( int flags )
 	{
 		padGuid = CodexSequence.RestoreInt();
-		_creatorGuid = CodexSequence.RestoreInt();
+		casterGuid = CodexSequence.RestoreInt();
+		soak = CodexSequence.RestoreFloat();
 	}
-
 }
-

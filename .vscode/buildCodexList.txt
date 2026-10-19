@@ -15,3 +15,4 @@ Codex\sp\new_york\NEWM_Emelia.java
 Codex\other\EffectStatManipulation.java
 
 Codex\disciplines\common
+Codex\disciplines\fortitude

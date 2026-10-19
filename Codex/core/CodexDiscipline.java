@@ -31,6 +31,21 @@ public class CodexDiscipline extends Codex
 	}
 
 
+	protected boolean Fizzled( float level )
+	{
+		// never fizzle a scroll cast
+		if( (Caster.GetActorFlags2() & THING_AF2_SCROLLCAST) != 0 ) {
+			return false;
+		}
+
+		if( Math.random() < ((5f - level) / 100f) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+
 	protected int PrintCast()
 	{
 		String casterName = Caster.GetName();
@@ -50,5 +65,16 @@ public class CodexDiscipline extends Codex
 		}
 
 		return false;
+	}
+
+
+	protected int PrintFizzle()
+	{
+		String casterName = Caster.GetName();
+
+		String aFormat = "%C" + casterName + "%d" + DisciplineName;
+		CodexConsole.Print( CasterGuid, CONSOLE_FLAG_DISCIPLINE, FormatNLS( "RPG_DISCMSG_FIZZLES", aFormat ), 0xFFFF00 );
+
+		return 0;
 	}
 }

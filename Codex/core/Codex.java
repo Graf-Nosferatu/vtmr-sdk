@@ -2,14 +2,9 @@
  * Common ancestor to all the user Codex classes.
  * <BR>You'd better derive your script from it or be ready for some serious trouble... :-)
  * <BR>Copyright (c) Nihilistic Software, Inc. 1998-1999
- *
 */
-
 public class Codex
 {
-	public static final boolean TRUE					= true;
-	public static final boolean FALSE					= false;
-
 	// ------------------------------------------------------------------------
 	// WORLD CONSTS
 	// ------------------------------------------------------------------------
@@ -918,7 +913,14 @@ public class Codex
 	public static final int	EI_FLAG_WORN				= 1;		// this effect comes from an item being worn (creatorGuid is the item)
 	public static final int	EI_FLAG_USE					= 2;		// this effect comes from an item being used (creatorGuid is the item, good chance of being destroyed tho)
 	public static final int	EI_FLAG_DISCIPLINE			= 4;		// this effect comes from a discipline being cast (creator guid is the caster)
-	
+
+
+	// ------------------------------------------------------------------------
+	// OTHER CONSTS
+	// ------------------------------------------------------------------------
+
+	protected static final float[] ZERO_OFFSET = { 0f, 0f, 0f };
+
 
 /**
  * Returns a copyright line

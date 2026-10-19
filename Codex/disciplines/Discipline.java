@@ -36,7 +36,6 @@ public class Discipline extends Codex
 	protected	static final int[]		FERALWHISPERS_DURATIONS				= {  15000,  30000,  45000,  60000,  90000 };
 	protected	static final int[]		FERALCLAWS_DURATIONS				= {  15000,  30000,  45000,  60000,  90000 };
 	protected	static final int[]		FLAMETRAIL_DURATIONS				= {  15000,  30000,  45000,  60000,  90000 };
-	protected	static final int[]		FORTITUDE_DURATIONS					= {  30000,  60000,  90000, 120000, 180000 };
 	protected	static final int[]		HATCHTHEVIPER_DURATIONS				= {  15000,  30000,  45000,  60000,  90000 };
 	protected	static final int[]		HEARTOFSTONE_DURATIONS				= {  30000,  60000,  90000, 120000, 150000 };
 	protected	static final int[]		HSENSES_DURATIONS					= {  30000,  60000,  90000, 120000, 150000 };

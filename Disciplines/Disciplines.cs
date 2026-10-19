@@ -480,6 +480,7 @@ partial class Discipline
 			RecastTimes		= [2000, 2000, 2000, 1000, 1000],
 			Checks			= [new( Stat.Charisma, 60 ), null, null]
 		},
+#region Fortitude
 		fortitude = new( fortitude ) {
 			Group			= nameof( dgrp_fortitude ),
 			Icon			= "fortitudeIcon",
@@ -495,6 +496,7 @@ partial class Discipline
 			RecastTimes		= [1000, 1000, 1000, 1000, 1000],
 			Checks			= [null, null, null]
 		},
+#endregion Fortitude
 		potence = new( potence ) {
 			Group			= nameof( dgrp_potence ),
 			Icon			= "potenceIcon",

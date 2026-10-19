@@ -1212,10 +1212,7 @@ partial class Effect
 			Type	= EffectType.Fortitude,
 			Compose	= ComposeType.Add,
 			Flags	= EffectFlags.Cancellable,
-			Tick	= 0,
-			PC		= 0,
-			DC		= 0,
-			Values	= [5, 10, 15, 20, 20, 25]
+			Values	= [0.05F, 0.10F, 0.15F, 0.20F, 0.25F, 0.30F]
 		},
 		ef_disc_celerity1 = new( ef_disc_celerity1 ) {
 			Icon	= "celerityIcon",
