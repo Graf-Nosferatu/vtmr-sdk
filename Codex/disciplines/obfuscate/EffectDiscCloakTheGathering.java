@@ -26,7 +26,7 @@ public class EffectDiscCloakTheGathering extends Codex
 	{
 		// make sure the other effects are cancelled too
 		CodexActor actor = new CodexActor(actorGuid);
-		actor.RemoveActorEffect("ef_disc_cloakthegathering2");
+		actor.RemoveActorEffect(CodexEffect.EF_DISC_CLOAKTHEGATHERING2);
 	}
 
 }

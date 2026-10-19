@@ -40,7 +40,7 @@ public class DisciplineAuraPerception extends Discipline
 
 		try
 		{
-			targetThing.AddActorEffectByLevel("ef_disc_auraperception", 0, 0, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_AURAPERCEPTION, 0, 0, casterGuid, EI_FLAG_DISCIPLINE);
 			
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

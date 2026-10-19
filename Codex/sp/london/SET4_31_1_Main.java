@@ -292,7 +292,7 @@ public class SET4_31_1_Main extends Codex
 			if(humanityTrack == -1)
 			{
 				// big loss of humanity here
-				_Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 3, 0, 0);
+				_Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 3, 0, 0);
 			}
 
 			// auto advance
@@ -467,7 +467,7 @@ public class SET4_31_1_Main extends Codex
 							_Christof.PlayMotionSetMode(MOTION_SPECIAL12, false, (float)30.0);
 
 							// add in here lowering of generation for choosing to diablerize lucretia's heart
-							_Christof.AddActorEffectByLevel("ef_lowergeneration", 0, 0, 0, 0);
+							_Christof.AddActorEffectByLevel(CodexEffect.EF_LOWERGENERATION, 0, 0, 0, 0);
 
 							humanityTrack = -1;
 
@@ -480,7 +480,7 @@ public class SET4_31_1_Main extends Codex
 							_Christof.SetActorBaseStat(ACTOR_STAT_BLOODPOOL, (float)(_Christof.GetActorBaseStat(ACTOR_STAT_BLOODPOOL) * 1.5));
 							_Christof.SetActorStat(ACTOR_STAT_BLOODPOOL, _Christof.GetActorBaseStat(ACTOR_STAT_BLOODPOOL));
 							//float bloodpoolsize = _Christof.GetActorStat(ACTOR_STAT_BLOODPOOL);
-							//_Christof.AddActorEffectByValue("ef_increasebloodpoolsize", 0, (float)(bloodpoolsize/2), 0, 0);
+							//_Christof.AddActorEffectByValue(CodexEffect.EF_INCREASEBLOODPOOLSIZE, 0, (float)(bloodpoolsize/2), 0, 0);
 							break;
 
 						case 1:

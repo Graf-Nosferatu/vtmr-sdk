@@ -52,12 +52,12 @@ public class DisciplineDreadGaze extends Discipline
 				((Math.random() * targetThing.GetActorStat(ACTOR_STAT_WITS) * clanFactor) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_CHARISMA))))
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_dreadgaze");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_DREADGAZE);
 				if(effectGuid != 0)
 					targetThing.RemoveActorEffect(effectGuid);
 				
 				// start the effect
-				targetThing.AddActorEffectByLevel("ef_disc_dreadgaze", DREADGAZE_DURATIONS[level], level-1, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_DREADGAZE, DREADGAZE_DURATIONS[level], level-1, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

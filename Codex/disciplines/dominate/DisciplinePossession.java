@@ -72,12 +72,12 @@ public class DisciplinePossession extends Discipline
 				)
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_possession");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_POSSESSION);
 				if(effectGuid != 0)
 					targetThing.RemoveActorEffect(effectGuid);
 				
 				// start the effect
-				targetThing.AddActorEffectByLevel("ef_disc_possession", POSSESSION_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_POSSESSION, POSSESSION_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

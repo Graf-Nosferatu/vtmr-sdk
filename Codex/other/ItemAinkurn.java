@@ -47,8 +47,8 @@ public class ItemAinkurn extends Codex
 			else
 				level = 5;
 
-			damager.AddActorEffectByLevel("ef_item_ainkurn1", 2000, level, damagerGUID, 0);
-			damaged.AddActorEffectByLevel("ef_item_ainkurn2", 2000, level, damagerGUID, 0);
+			damager.AddActorEffectByLevel(CodexEffect.EF_ITEM_AINKURN1, 2000, level, damagerGUID, 0);
+			damaged.AddActorEffectByLevel(CodexEffect.EF_ITEM_AINKURN2, 2000, level, damagerGUID, 0);
 		}
 	}
  

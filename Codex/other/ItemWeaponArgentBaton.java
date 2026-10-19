@@ -29,7 +29,7 @@ public class ItemWeaponArgentBaton extends Codex
 			// add random damage up to ARGENTBATONEFFECT_MAXDAMAGE
 			float value = ARGENTBATONEFFECT_MAXDAMAGE + ((float)Math.random() * (ARGENTBATONEFFECT_MAXDAMAGE - ARGENTBATONEFFECT_MAXDAMAGE));
 
-			damaged.AddActorEffectByValue("ef_item_argentbaton", 0, value, damagerGUID, 0);
+			damaged.AddActorEffectByValue(CodexEffect.EF_ITEM_ARGENTBATON, 0, value, damagerGUID, 0);
 
 			// do visuals
 			damaged.SpawnThing("blackMagic");

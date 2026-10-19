@@ -71,8 +71,8 @@ public class EffectDiscShapeOfTheBeast extends Codex
 		shifter.ClearActorFlags(THING_AF_NODISC + THING_AF_NOFEED);
 
 		// make sure the other effects are cancelled too
-		shifter.RemoveActorEffect("ef_disc_shapeofthebeast2");
-		shifter.RemoveActorEffect("ef_disc_shapeofthebeast3");
+		shifter.RemoveActorEffect(CodexEffect.EF_DISC_SHAPEOFTHEBEAST2);
+		shifter.RemoveActorEffect(CodexEffect.EF_DISC_SHAPEOFTHEBEAST3);
 	}
 
 	public void save(int flags)

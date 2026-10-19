@@ -64,9 +64,9 @@ public class OLDT_7_4 extends Codex
 
 			// make him a vampire
 			christof.SetActorType( ACTOR_TYPE_VAMPIRE );
-			christof.RemoveActorEffect( "ef_increasemanaot" );
-			christof.RemoveActorEffect( "ef_increasebloodot" );
-			christof.AddActorEffectByLevel( "ef_decreasefrenzy", 0, 0, 0, 0 );
+			christof.RemoveActorEffect( CodexEffect.EF_INCREASEMANAOT );
+			christof.RemoveActorEffect( CodexEffect.EF_INCREASEBLOODOT );
+			christof.AddActorEffectByLevel( CodexEffect.EF_DECREASEFRENZY, 0, 0, 0, 0 );
 
 			// make christof use the vampire model
 			christof.SetModel( "christof.nod" );

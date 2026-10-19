@@ -65,7 +65,7 @@ public class DisciplineShamblingHordes extends Discipline
 			targetThing.ReviveActor(SHAMBLINGHORDES_HEALTHS[level], SHAMBLINGHORDES_BLOODS[level]);
 
 			// now, make it a pet of the caster of the discipline
-			targetThing.AddActorEffectByLevel("ef_disc_shamblinghordes", SHAMBLINGHORDES_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_SHAMBLINGHORDES, SHAMBLINGHORDES_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// assign the caster's team to the pet
 			targetThing.SetActorTeam(casterThing.GetActorTeam());

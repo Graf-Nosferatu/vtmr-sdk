@@ -418,7 +418,7 @@ public class FAC4_Main extends Codex
 			if(humanityTrack == -1)
 			{
 				// lose humanity here
-				_Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 1, 0, 0);
+				_Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 1, 0, 0);
 			}
 		}
 

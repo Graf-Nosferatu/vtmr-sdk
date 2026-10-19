@@ -35,7 +35,7 @@ public class DisciplineMajesty extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_majesty");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_MAJESTY);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, MAJESTY_DURATIONS[level], false);
@@ -46,7 +46,7 @@ public class DisciplineMajesty extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_majesty", MAJESTY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_MAJESTY, MAJESTY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

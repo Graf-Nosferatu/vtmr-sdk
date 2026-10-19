@@ -33,7 +33,7 @@ public class DisciplineHeartOfStone extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_heartofstone");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_HEARTOFSTONE);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, HEARTOFSTONE_DURATIONS[level], false);
@@ -44,7 +44,7 @@ public class DisciplineHeartOfStone extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_heartofstone", HEARTOFSTONE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_HEARTOFSTONE, HEARTOFSTONE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

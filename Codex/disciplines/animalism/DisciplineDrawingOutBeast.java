@@ -52,7 +52,7 @@ public class DisciplineDrawingOutBeast extends Discipline
 			DisplayFizzle(DISCIPLINE_NAME, level);
 
 			// add a backfire effect here, caster gets some frenzy
-			casterThing.AddActorEffectByLevel("ef_disc_drawingoutbeast", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_DRAWINGOUTBEAST, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			return(0);
 		}
@@ -65,8 +65,8 @@ public class DisciplineDrawingOutBeast extends Discipline
 			if((targetThing.GetActorType() == ACTOR_TYPE_VAMPIRE) || (targetThing.GetActorType() == ACTOR_TYPE_GHOUL))
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_quellbeast", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
-				targetThing.AddActorEffectByLevel("ef_disc_drawingoutbeast", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_QUELLBEAST, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_DRAWINGOUTBEAST, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

@@ -120,7 +120,7 @@ public class PRIN_16_1 extends Codex
 			if(humanityTrack == 1)
 			{
 				// add humanity here
-				_Christof.AddActorEffectByLevel("ef_increasehumanity", 0, 1, 0, 0);
+				_Christof.AddActorEffectByLevel(CodexEffect.EF_INCREASEHUMANITY, 0, 1, 0, 0);
 			}
 
 			// auto advance

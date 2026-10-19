@@ -20,7 +20,7 @@ public class ItemWeaponTaser extends Codex
 	{
 		CodexActor damaged = new CodexActor(damagedGUID);
 
-		damaged.AddActorEffectByLevel("ef_item_taser", 0, 0, damagerGUID, 0);
+		damaged.AddActorEffectByLevel(CodexEffect.EF_ITEM_TASER, 0, 0, damagerGUID, 0);
 
 	}
 

@@ -73,7 +73,7 @@ public class WalkCycleLawmen extends Codex
 			else
 			{
 				// add random blood to the lawmen
-				actor.AddActorEffectByValue("ef_increaseblood", 0, (float)(Math.random() * 33.0f), actor.GetGUID(), 0, 0, 0.0f);
+				actor.AddActorEffectByValue(CodexEffect.EF_INCREASEBLOOD, 0, (float)(Math.random() * 33.0f), actor.GetGUID(), 0, 0, 0.0f);
 
 				// heal the actor a random amount
 				actor.HealActor((float)(Math.random() * 50.0f));

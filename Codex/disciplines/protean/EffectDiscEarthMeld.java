@@ -84,8 +84,8 @@ public class EffectDiscEarthMeld extends Codex
 		CodexActor _Actor	= new CodexActor(_targetGuid);
 
 		// make sure the other 2 effects are gone too
-		_Actor.RemoveActorEffect("ef_disc_earthmeld2");
-		_Actor.RemoveActorEffect("ef_disc_earthmeld3");
+		_Actor.RemoveActorEffect(CodexEffect.EF_DISC_EARTHMELD2);
+		_Actor.RemoveActorEffect(CodexEffect.EF_DISC_EARTHMELD3);
 
 		// set the normal scale again
 		_Actor.SetScale(vecScale, 1.0f);

@@ -59,7 +59,7 @@ public class EffectDiscBloodOfPotency extends Codex
 		_Creator.EndShell();
 
 		// make sure the other effects are cancelled too
-		_Creator.RemoveActorEffect("ef_disc_bloodofpotency2");
+		_Creator.RemoveActorEffect(CodexEffect.EF_DISC_BLOODOFPOTENCY2);
 	}
 
 	public void save(int flags)

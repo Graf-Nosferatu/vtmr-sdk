@@ -26,14 +26,14 @@ public class ItemBlackGloves extends Codex
 	{
 		CodexActor wearer = new CodexActor(wearerGuid);
 
-		wearer.AddActorEffectByLevel("ef_item_blackgloves", 0, 0, guid, EI_FLAG_WORN);
+		wearer.AddActorEffectByLevel(CodexEffect.EF_ITEM_BLACKGLOVES, 0, 0, guid, EI_FLAG_WORN);
 	}
 
 	public boolean unworn(int guid, int wearerGuid, int captureId)
 	{
 		CodexActor wearer = new CodexActor(wearerGuid);
 
-		wearer.RemoveActorEffect("ef_item_blackgloves");
+		wearer.RemoveActorEffect(CodexEffect.EF_ITEM_BLACKGLOVES);
 		
 		return(true);
 	}

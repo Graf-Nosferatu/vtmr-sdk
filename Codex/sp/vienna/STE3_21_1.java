@@ -109,10 +109,10 @@ public class STE3_21_1 extends Codex
 		// they'll still have the effect on them when the level transition
 		// takes place
 
-		christofPlayer.RemoveActorEffect("ef_dmg_sun");	
-		erikPlayer.RemoveActorEffect("ef_dmg_sun");
-		serenaPlayer.RemoveActorEffect("ef_dmg_sun");
-		wilhemPlayer.RemoveActorEffect("ef_dmg_sun");
+		christofPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);	
+		erikPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
+		serenaPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
+		wilhemPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
 	}
 
 	public void clicked(int guid, int clickerGuid, int captureID)
@@ -201,22 +201,22 @@ public class STE3_21_1 extends Codex
 		{
 			if(causeGUID == christofGUID)
 			{
-				christofPlayer.RemoveActorEffect("ef_dmg_sun");
+				christofPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
 				bChristofInSun = false;
 			}
 			else if(causeGUID == erikGUID)
 			{
-				erikPlayer.RemoveActorEffect("ef_dmg_sun");
+				erikPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
 				bErikInSun = false;
 			}
 			else if(causeGUID == serenaGUID)
 			{
-				serenaPlayer.RemoveActorEffect("ef_dmg_sun");
+				serenaPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
 				bSerenaInSun = false;
 			}
 			else if(causeGUID == wilhemGUID)
 			{
-				wilhemPlayer.RemoveActorEffect("ef_dmg_sun");
+				wilhemPlayer.RemoveActorEffect(CodexEffect.EF_DMG_SUN);
 				bWilhemInSun = false;
 			}
 		}
@@ -245,29 +245,29 @@ public class STE3_21_1 extends Codex
 				if(bChristofInSun)
 				{
 					// damage him
-					if(christofPlayer.FindActorEffect("ef_dmg_sun") == 0)
-						christofPlayer.AddActorEffectByValue("ef_dmg_sun", 0, 8.0f, 0, 0);
+					if(christofPlayer.FindActorEffect(CodexEffect.EF_DMG_SUN) == 0)
+						christofPlayer.AddActorEffectByValue(CodexEffect.EF_DMG_SUN, 0, 8.0f, 0, 0);
 				}
 
 				if(bErikInSun)
 				{
 					// damage him
-					if(erikPlayer.FindActorEffect("ef_dmg_sun") == 0)
-						erikPlayer.AddActorEffectByValue("ef_dmg_sun", 0, 8.0f, 0, 0);
+					if(erikPlayer.FindActorEffect(CodexEffect.EF_DMG_SUN) == 0)
+						erikPlayer.AddActorEffectByValue(CodexEffect.EF_DMG_SUN, 0, 8.0f, 0, 0);
 				}
 
 				if(bSerenaInSun)
 				{
 					// damage her
-					if(serenaPlayer.FindActorEffect("ef_dmg_sun") == 0)
-						serenaPlayer.AddActorEffectByValue("ef_dmg_sun", 0, 8.0f, 0, 0);
+					if(serenaPlayer.FindActorEffect(CodexEffect.EF_DMG_SUN) == 0)
+						serenaPlayer.AddActorEffectByValue(CodexEffect.EF_DMG_SUN, 0, 8.0f, 0, 0);
 				}
 
 				if(bWilhemInSun)
 				{
 					// damage him
-					if(wilhemPlayer.FindActorEffect("ef_dmg_sun") == 0)
-						wilhemPlayer.AddActorEffectByValue("ef_dmg_sun", 0, 8.0f, 0, 0);
+					if(wilhemPlayer.FindActorEffect(CodexEffect.EF_DMG_SUN) == 0)
+						wilhemPlayer.AddActorEffectByValue(CodexEffect.EF_DMG_SUN, 0, 8.0f, 0, 0);
 				}
 
 				break;
@@ -346,7 +346,7 @@ public class STE3_21_1 extends Codex
 			if(humanityTrack == 1)
 			{
 				// add humanity here
-				christofPlayer.AddActorEffectByLevel("ef_increasehumanity", 0, 1, 0, 0);
+				christofPlayer.AddActorEffectByLevel(CodexEffect.EF_INCREASEHUMANITY, 0, 1, 0, 0);
 				CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "LutherPOV.ncp", 30);
 			}
 		}

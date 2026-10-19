@@ -42,7 +42,7 @@ public class DisciplineTurnToDust extends Discipline
 			if((Math.random() * (targetThing.GetActorStat(ACTOR_STAT_STAMINA) + targetThing.GetActorStat(ACTOR_STAT_WITS)) / 2) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_INTELLIGENCE)))
 			{
 				// start the real effect
-				targetThing.AddActorEffectByLevel("ef_disc_turntodust", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_TURNTODUST, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

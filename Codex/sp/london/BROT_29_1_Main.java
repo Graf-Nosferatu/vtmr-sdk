@@ -153,12 +153,12 @@ public class BROT_29_1_Main extends Codex
 			if(humanityTrack == -1)
 			{
 				// lose humanity here
-				Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 1, 0, 0);
+				Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 1, 0, 0);
 			}
 			else if(humanityTrack == 1)
 			{
 				// give humanity here
-				Christof.AddActorEffectByLevel("ef_increasehumanity", 0, 1, 0, 0);			
+				Christof.AddActorEffectByLevel(CodexEffect.EF_INCREASEHUMANITY, 0, 1, 0, 0);			
 			}
 		}
 	}

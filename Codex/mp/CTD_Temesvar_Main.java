@@ -467,7 +467,7 @@ public class CTD_Temesvar_Main extends Codex
 			{
 				// give humanity here because they choose to return the reliquary
 				CodexActor actor = new CodexPlayer(starterGuid);
-				actor.AddActorEffectByLevel("ef_increasehumanity", 0, 1, 0, 0);
+				actor.AddActorEffectByLevel(CodexEffect.EF_INCREASEHUMANITY, 0, 1, 0, 0);
 			}
 		}
 	}

@@ -24,7 +24,7 @@ public class Lawmen extends Codex
 		else
 		{
 			// add random blood to the lawmen
-			lawmen.AddActorEffectByValue("ef_increaseblood", 0, (float)(Math.random() * 33.0f), lawmen.GetGUID(), 0, 0, 0.0f);
+			lawmen.AddActorEffectByValue(CodexEffect.EF_INCREASEBLOOD, 0, (float)(Math.random() * 33.0f), lawmen.GetGUID(), 0, 0, 0.0f);
 
 			// heal the lawmen a random amount
 			lawmen.HealActor((float)(Math.random() * 50.0f));

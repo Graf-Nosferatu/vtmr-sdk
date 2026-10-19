@@ -39,7 +39,7 @@ public class DisciplineImmolate extends Discipline
 		try
 		{
 			// start the real effect
-			targetThing.AddActorEffectByLevel("ef_disc_immolate", 0, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_IMMOLATE, 0, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

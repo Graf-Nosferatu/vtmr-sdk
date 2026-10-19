@@ -47,43 +47,43 @@ public class classGroupFear extends Codex
 
 			if((_enemy1.GetActorFlags() & THING_AF_DEAD) == 0)
 			{
-				effectGuid = _enemy1.FindActorEffect("ef_afraid");
+				effectGuid = _enemy1.FindActorEffect(CodexEffect.EF_AFRAID);
 				if(effectGuid != 0)
 					_enemy1.RemoveActorEffect(effectGuid);
 				
-				_enemy1.AddActorEffectByLevel("ef_afraid", 3000, 2-1, causeID, 0);
+				_enemy1.AddActorEffectByLevel(CodexEffect.EF_AFRAID, 3000, 2-1, causeID, 0);
 			}
 			if((_enemy2.GetActorFlags() & THING_AF_DEAD) == 0)
 			{
-				effectGuid = _enemy2.FindActorEffect("ef_afraid");
+				effectGuid = _enemy2.FindActorEffect(CodexEffect.EF_AFRAID);
 				if(effectGuid != 0)
 					_enemy2.RemoveActorEffect(effectGuid);
 				
-				_enemy2.AddActorEffectByLevel("ef_afraid", 3000, 2-1, causeID, 0);
+				_enemy2.AddActorEffectByLevel(CodexEffect.EF_AFRAID, 3000, 2-1, causeID, 0);
 			}
 			if((_enemy3.GetActorFlags() & THING_AF_DEAD) == 0)
 			{
-				effectGuid = _enemy3.FindActorEffect("ef_afraid");
+				effectGuid = _enemy3.FindActorEffect(CodexEffect.EF_AFRAID);
 				if(effectGuid != 0)
 					_enemy3.RemoveActorEffect(effectGuid);
 				
-				_enemy3.AddActorEffectByLevel("ef_afraid", 3000, 2-1, causeID, 0);
+				_enemy3.AddActorEffectByLevel(CodexEffect.EF_AFRAID, 3000, 2-1, causeID, 0);
 			}
 			if((_enemy4.GetActorFlags() & THING_AF_DEAD) == 0)
 			{
-				effectGuid = _enemy4.FindActorEffect("ef_afraid");
+				effectGuid = _enemy4.FindActorEffect(CodexEffect.EF_AFRAID);
 				if(effectGuid != 0)
 					_enemy4.RemoveActorEffect(effectGuid);
 				
-				_enemy4.AddActorEffectByLevel("ef_afraid", 3000, 2-1, causeID, 0);
+				_enemy4.AddActorEffectByLevel(CodexEffect.EF_AFRAID, 3000, 2-1, causeID, 0);
 			}
 			if((_enemy5.GetActorFlags() & THING_AF_DEAD) == 0)
 			{
-				effectGuid = _enemy5.FindActorEffect("ef_afraid");
+				effectGuid = _enemy5.FindActorEffect(CodexEffect.EF_AFRAID);
 				if(effectGuid != 0)
 					_enemy5.RemoveActorEffect(effectGuid);
 				
-				_enemy5.AddActorEffectByLevel("ef_afraid", 3000, 2-1, causeID, 0);
+				_enemy5.AddActorEffectByLevel(CodexEffect.EF_AFRAID, 3000, 2-1, causeID, 0);
 			}
 
 		}

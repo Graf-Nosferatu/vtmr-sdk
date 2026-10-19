@@ -35,7 +35,7 @@ public class DisciplineFeralClaws extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_feralclaws");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_FERALCLAWS);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, FERALCLAWS_DURATIONS[level], false);
@@ -45,7 +45,7 @@ public class DisciplineFeralClaws extends Discipline
 			}
 			else
 			{
-				casterThing.AddActorEffectByLevel("ef_disc_feralclaws", FERALCLAWS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_FERALCLAWS, FERALCLAWS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

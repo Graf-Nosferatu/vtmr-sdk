@@ -34,7 +34,7 @@ public class DisciplineNuke extends Discipline
 		try
 		{	
 			// start the effect
-			targetThing.AddActorEffectByLevel("ef_disc_nuke", 0, 0, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_NUKE, 0, 0, casterGuid, EI_FLAG_DISCIPLINE);
 
 			return(1);
 

@@ -40,8 +40,8 @@ public class DisciplinePrisonOfIce extends Discipline
 			targetThing.CancelActorAction();
 
 			// start the damaging effect
-			targetThing.AddActorEffectByLevel("ef_disc_prisonofice1", PRISONOFICE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-			targetThing.AddActorEffectByLevel("ef_disc_prisonofice2", PRISONOFICE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_PRISONOFICE1, PRISONOFICE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_PRISONOFICE2, PRISONOFICE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

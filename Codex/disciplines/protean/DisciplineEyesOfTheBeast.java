@@ -33,7 +33,7 @@ public class DisciplineEyesOfTheBeast extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_eyesofthebeast");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_EYESOFTHEBEAST);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, EYESOFTHEBEAST_DURATIONS[level], false);
@@ -51,7 +51,7 @@ public class DisciplineEyesOfTheBeast extends Discipline
 				casterThing.AttachThing(gleamGuid, -1, offset, ATTACH_FLAG_AUTOREMOVE);
 				
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_eyesofthebeast", EYESOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_EYESOFTHEBEAST, EYESOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

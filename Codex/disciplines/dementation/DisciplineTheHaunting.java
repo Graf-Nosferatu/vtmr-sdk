@@ -44,12 +44,12 @@ public class DisciplineTheHaunting extends Discipline
 				((Math.random() * (targetThing.GetActorStat(ACTOR_STAT_PERCEPTION) + targetThing.GetActorStat(ACTOR_STAT_WITS)) / 2) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_MANIPULATION))))
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_thehaunting");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_THEHAUNTING);
 				if(effectGuid != 0)
 					targetThing.RemoveActorEffect(effectGuid);
 				
 				// start the effect
-				targetThing.AddActorEffectByLevel("ef_disc_thehaunting", THEHAUNTING_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_THEHAUNTING, THEHAUNTING_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

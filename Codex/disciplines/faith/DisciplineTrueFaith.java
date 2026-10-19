@@ -32,7 +32,7 @@ public class DisciplineTrueFaith extends Discipline
 		}
 
 		// if the discipline is already running, refresh it
-		int effectGuid = casterThing.FindActorEffect("ef_disc_truefaith");
+		int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_TRUEFAITH);
 		if(effectGuid != 0)
 			casterThing.RemoveActorEffect(effectGuid);
 
@@ -46,7 +46,7 @@ public class DisciplineTrueFaith extends Discipline
 			casterThing.AttachThing(faithGuid, -1, offset, ATTACH_FLAG_AUTOREMOVE);
 
 			// start the effect, passing the guid of the explosion
-			casterThing.AddActorEffectByLevel("ef_disc_truefaith", TRUEFAITH_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE, faithGuid, 0.0f);
+			casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_TRUEFAITH, TRUEFAITH_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE, faithGuid, 0.0f);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

@@ -39,7 +39,7 @@ public class DisciplineTorch extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_torch");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_TORCH);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, TORCH_DURATIONS[level], false);
@@ -50,7 +50,7 @@ public class DisciplineTorch extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_torch", TORCH_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_TORCH, TORCH_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

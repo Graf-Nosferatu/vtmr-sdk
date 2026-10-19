@@ -40,7 +40,7 @@ public class DisciplineEyesOfChaos extends Discipline
 
 		try
 		{
-			targetThing.AddActorEffectByLevel("ef_disc_eyesofchaos", 0, 0, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_EYESOFCHAOS, 0, 0, casterGuid, EI_FLAG_DISCIPLINE);
 			
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

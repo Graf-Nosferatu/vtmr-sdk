@@ -55,8 +55,8 @@ public class DisciplineCauldronOfBlood extends Discipline
 		try
 		{
 			// start the real effect
-			targetThing.AddActorEffectByLevel("ef_disc_cauldronofblood1", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
-			targetThing.AddActorEffectByLevel("ef_disc_cauldronofblood2", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_CAULDRONOFBLOOD1, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_CAULDRONOFBLOOD2, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

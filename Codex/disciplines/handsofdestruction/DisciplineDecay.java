@@ -37,7 +37,7 @@ public class DisciplineDecay extends Discipline
 		try
 		{
 			// start the real effect
-			targetThing.AddActorEffectByLevel("ef_disc_decay", 5000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_DECAY, 5000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

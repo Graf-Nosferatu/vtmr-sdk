@@ -160,7 +160,7 @@ public class SEW2_Main extends Codex
 			playerToDamage = new CodexPlayer(causeGUID);
 
 			// tick rate is 250, 4 damages of 8 (parameter) per second
-			playerToDamage.AddActorEffectByValue("ef_dmg_electric", 0, 8, 0, 0);
+			playerToDamage.AddActorEffectByValue(CodexEffect.EF_DMG_ELECTRIC, 0, 8, 0, 0);
 		}
 	}
 
@@ -168,7 +168,7 @@ public class SEW2_Main extends Codex
 	{
 		CodexActor exiter = new CodexActor(causeGUID);
 
-		exiter.RemoveActorEffect("ef_dmg_electric");
+		exiter.RemoveActorEffect(CodexEffect.EF_DMG_ELECTRIC);
 	}
  
 	public void endscene(int clientGuid, int captureID, int exitNum)
@@ -182,7 +182,7 @@ public class SEW2_Main extends Codex
 		{
 			tempPlayer = new CodexPlayer(CodexPlayer.GetPartyPlayer(playerNum));
 
-			tempPlayer.RemoveActorEffect("ef_dmg_electric");
+			tempPlayer.RemoveActorEffect(CodexEffect.EF_DMG_ELECTRIC);
 		}
 	}
 

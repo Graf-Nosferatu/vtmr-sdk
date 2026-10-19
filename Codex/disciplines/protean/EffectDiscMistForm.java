@@ -64,8 +64,8 @@ public class EffectDiscMistForm extends Codex
 		mist.Remove();
 
 		// make sure the other effects are cancelled too
-		_Creator.RemoveActorEffect("ef_disc_mistform2");
-		_Creator.RemoveActorEffect("ef_disc_mistform3");
+		_Creator.RemoveActorEffect(CodexEffect.EF_DISC_MISTFORM2);
+		_Creator.RemoveActorEffect(CodexEffect.EF_DISC_MISTFORM3);
 	}
 
 	public void save(int flags)

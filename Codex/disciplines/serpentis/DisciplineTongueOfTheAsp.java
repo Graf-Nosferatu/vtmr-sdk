@@ -64,8 +64,8 @@ public class DisciplineTongueOfTheAsp extends Discipline
 		try
 		{	
 			// start the effect
-			casterThing.AddActorEffectByLevel("ef_disc_tongueoftheasp1", 750, level, casterGuid, EI_FLAG_DISCIPLINE);
-			targetThing.AddActorEffectByLevel("ef_disc_tongueoftheasp2", 750, level, casterGuid, EI_FLAG_DISCIPLINE);
+			casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_TONGUEOFTHEASP1, 750, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_TONGUEOFTHEASP2, 750, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

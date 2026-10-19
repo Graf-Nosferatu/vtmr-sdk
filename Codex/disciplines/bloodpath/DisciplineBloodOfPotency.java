@@ -33,12 +33,12 @@ public class DisciplineBloodOfPotency extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_bloodofpotency");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_BLOODOFPOTENCY);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, BLOODOFPOTENCY_DURATIONS[level], false);
 
-				int effectGuid2 = casterThing.FindActorEffect("ef_disc_bloodofpotency2");
+				int effectGuid2 = casterThing.FindActorEffect(CodexEffect.EF_DISC_BLOODOFPOTENCY2);
 				if(effectGuid2 != 0)
 					casterThing.ExpandActorEffect(effectGuid2, BLOODOFPOTENCY_DURATIONS[level], false);
 
@@ -48,8 +48,8 @@ public class DisciplineBloodOfPotency extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_bloodofpotency", BLOODOFPOTENCY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_bloodofpotency2", BLOODOFPOTENCY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_BLOODOFPOTENCY, BLOODOFPOTENCY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_BLOODOFPOTENCY2, BLOODOFPOTENCY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

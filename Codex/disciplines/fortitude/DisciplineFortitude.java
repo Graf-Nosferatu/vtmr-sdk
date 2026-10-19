@@ -33,7 +33,7 @@ public class DisciplineFortitude extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_fortitude");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_FORTITUDE);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, FORTITUDE_DURATIONS[level], false);
@@ -44,7 +44,7 @@ public class DisciplineFortitude extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_fortitude", FORTITUDE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_FORTITUDE, FORTITUDE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

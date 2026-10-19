@@ -69,7 +69,7 @@ public class EffectDiscSkinOfTheAdder extends Codex
 		_Creator.EndShell();
 
 		// make sure the other effects are cancelled too
-		_Creator.RemoveActorEffect("ef_disc_skinoftheadder2");
+		_Creator.RemoveActorEffect(CodexEffect.EF_DISC_SKINOFTHEADDER2);
 	}
 
 	public void save(int flags)

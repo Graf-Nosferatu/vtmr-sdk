@@ -35,7 +35,7 @@ public class DisciplineCloakOfShadows extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_cloakofshadows");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_CLOAKOFSHADOWS);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, CLOAKOFSHADOWS_DURATIONS[level], false);
@@ -46,7 +46,7 @@ public class DisciplineCloakOfShadows extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_cloakofshadows", CLOAKOFSHADOWS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_CLOAKOFSHADOWS, CLOAKOFSHADOWS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

@@ -35,12 +35,12 @@ public class DisciplineInvisibility extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_invisibility");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_INVISIBILITY);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, INVISIBILITY_DURATIONS[level], false);
 
-				//int effectGuid2 = casterThing.FindActorEffect("ef_disc_invisibility2");
+				//int effectGuid2 = casterThing.FindActorEffect(CodexEffect.EF_DISC_INVISIBILITY2);
 				//if(effectGuid != 0)
 				//	casterThing.ExpandActorEffect(effectGuid2, INVISIBILITY_DURATIONS[level], false);
 
@@ -50,8 +50,8 @@ public class DisciplineInvisibility extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_invisibility", INVISIBILITY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				//casterThing.AddActorEffectByValue("ef_disc_invisibility2", INVISIBILITY_DURATIONS[level], INVISIBILITY_ALPHAS[level], casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_INVISIBILITY, INVISIBILITY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				//casterThing.AddActorEffectByValue(CodexEffect.EF_DISC_INVISIBILITY2, INVISIBILITY_DURATIONS[level], INVISIBILITY_ALPHAS[level], casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

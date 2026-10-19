@@ -33,12 +33,12 @@ public class DisciplineCelerity extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_celerity1");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_CELERITY1);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, CELERITY_DURATIONS[level], false);
 
-				int effectGuid2 = casterThing.FindActorEffect("ef_disc_celerity2");
+				int effectGuid2 = casterThing.FindActorEffect(CodexEffect.EF_DISC_CELERITY2);
 				if(effectGuid2 != 0)
 					casterThing.ExpandActorEffect(effectGuid2, CELERITY_DURATIONS[level], false);
 
@@ -47,8 +47,8 @@ public class DisciplineCelerity extends Discipline
 			}
 			else
 			{
-				casterThing.AddActorEffectByLevel("ef_disc_celerity1", CELERITY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_celerity2", CELERITY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_CELERITY1, CELERITY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_CELERITY2, CELERITY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

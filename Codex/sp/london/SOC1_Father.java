@@ -148,7 +148,7 @@ public class SOC1_Father extends Codex
 		{
 			// lose humanity here
 			CodexActor Christof = new CodexActor(christofGUID);
-			Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 1, 0, 0);
+			Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 1, 0, 0);
 
 			SetTimer(1, TIMER_ID_OPENDOOR);
 

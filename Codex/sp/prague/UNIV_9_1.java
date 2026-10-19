@@ -114,7 +114,7 @@ public class UNIV_9_1 extends Codex
 			{
 				// christof is being lazy
 				// lose humanity here
-				_Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 1, 0, 0);
+				_Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 1, 0, 0);
 
 				// change scene in old town so the "too late" line can be played
 				CodexSequence.ChangeScene("OldTown", "OLDT_11_1.nsd");

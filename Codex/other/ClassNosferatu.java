@@ -17,8 +17,8 @@ public class ClassNosferatu extends Codex
 
 		if(nosferatuActor != null)
 		{
-//			nosferatuActor.AddActorEffectByLevel("ef_disc_cloakofshadows2", 0, 0, 0, 0);
-//			nosferatuActor.AddActorEffectByLevel("ef_disc_cloakofshadows", 0, 0, 0, 0);
+//			nosferatuActor.AddActorEffectByLevel(CodexEffect.EF_DISC_CLOAKOFSHADOWS2, 0, 0, 0, 0);
+//			nosferatuActor.AddActorEffectByLevel(CodexEffect.EF_DISC_CLOAKOFSHADOWS, 0, 0, 0, 0);
 
 		}
 	}
@@ -29,8 +29,8 @@ public class ClassNosferatu extends Codex
 
 		if(nosferatuActor != null)
 		{
-			nosferatuActor.AddActorEffectByLevel("ef_disc_cloakofshadows2", 0, 0, 0, 0);
-			nosferatuActor.AddActorEffectByLevel("ef_disc_cloakofshadows", 0, 0, 0, 0);
+			nosferatuActor.AddActorEffectByLevel(CodexEffect.EF_DISC_CLOAKOFSHADOWS2, 0, 0, 0, 0);
+			nosferatuActor.AddActorEffectByLevel(CodexEffect.EF_DISC_CLOAKOFSHADOWS, 0, 0, 0, 0);
 
 		}
 	}

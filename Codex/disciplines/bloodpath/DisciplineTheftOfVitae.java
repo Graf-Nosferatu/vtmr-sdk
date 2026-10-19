@@ -64,8 +64,8 @@ public class DisciplineTheftOfVitae extends Discipline
 		try
 		{	
 			// start the effect
-			casterThing.AddActorEffectByLevel("ef_disc_theftofvitae1", 1000, level, casterGuid, EI_FLAG_DISCIPLINE);
-			targetThing.AddActorEffectByLevel("ef_disc_theftofvitae2", 1000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_THEFTOFVITAE1, 1000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_THEFTOFVITAE2, 1000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

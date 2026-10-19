@@ -20,7 +20,7 @@ public class ClassPoisonous extends Codex
 		if(Math.random() < (POISON_CHANCE /* - damaged.GetSoak(ACTOR_SOAK_POISON) / 100 */ + damageAmount / (float)100))
 		{	
 			int extraTime = 0;
-			int effectGuid = damaged.FindActorEffect("ef_poison");
+			int effectGuid = damaged.FindActorEffect(CodexEffect.EF_POISON);
 			if(effectGuid != 0)
 			{
 				damaged.RemoveActorEffect(effectGuid);
@@ -29,7 +29,7 @@ public class ClassPoisonous extends Codex
 				extraTime = (int)(1000 + Math.random() * 9000);
 			}
 
-			damaged.AddActorEffectByLevel("ef_poison", extraTime + (int)(5000 + Math.random() * 55000), 0, damagerGUID, 0);
+			damaged.AddActorEffectByLevel(CodexEffect.EF_POISON, extraTime + (int)(5000 + Math.random() * 55000), 0, damagerGUID, 0);
 		}
 	}
 }

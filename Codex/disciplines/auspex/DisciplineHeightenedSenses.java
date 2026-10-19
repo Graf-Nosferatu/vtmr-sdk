@@ -33,7 +33,7 @@ public class DisciplineHeightenedSenses extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_hsenses");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_HSENSES);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, HSENSES_DURATIONS[level], false);
@@ -44,7 +44,7 @@ public class DisciplineHeightenedSenses extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_hsenses", HSENSES_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_HSENSES, HSENSES_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

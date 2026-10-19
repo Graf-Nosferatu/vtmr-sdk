@@ -33,7 +33,7 @@ public class DisciplineBloodStrength extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_bloodstrength");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_BLOODSTRENGTH);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, BLOODSTRENGTH_DURATIONS[level], false);
@@ -44,7 +44,7 @@ public class DisciplineBloodStrength extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_bloodstrength", BLOODSTRENGTH_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_BLOODSTRENGTH, BLOODSTRENGTH_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

@@ -70,12 +70,12 @@ public class DisciplineEntrancement extends Discipline
 				((Math.random() * targetThing.GetActorStat(ACTOR_STAT_WITS) * clanFactor) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_APPEARANCE))))
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_entrancement");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_ENTRANCEMENT);
 				if(effectGuid != 0)
 					targetThing.RemoveActorEffect(effectGuid);
 				
 				// start the effect
-				targetThing.AddActorEffectByLevel("ef_disc_entrancement", ENTRANCEMENT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_ENTRANCEMENT, ENTRANCEMENT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

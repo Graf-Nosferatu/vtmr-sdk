@@ -66,7 +66,7 @@ public class DisciplineFeralWhispers extends Discipline
 		try
 		{
 			// start the effect
-			targetThing.AddActorEffectByLevel("ef_disc_feralwhispers", FERALWHISPERS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_FERALWHISPERS, FERALWHISPERS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

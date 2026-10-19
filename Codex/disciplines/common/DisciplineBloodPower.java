@@ -13,12 +13,12 @@ public class DisciplineBloodPower extends CodexDiscipline
 	{
 		InitializeCaster( casterGuid );
 
-		int effectGuid = Caster.FindActorEffect( "ef_disc_bloodpower" );
+		int effectGuid = Caster.FindActorEffect( CodexEffect.EF_DISC_BLOODPOWER );
 		if( effectGuid != 0 ) {
 			Caster.RemoveActorEffect( effectGuid );
 		}
 
-		Caster.AddActorEffectByLevel( "ef_disc_bloodpower", DURATION, level, casterGuid, EI_FLAG_DISCIPLINE );
+		Caster.AddActorEffectByLevel( CodexEffect.EF_DISC_BLOODPOWER, DURATION, level, casterGuid, EI_FLAG_DISCIPLINE );
 
 		return PrintCast();
 	}

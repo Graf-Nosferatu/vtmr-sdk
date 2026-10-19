@@ -60,7 +60,7 @@ public class DisciplineVigorMortis extends Discipline
 			targetThing.ReviveActor(VIGORMORTIS_HEALTHS[level], VIGORMORTIS_BLOODS[level]);
 				
 			// start the effect
-			targetThing.AddActorEffectByLevel("ef_disc_vigormortis", VIGORMORTIS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_VIGORMORTIS, VIGORMORTIS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

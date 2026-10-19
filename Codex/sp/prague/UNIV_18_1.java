@@ -104,7 +104,7 @@ public class UNIV_18_1 extends Codex
 			{
 				// lose humanity here
 				CodexActor Christof = new CodexActor(christofGUID);
-				Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 1, 0, 0);
+				Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 1, 0, 0);
 			}
 		}
 

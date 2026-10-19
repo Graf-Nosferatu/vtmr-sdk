@@ -35,7 +35,7 @@ public class DisciplineIgnoreFlame extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_ignoreflame");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_IGNOREFLAME);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, IGNOREFLAME_DURATIONS[level], false);
@@ -46,7 +46,7 @@ public class DisciplineIgnoreFlame extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_ignoreflame", IGNOREFLAME_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_IGNOREFLAME, IGNOREFLAME_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

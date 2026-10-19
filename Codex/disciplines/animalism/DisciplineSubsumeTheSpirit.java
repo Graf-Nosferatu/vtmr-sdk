@@ -58,12 +58,12 @@ public class DisciplineSubsumeTheSpirit extends Discipline
 		try
 		{
 			// if the discipline is already running on the target, refresh it
-			int effectGuid = targetThing.FindActorEffect("ef_disc_subsumethespirit");
+			int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_SUBSUMETHESPIRIT);
 			if(effectGuid != 0)
 				targetThing.RemoveActorEffect(effectGuid);
 			
 			// start the effect
-			targetThing.AddActorEffectByLevel("ef_disc_subsumethespirit", SUBSUMETHESPIRIT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_SUBSUMETHESPIRIT, SUBSUMETHESPIRIT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

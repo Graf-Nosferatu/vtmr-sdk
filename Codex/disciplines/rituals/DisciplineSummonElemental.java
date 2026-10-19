@@ -57,7 +57,7 @@ public class DisciplineSummonElemental extends Discipline
 				petActor.SetActorFlags(THING_AF_SUMMONED);
 				
 				// start the effect
-				petActor.AddActorEffectByLevel("ef_disc_summonelemental", SUMMONELEMENTAL_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				petActor.AddActorEffectByLevel(CodexEffect.EF_DISC_SUMMONELEMENTAL, SUMMONELEMENTAL_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// assign the caster's team to the pet
 				petActor.SetActorTeam(casterThing.GetActorTeam());

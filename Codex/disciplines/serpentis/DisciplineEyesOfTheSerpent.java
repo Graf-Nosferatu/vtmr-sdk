@@ -45,7 +45,7 @@ public class DisciplineEyesOfTheSerpent extends Discipline
 			if( ((targetThing.AIGetMindFlags() & AIMIND_FLAG_NOMESMERIZED) == 0) &&
 				((Math.random() * targetThing.GetActorStat(ACTOR_STAT_WITS) * clanFactor) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_WITS))))
 			{
-				int effectGuid = targetThing.FindActorEffect("ef_disc_eyesoftheserpent");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_EYESOFTHESERPENT);
 				if(effectGuid != 0)
 				{
 					targetThing.ExpandActorEffect(effectGuid, EYESOFTHESERPENT_DURATIONS[level], false);
@@ -56,7 +56,7 @@ public class DisciplineEyesOfTheSerpent extends Discipline
 				else
 				{
 					// start the effect
-					targetThing.AddActorEffectByLevel("ef_disc_eyesoftheserpent", EYESOFTHESERPENT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+					targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_EYESOFTHESERPENT, EYESOFTHESERPENT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 					// cast text
 					DisplayCast(DISCIPLINE_NAME, level);

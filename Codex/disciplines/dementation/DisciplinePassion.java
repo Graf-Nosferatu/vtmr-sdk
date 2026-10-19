@@ -42,8 +42,8 @@ public class DisciplinePassion extends Discipline
 			if((Math.random() * targetThing.GetActorStat(ACTOR_STAT_HUMANITY)) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_CHARISMA)))
 			{
 				// start the real effect
-				targetThing.AddActorEffectByLevel("ef_disc_passion", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
-				targetThing.AddActorEffectByLevel("ef_disc_passion2", 5000, level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_PASSION, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_PASSION2, 5000, level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

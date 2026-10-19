@@ -64,7 +64,7 @@ public class DisciplineCloakTheGathering extends Discipline
 					continue;
 
 				// let's see if Cloak Of Shadows is on, and do NOT override it if superior level
-				int effectGuid = act.FindActorEffect("ef_disc_cloakofshadows");
+				int effectGuid = act.FindActorEffect(CodexEffect.EF_DISC_CLOAKOFSHADOWS);
 				if(effectGuid != 0)
 				{
 					int cosLevel = act.GetActorEffectLevel(effectGuid);
@@ -74,12 +74,12 @@ public class DisciplineCloakTheGathering extends Discipline
 					act.RemoveActorEffect(effectGuid);
 				}
 
-				effectGuid = act.FindActorEffect("ef_disc_cloakthegathering");
+				effectGuid = act.FindActorEffect(CodexEffect.EF_DISC_CLOAKTHEGATHERING);
 				
 				if(effectGuid != 0)
 					act.ExpandActorEffect(effectGuid, CLOAKTHEGATHERING_DURATIONS[level], false);
 				else
-					act.AddActorEffectByLevel("ef_disc_cloakthegathering", CLOAKTHEGATHERING_DURATIONS[level], level, casterThing.GetGUID(), 4);
+					act.AddActorEffectByLevel(CodexEffect.EF_DISC_CLOAKTHEGATHERING, CLOAKTHEGATHERING_DURATIONS[level], level, casterThing.GetGUID(), 4);
 			}
 
 			query.Free();

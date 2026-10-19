@@ -37,7 +37,7 @@ public class DisciplineCallLightning extends Discipline
 		try
 		{
 			// start the real effect
-			targetThing.AddActorEffectByLevel("ef_disc_calllightning", 1, level-1, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_CALLLIGHTNING, 1, level-1, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

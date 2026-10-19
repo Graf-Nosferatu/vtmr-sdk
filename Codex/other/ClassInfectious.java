@@ -20,7 +20,7 @@ public class ClassInfectious extends Codex
 			CodexActor damaged = new CodexActor(damagedGUID);
 
 			int extraTime = 0;
-			int effectGuid = damaged.FindActorEffect("ef_disease");
+			int effectGuid = damaged.FindActorEffect(CodexEffect.EF_DISEASE);
 			if(effectGuid != 0)
 			{
 				damaged.RemoveActorEffect(effectGuid);
@@ -29,7 +29,7 @@ public class ClassInfectious extends Codex
 				extraTime = (int)(1000 + Math.random() * 59000);
 			}
 
-			damaged.AddActorEffectByLevel("ef_disease", extraTime + (int)(15000 + Math.random() * 585000), 0, damagerGUID, 0);
+			damaged.AddActorEffectByLevel(CodexEffect.EF_DISEASE, extraTime + (int)(15000 + Math.random() * 585000), 0, damagerGUID, 0);
 		}
 	}
 }

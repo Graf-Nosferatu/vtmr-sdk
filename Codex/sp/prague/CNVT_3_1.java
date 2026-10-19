@@ -93,9 +93,9 @@ public class CNVT_3_1 extends Codex
 
 			// make him a human
 			christofActor.SetActorType(ACTOR_TYPE_HUMAN);
-			christofActor.RemoveActorEffect("ef_decreasefrenzy");
-			christofActor.AddActorEffectByLevel("ef_increasemanaot", 0, 0, 0, 0);
-			christofActor.AddActorEffectByLevel("ef_increasebloodot", 0, 0, 0, 0);
+			christofActor.RemoveActorEffect(CodexEffect.EF_DECREASEFRENZY);
+			christofActor.AddActorEffectByLevel(CodexEffect.EF_INCREASEMANAOT, 0, 0, 0, 0);
+			christofActor.AddActorEffectByLevel(CodexEffect.EF_INCREASEBLOODOT, 0, 0, 0, 0);
 
 			christofActor.SetFoley("playerChristofHuman.nag");
 

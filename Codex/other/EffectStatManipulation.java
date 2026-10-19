@@ -23,7 +23,7 @@ public class EffectStatManipulation extends Codex
 		int level = actor.GetActorEffectLevel( effectGuid );
 
 		if( isAdding ) {
-			internalEffectGuid = actor.AddActorEffectByLevel( "ef_stat_manipulation_internal", 0, level, actorGuid, 0 );
+			internalEffectGuid = actor.AddActorEffectByLevel( CodexEffect.EF_STAT_MANIPULATION_INTERNAL, 0, level, actorGuid, 0 );
 		}
 		else {
 			actor.RemoveActorEffect( internalEffectGuid );

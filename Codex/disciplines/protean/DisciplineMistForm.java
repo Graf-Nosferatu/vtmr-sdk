@@ -35,16 +35,16 @@ public class DisciplineMistForm extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_mistform");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_MISTFORM);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, MISTFORM_DURATIONS[level], false);
 
-				int effectGuid2 = casterThing.FindActorEffect("ef_disc_mistform2");
+				int effectGuid2 = casterThing.FindActorEffect(CodexEffect.EF_DISC_MISTFORM2);
 				if(effectGuid2 != 0)
 					casterThing.ExpandActorEffect(effectGuid2, MISTFORM_DURATIONS[level], false);
 
-				int effectGuid3 = casterThing.FindActorEffect("ef_disc_mistform3");
+				int effectGuid3 = casterThing.FindActorEffect(CodexEffect.EF_DISC_MISTFORM3);
 				if(effectGuid3 != 0)
 					casterThing.ExpandActorEffect(effectGuid3, MISTFORM_DURATIONS[level], false);
 
@@ -54,9 +54,9 @@ public class DisciplineMistForm extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_mistform", MISTFORM_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_mistform2", MISTFORM_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_mistform3", MISTFORM_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_MISTFORM, MISTFORM_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_MISTFORM2, MISTFORM_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_MISTFORM3, MISTFORM_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

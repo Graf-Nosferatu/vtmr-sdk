@@ -50,7 +50,7 @@ public class DisciplineMask1000Faces extends Discipline
 		SetupWorld(DISCIPLINE_NAME);
 
 		// pretty special case, if the discipline is running, CANCEL it...
-		int effectGuid = casterThing.FindActorEffect("ef_disc_mask1000faces");
+		int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_MASK1000FACES);
 		if(effectGuid != 0)
 			casterThing.RemoveActorEffect(effectGuid);
 
@@ -64,7 +64,7 @@ public class DisciplineMask1000Faces extends Discipline
 		try
 		{
 			// start the effect... (use the full effect parameters here, we want to keep the target guid in intParam)
-			casterThing.AddActorEffectByValue("ef_disc_mask1000faces", MASK1000FACES_DURATIONS[level], targetThing.GetActorOriTeam(), casterGuid, EI_FLAG_DISCIPLINE, targetThing.GetGUID(), 0.0f);
+			casterThing.AddActorEffectByValue(CodexEffect.EF_DISC_MASK1000FACES, MASK1000FACES_DURATIONS[level], targetThing.GetActorOriTeam(), casterGuid, EI_FLAG_DISCIPLINE, targetThing.GetGUID(), 0.0f);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

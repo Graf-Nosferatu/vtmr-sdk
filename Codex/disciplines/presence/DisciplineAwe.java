@@ -47,7 +47,7 @@ public class DisciplineAwe extends Discipline
 			  )
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_awe");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_AWE);
 				if(effectGuid != 0)
 				{
 					targetThing.ExpandActorEffect(effectGuid, AWE_DURATIONS[level], false);
@@ -58,7 +58,7 @@ public class DisciplineAwe extends Discipline
 				else
 				{
 					// start the effect
-					targetThing.AddActorEffectByLevel("ef_disc_awe", AWE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+					targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_AWE, AWE_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 					// cast text
 					DisplayCast(DISCIPLINE_NAME, level);

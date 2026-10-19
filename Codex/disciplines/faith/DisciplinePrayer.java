@@ -41,12 +41,12 @@ public class DisciplinePrayer extends Discipline
 		try
 		{
 			// if the discipline is already running on the target, refresh it
-			int effectGuid = targetThing.FindActorEffect("ef_disc_prayer");
+			int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_PRAYER);
 			if(effectGuid != 0)
 				targetThing.RemoveActorEffect(effectGuid);
 			
 			// start the effect
-			targetThing.AddActorEffectByLevel("ef_disc_prayer", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_PRAYER, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

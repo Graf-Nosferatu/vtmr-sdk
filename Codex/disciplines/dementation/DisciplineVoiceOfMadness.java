@@ -49,17 +49,17 @@ public class DisciplineVoiceOfMadness extends Discipline
 				((Math.random() * targetThing.GetActorStat(ACTOR_STAT_WITS) * clanFactor) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_MANIPULATION))))
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_voiceofmadness");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_VOICEOFMADNESS);
 				if(effectGuid != 0)
 					targetThing.RemoveActorEffect(effectGuid);
 
-				int effectGuid2 = targetThing.FindActorEffect("ef_disc_voiceofmadness2");
+				int effectGuid2 = targetThing.FindActorEffect(CodexEffect.EF_DISC_VOICEOFMADNESS2);
 				if(effectGuid2 != 0)
 					targetThing.RemoveActorEffect(effectGuid2);
 				
 				// start the effect
-				targetThing.AddActorEffectByLevel("ef_disc_voiceofmadness", VOICEOFMADNESS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				targetThing.AddActorEffectByLevel("ef_disc_voiceofmadness2", VOICEOFMADNESS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_VOICEOFMADNESS, VOICEOFMADNESS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_VOICEOFMADNESS2, VOICEOFMADNESS_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

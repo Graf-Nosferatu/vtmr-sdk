@@ -35,16 +35,16 @@ public class DisciplineShapeOfTheBeast extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_shapeofthebeast");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_SHAPEOFTHEBEAST);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, SHAPEOFTHEBEAST_DURATIONS[level], false);
 
-				int effectGuid2 = casterThing.FindActorEffect("ef_disc_shapeofthebeast2");
+				int effectGuid2 = casterThing.FindActorEffect(CodexEffect.EF_DISC_SHAPEOFTHEBEAST2);
 				if(effectGuid2 != 0)
 					casterThing.ExpandActorEffect(effectGuid2, SHAPEOFTHEBEAST_DURATIONS[level], false);
 
-				int effectGuid3 = casterThing.FindActorEffect("ef_disc_shapeofthebeast3");
+				int effectGuid3 = casterThing.FindActorEffect(CodexEffect.EF_DISC_SHAPEOFTHEBEAST3);
 				if(effectGuid3 != 0)
 					casterThing.ExpandActorEffect(effectGuid3, SHAPEOFTHEBEAST_DURATIONS[level], false);
 
@@ -54,9 +54,9 @@ public class DisciplineShapeOfTheBeast extends Discipline
 			else
 			{	
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_shapeofthebeast", SHAPEOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_shapeofthebeast2", SHAPEOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_shapeofthebeast3", SHAPEOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_SHAPEOFTHEBEAST, SHAPEOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_SHAPEOFTHEBEAST2, SHAPEOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_SHAPEOFTHEBEAST3, SHAPEOFTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

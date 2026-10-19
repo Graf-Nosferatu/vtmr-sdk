@@ -27,7 +27,7 @@ public class EffectDiscCloakOfShadows extends Codex
 
 		// make sure the other effects are cancelled too
 		CodexActor actor = new CodexActor(actorGuid);
-		actor.RemoveActorEffect("ef_disc_cloakofshadows2");
+		actor.RemoveActorEffect(CodexEffect.EF_DISC_CLOAKOFSHADOWS2);
 	}
 
 }

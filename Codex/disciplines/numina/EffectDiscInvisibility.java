@@ -28,7 +28,7 @@ public class EffectDiscInvisibility extends Codex
 	{
 		// make sure the other effects are cancelled too
 		CodexActor actor = new CodexActor(actorGuid);
-		actor.RemoveActorEffect("ef_disc_invisibility2");
+		actor.RemoveActorEffect(CodexEffect.EF_DISC_INVISIBILITY2);
 	}
 
 }

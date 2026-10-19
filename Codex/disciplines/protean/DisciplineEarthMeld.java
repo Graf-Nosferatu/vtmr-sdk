@@ -35,16 +35,16 @@ public class DisciplineEarthMeld extends Discipline
 		
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_earthmeld");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_EARTHMELD);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, EARTHMELD_DURATIONS[level], false);
 
-				int effectGuid2 = casterThing.FindActorEffect("ef_disc_earthmeld2");
+				int effectGuid2 = casterThing.FindActorEffect(CodexEffect.EF_DISC_EARTHMELD2);
 				if(effectGuid2 != 0)
 					casterThing.ExpandActorEffect(effectGuid2, EARTHMELD_DURATIONS[level], false);
 
-				int effectGuid3 = casterThing.FindActorEffect("ef_disc_earthmeld3");
+				int effectGuid3 = casterThing.FindActorEffect(CodexEffect.EF_DISC_EARTHMELD3);
 				if(effectGuid3 != 0)
 					casterThing.ExpandActorEffect(effectGuid3, EARTHMELD_DURATIONS[level], false);
 
@@ -54,9 +54,9 @@ public class DisciplineEarthMeld extends Discipline
 			else
 			{	
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_earthmeld", EARTHMELD_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_earthmeld2", EARTHMELD_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_disc_earthmeld3", EARTHMELD_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_EARTHMELD, EARTHMELD_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_EARTHMELD2, EARTHMELD_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_EARTHMELD3, EARTHMELD_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

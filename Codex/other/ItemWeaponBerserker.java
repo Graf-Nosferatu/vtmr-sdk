@@ -40,7 +40,7 @@ public class ItemWeaponBerserker extends Codex
 			else
 				level = 5;
 
-			damager.AddActorEffectByLevel("ef_item_frenzy", FRENZY_DURATIONS[level], level, damagedGUID, 0);
+			damager.AddActorEffectByLevel(CodexEffect.EF_ITEM_FRENZY, FRENZY_DURATIONS[level], level, damagedGUID, 0);
  
 			// do visuals
 			damager.SetShell("redCloudShell", 0x5000, 0, .9f, 1, 1);

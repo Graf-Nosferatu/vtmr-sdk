@@ -37,7 +37,7 @@ public class DisciplineAcidicTouch extends Discipline
 		try
 		{
 			// start the real effect
-			targetThing.AddActorEffectByLevel("ef_disc_acidictouch", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_ACIDICTOUCH, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

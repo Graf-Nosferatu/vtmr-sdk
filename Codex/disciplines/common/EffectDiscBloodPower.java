@@ -16,9 +16,9 @@ public class EffectDiscBloodPower extends Codex
 
 		int level = caster.GetActorEffectLevel( effectGuid );
 
-		strengthEffectGuid = caster.AddActorEffectByLevel( "ef_stat_strength", duration, level, creatorGuid, EI_FLAG_DISCIPLINE );
-		dexterityEffectGuid = caster.AddActorEffectByLevel( "ef_stat_dexterity", duration, level, creatorGuid, EI_FLAG_DISCIPLINE );
-		staminaEffectGuid = caster.AddActorEffectByLevel( "ef_stat_stamina", duration, level, creatorGuid, EI_FLAG_DISCIPLINE );
+		strengthEffectGuid = caster.AddActorEffectByLevel( CodexEffect.EF_STAT_STRENGTH, duration, level, creatorGuid, EI_FLAG_DISCIPLINE );
+		dexterityEffectGuid = caster.AddActorEffectByLevel( CodexEffect.EF_STAT_DEXTERITY, duration, level, creatorGuid, EI_FLAG_DISCIPLINE );
+		staminaEffectGuid = caster.AddActorEffectByLevel( CodexEffect.EF_STAT_STAMINA, duration, level, creatorGuid, EI_FLAG_DISCIPLINE );
 	}
 
 

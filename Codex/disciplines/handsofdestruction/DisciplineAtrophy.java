@@ -42,9 +42,9 @@ public class DisciplineAtrophy extends Discipline
 			if((Math.random() * (targetThing.GetActorStat(ACTOR_STAT_STAMINA) + targetThing.GetActorStat(ACTOR_STAT_DEXTERITY)) / 2) < (Math.random() * casterThing.GetActorStat(ACTOR_STAT_INTELLIGENCE)))
 			{
 				// start the real effect
-				targetThing.AddActorEffectByLevel("ef_disc_atrophy", ATROPHY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				targetThing.AddActorEffectByLevel("ef_disc_atrophy2", ATROPHY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
-				targetThing.AddActorEffectByLevel("ef_disc_atrophy3", 0, level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_ATROPHY, ATROPHY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_ATROPHY2, ATROPHY_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_ATROPHY3, 0, level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

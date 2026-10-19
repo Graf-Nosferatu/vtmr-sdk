@@ -51,22 +51,22 @@ public class DisciplineHeal extends Discipline
 		try
 		{
 			// start the real effect
-			casterThing.AddActorEffectByLevel("ef_disc_heal", 0, level, casterGuid, EI_FLAG_DISCIPLINE);
+			casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_HEAL, 0, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// bonus at high levels
 			if(level == 2)
 			{
-				casterThing.AddActorEffectByLevel("ef_curepoison", 0, 1, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_CUREPOISON, 0, 1, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else if(level == 3)
 			{
-				casterThing.AddActorEffectByLevel("ef_curepoison", 0, 2, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_curedisease", 0, 1, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_CUREPOISON, 0, 2, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_CUREDISEASE, 0, 1, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else if(level == 4)
 			{
-				casterThing.AddActorEffectByLevel("ef_curepoison", 0, 3, casterGuid, EI_FLAG_DISCIPLINE);
-				casterThing.AddActorEffectByLevel("ef_curedisease", 0, 2, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_CUREPOISON, 0, 3, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_CUREDISEASE, 0, 2, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 
 

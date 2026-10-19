@@ -59,7 +59,7 @@ public class DisciplineSpiritsTouch extends Discipline
 			CodexItem target = new CodexItem(targetGuid);
 			target.SetItemFlags(ITEM_FLAG_IDENTIFIED);
 
-			casterThing.AddActorEffectByLevel("ef_disc_spiritstouch", 1, 0, casterGuid, EI_FLAG_DISCIPLINE);
+			casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_SPIRITSTOUCH, 1, 0, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

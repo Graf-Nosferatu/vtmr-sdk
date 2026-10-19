@@ -210,7 +210,7 @@ public class SET4_29_2_Main extends Codex
 			{
 				// add humanity here
 				CodexActor Christof = new CodexActor(christofGUID);
-				Christof.AddActorEffectByLevel("ef_increasehumanity", 0, 1, 0, 0);
+				Christof.AddActorEffectByLevel(CodexEffect.EF_INCREASEHUMANITY, 0, 1, 0, 0);
 			}
 		}
 

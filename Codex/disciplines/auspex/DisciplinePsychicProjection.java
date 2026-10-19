@@ -39,7 +39,7 @@ public class DisciplinePsychicProjection extends Discipline
 			CodexActor target = new CodexActor(projGuid);
 
 			// start the effect
-			target.AddActorEffectByLevel("ef_disc_psychicprojection", PSYCHICPROJECTION_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+			target.AddActorEffectByLevel(CodexEffect.EF_DISC_PSYCHICPROJECTION, PSYCHICPROJECTION_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

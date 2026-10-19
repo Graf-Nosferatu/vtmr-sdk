@@ -112,12 +112,12 @@ public class CNVT_3_3 extends Codex
 		if(humanityTrack == 1)
 		{
 			// gain humanity here
-			_Christof.AddActorEffectByLevel("ef_increasehumanity", 0, 1, 0, 0);
+			_Christof.AddActorEffectByLevel(CodexEffect.EF_INCREASEHUMANITY, 0, 1, 0, 0);
 		}
 		else if(humanityTrack == -1)
 		{
 			// lose humanity here
-			_Christof.AddActorEffectByLevel("ef_decreasehumanity", 0, 1, 0, 0);
+			_Christof.AddActorEffectByLevel(CodexEffect.EF_DECREASEHUMANITY, 0, 1, 0, 0);
 		}
 
 		// open convent exits

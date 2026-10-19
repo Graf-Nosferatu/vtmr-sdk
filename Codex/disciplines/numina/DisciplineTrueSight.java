@@ -33,7 +33,7 @@ public class DisciplineTrueSight extends Discipline
 
 		try
 		{
-			int effectGuid = casterThing.FindActorEffect("ef_disc_truesight");
+			int effectGuid = casterThing.FindActorEffect(CodexEffect.EF_DISC_TRUESIGHT);
 			if(effectGuid != 0)
 			{
 				casterThing.ExpandActorEffect(effectGuid, TRUESIGHT_DURATIONS[level], false);
@@ -44,7 +44,7 @@ public class DisciplineTrueSight extends Discipline
 			else
 			{
 				// start the real effect
-				casterThing.AddActorEffectByLevel("ef_disc_truesight", TRUESIGHT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				casterThing.AddActorEffectByLevel(CodexEffect.EF_DISC_TRUESIGHT, TRUESIGHT_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				// cast text
 				DisplayCast(DISCIPLINE_NAME, level);

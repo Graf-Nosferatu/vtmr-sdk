@@ -29,7 +29,7 @@ public class ItemWeaponFemur extends Codex
 			// add random damage up to FEMUREFFECT_MAXDAMAGE
 			float value = FEMUREFFECT_MAXDAMAGE + ((float)Math.random() * (FEMUREFFECT_MAXDAMAGE - FEMUREFFECT_MAXDAMAGE));
 
-			damaged.AddActorEffectByValue("ef_item_femur", 0, value, damagerGUID, 0);
+			damaged.AddActorEffectByValue(CodexEffect.EF_ITEM_FEMUR, 0, value, damagerGUID, 0);
 
 			// do visuals
 			damaged.SpawnThing("blackMagic");

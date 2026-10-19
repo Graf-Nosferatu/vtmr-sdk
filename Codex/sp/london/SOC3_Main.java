@@ -76,7 +76,7 @@ public class SOC3_Main extends Codex
 			CodexCamera.AddFade(CodexPlayer.GetCurrentPlayer(), (float)0.0, (float)255.0, (float)0.0, false);
 
 			// to lower his blood level at the start of the modern part of the game
-			_Christof.AddActorEffectByValue("ef_decreaseblood", 0, -50, 0, 0);
+			_Christof.AddActorEffectByValue(CodexEffect.EF_DECREASEBLOOD, 0, -50, 0, 0);
 			
 			// hackish way to remove the money they've gained from the DA portion
 			CodexConsole.Execute("cash 0");

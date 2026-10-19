@@ -55,8 +55,8 @@ public class DisciplineBloodRage extends Discipline
 		try
 		{
 			// start the real effect
-			targetThing.AddActorEffectByLevel("ef_disc_bloodrage1", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
-			targetThing.AddActorEffectByLevel("ef_disc_bloodrage2", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_BLOODRAGE1, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+			targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_BLOODRAGE2, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

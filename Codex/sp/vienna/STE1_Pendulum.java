@@ -57,7 +57,7 @@ public class STE1_Pendulum extends Codex
  
 		riskTaker = new CodexPlayer(causeGuid);
 
-		int effectGuid = riskTaker.FindActorEffect("ef_disc_mistform");
+		int effectGuid = riskTaker.FindActorEffect(CodexEffect.EF_DISC_MISTFORM);
 
 		if(effectGuid == 0)
 		{

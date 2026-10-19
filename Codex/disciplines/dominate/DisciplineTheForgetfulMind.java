@@ -54,12 +54,12 @@ public class DisciplineTheForgetfulMind extends Discipline
 				)
 			{
 				// if the discipline is already running on the target, refresh it
-				int effectGuid = targetThing.FindActorEffect("ef_disc_theforgetfulmind");
+				int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_THEFORGETFULMIND);
 				if(effectGuid != 0)
 					targetThing.RemoveActorEffect(effectGuid);
 				
 				// start the effect
-				targetThing.AddActorEffectByLevel("ef_disc_theforgetfulmind", THEFORGETFULMIND_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_THEFORGETFULMIND, THEFORGETFULMIND_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 			}
 			else
 			{

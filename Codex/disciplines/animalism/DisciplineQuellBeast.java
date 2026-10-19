@@ -47,7 +47,7 @@ public class DisciplineQuellBeast extends Discipline
 		{
 			if(casterThing.GetActorTeam() == targetThing.GetActorTeam())
 			{
-				targetThing.AddActorEffectByLevel("ef_disc_quellbeast", 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
+				targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_QUELLBEAST, 2000, level, casterGuid, EI_FLAG_DISCIPLINE);
 
 				DisplayCast(DISCIPLINE_NAME, level);
 			}
@@ -62,11 +62,11 @@ public class DisciplineQuellBeast extends Discipline
 				  )
 				{
 					// if the discipline is already running on the target remove and recreate it (could be another caster)
-					int effectGuid = targetThing.FindActorEffect("ef_disc_quellbeast2");
+					int effectGuid = targetThing.FindActorEffect(CodexEffect.EF_DISC_QUELLBEAST2);
 					if(effectGuid != 0)
 						targetThing.RemoveActorEffect(effectGuid);
 
-					targetThing.AddActorEffectByLevel("ef_disc_quellbeast2", QUELLTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
+					targetThing.AddActorEffectByLevel(CodexEffect.EF_DISC_QUELLBEAST2, QUELLTHEBEAST_DURATIONS[level], level, casterGuid, EI_FLAG_DISCIPLINE);
 
 					DisplayCast(DISCIPLINE_NAME, level);
 				}

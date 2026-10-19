@@ -90,12 +90,12 @@ public class EffectDiscMajesty extends Codex
 				continue;
 
 			CodexActor victim = new CodexActor(result);
-			int effectGuid = victim.FindActorEffect("ef_disc_majesty2");
+			int effectGuid = victim.FindActorEffect(CodexEffect.EF_DISC_MAJESTY2);
 			
 			if(effectGuid != 0)
 				victim.ExpandActorEffect(effectGuid, TICK_DURATION, false);
 			else
-				victim.AddActorEffectByLevel("ef_disc_majesty2", TICK_DURATION, 0, caster.GetGUID(), 4);
+				victim.AddActorEffectByLevel(CodexEffect.EF_DISC_MAJESTY2, TICK_DURATION, 0, caster.GetGUID(), 4);
 		}
 
 		query.Free();

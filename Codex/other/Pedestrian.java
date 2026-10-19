@@ -24,7 +24,7 @@ public class Pedestrian extends Codex
 		else
 		{
 			// add random blood to the pedestrian
-			pedestrian.AddActorEffectByValue("ef_increaseblood", 0, (float)(Math.random() * 33.0f), pedestrian.GetGUID(), 0, 0, 0.0f);
+			pedestrian.AddActorEffectByValue(CodexEffect.EF_INCREASEBLOOD, 0, (float)(Math.random() * 33.0f), pedestrian.GetGUID(), 0, 0, 0.0f);
 		}
 	}
 
