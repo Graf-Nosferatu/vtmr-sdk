@@ -17,7 +17,7 @@ public class ItemUtilityTorch extends Codex
 	{
 		CodexThing torch = new CodexThing(GetClassThing());
 
-		flameGuid = torch.SpawnThing("torchFlame_nosave");
+		flameGuid = torch.SpawnThing(CodexTemplate.TORCHFLAME_NOSAVE);
 		int boneNum = torch.FindBone(MOTIONTAG_USER0);
 
 		float[] offset = new float[3];

@@ -23,10 +23,10 @@ public class EffectDiscCelerity extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("blueMagic");
+		_Target.SpawnThing(CodexTemplate.BLUEMAGIC);
 		
 		// running trail effect
-		trailGuid = _Target.SpawnThing("celerityTrail");
+		trailGuid = _Target.SpawnThing(CodexTemplate.CELERITYTRAIL);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

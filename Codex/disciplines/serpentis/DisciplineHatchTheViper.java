@@ -50,7 +50,7 @@ public class DisciplineHatchTheViper extends Discipline
 
 		try
 		{
-			int petGuid = casterThing.SpawnThingNear("viper", 0.0f, 0);
+			int petGuid = casterThing.SpawnThingNear(CodexTemplate.VIPER, 0.0f, 0);
 			if(petGuid != 0)
 			{
 				CodexActor petActor = new CodexActor(petGuid);

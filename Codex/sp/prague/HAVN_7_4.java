@@ -80,7 +80,7 @@ public class HAVN_7_4 extends Codex
 
 			case TIMER_ID_DRIP:
 				
-				dripGuid = _Ecaterina.SpawnThing("blooddrip");
+				dripGuid = _Ecaterina.SpawnThing(CodexTemplate.BLOODDRIP);
 				drip = new CodexThing(dripGuid);
 				_Ecaterina.AttachThing(dripGuid, _Ecaterina.FindBone(MOTIONTAG_RWRIST), offset, ATTACH_FLAG_AUTOREMOVE);
 				break;
@@ -272,10 +272,10 @@ public class HAVN_7_4 extends Codex
 				_Cosmas.Remove();
 				
 				// arm Christof with cross
-				crossGuid = _Christof.SpawnThing("crossProjectile");
+				crossGuid = _Christof.SpawnThing(CodexTemplate.CROSSPROJECTILE);
 				_crossProjectile = new CodexThing(crossGuid);
 				_Christof.EnableActorWeapon(true);
-				_Christof.OverrideActorWeapon("weapCross", false, false);
+				_Christof.OverrideActorWeapon(CodexTemplate.WEAPCROSS, false, false);
 
 				// make him stand dejectedly
 				_Christof.PlayMotionSetMode(MOTION_GESTURE1, false, (float)30.0);

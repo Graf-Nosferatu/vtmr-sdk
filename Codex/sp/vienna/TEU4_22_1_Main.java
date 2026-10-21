@@ -155,7 +155,7 @@ public class TEU4_22_1_Main extends Codex
 
 				offset[0] = 0; offset[1] = 0; offset[2] = 0;
 
-				int effectGuid = _Corpse.SpawnThing("neckBlood");
+				int effectGuid = _Corpse.SpawnThing(CodexTemplate.NECKBLOOD);
 				_Corpse.AttachThing(effectGuid, 17, offset, ATTACH_FLAG_AUTOREMOVE);
 
 //				CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "CorpseGetUp.ncp", 30);

@@ -31,7 +31,7 @@ public class ARC3_Gargoyle extends Codex
 			CodexSequence.SetChronicleFlag(chronScript.ARC3_GARGOYLE);
 
 			// spawn the gargoyle
-			_gargoyle = new CodexActor(_ghost.SpawnThing("gargoyle2"));
+			_gargoyle = new CodexActor(_ghost.SpawnThing(CodexTemplate.GARGOYLE2));
 
 			_gargoyleGuid = _gargoyle.GetGUID();
 

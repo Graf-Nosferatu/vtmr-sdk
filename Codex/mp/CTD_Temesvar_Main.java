@@ -281,7 +281,7 @@ public class CTD_Temesvar_Main extends Codex
 		{
 			case TIMER_ID_REMOVEBEGGAR:
 
-				_Beggar.SpawnThing("blueMagic");
+				_Beggar.SpawnThing(CodexTemplate.BLUEMAGIC);
 
 				_Beggar.SetRenderFlags(THING_RENDERFLAG_DONTRENDER);
 				_Beggar.SetCollideType(THING_COLLIDE_NONE);

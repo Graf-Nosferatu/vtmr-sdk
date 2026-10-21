@@ -27,7 +27,7 @@ public class EffectDiscMistForm extends Codex
 		
 		// create the effect and attach it to the caster
 		_Creator.SetAlpha((float)0.0, (float)1500.0);
-		mistGuid = _Creator.SpawnThing("greenMist");
+		mistGuid = _Creator.SpawnThing(CodexTemplate.GREENMIST);
 		float[] offset = new float[3];
 		offset[0] = 0; offset[1] = 0; offset[2] = 0; 
 		_Creator.AttachThing(mistGuid, 0, offset, ATTACH_FLAG_AUTOREMOVE);

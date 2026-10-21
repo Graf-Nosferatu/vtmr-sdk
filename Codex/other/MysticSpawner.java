@@ -44,7 +44,7 @@ public class MysticSpawner extends Codex
 		}
 		else
 		{
-			_particles = new CodexThing(_spawnPoint.SpawnThing("mysticIdleMagic"));
+			_particles = new CodexThing(_spawnPoint.SpawnThing(CodexTemplate.MYSTICIDLEMAGIC));
 		
 			particlesGuid = _particles.GetGUID();
 
@@ -67,22 +67,22 @@ public class MysticSpawner extends Codex
 		{
 			case 1:
 				_spawnPoint.SpawnThing(_randomGood1);
-				_spawnPoint.SpawnThing("mysticGoodMagic");
+				_spawnPoint.SpawnThing(CodexTemplate.MYSTICGOODMAGIC);
 				break;
 
 			case 2:
 				_spawnPoint.SpawnThing(_randomGood2);
-				_spawnPoint.SpawnThing("mysticGoodMagic");
+				_spawnPoint.SpawnThing(CodexTemplate.MYSTICGOODMAGIC);
 				break;
 
 			case 3:
 				_spawnPoint.SpawnThing(_randomBad1);
-				_spawnPoint.SpawnThing("mysticBadMagic");
+				_spawnPoint.SpawnThing(CodexTemplate.MYSTICBADMAGIC);
 				break;
 
 			case 4:
 				_spawnPoint.SpawnThing(_randomBad2);
-				_spawnPoint.SpawnThing("mysticBadMagic");
+				_spawnPoint.SpawnThing(CodexTemplate.MYSTICBADMAGIC);
 
 				break;
 		}

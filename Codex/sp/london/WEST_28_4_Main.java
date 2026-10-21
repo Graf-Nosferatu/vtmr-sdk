@@ -146,7 +146,7 @@ public class WEST_28_4_Main extends Codex
 					{
 						case 0:
 
-							_Christof.OverrideActorWeapon("weapLocket", false, false);
+							_Christof.OverrideActorWeapon(CodexTemplate.WEAPLOCKET, false, false);
 							CodexCamera.SetupCutscene(starterGuid, christofGUID, pinkGUID);
 							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
 							break;

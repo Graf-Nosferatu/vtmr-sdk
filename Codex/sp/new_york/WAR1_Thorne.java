@@ -74,7 +74,7 @@ public class WAR1_Thorne extends Codex
 		}
 		else
 		{
-			_Thorne.OverrideActorWeapon("pistol", false, false);
+			_Thorne.OverrideActorWeapon(CodexTemplate.PISTOL, false, false);
 		}
 	}
 	

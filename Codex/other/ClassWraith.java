@@ -19,9 +19,9 @@ public class ClassWraith extends Codex
 
 		if(spectralThing != null)
 		{
-			int trailGuid = spectralThing.SpawnThing("trail_spectral");
-			int rfingersGuid = spectralThing.SpawnThing("trail_spectralHands");
-			int lfingersGuid = spectralThing.SpawnThing("trail_spectralHands");
+			int trailGuid = spectralThing.SpawnThing(CodexTemplate.TRAIL_SPECTRAL);
+			int rfingersGuid = spectralThing.SpawnThing(CodexTemplate.TRAIL_SPECTRALHANDS);
+			int lfingersGuid = spectralThing.SpawnThing(CodexTemplate.TRAIL_SPECTRALHANDS);
 
 			int boneNum0 = spectralThing.FindBone(MOTIONTAG_USER1);
 			int boneNum1 = spectralThing.FindBone(MOTIONTAG_RFINGERS);

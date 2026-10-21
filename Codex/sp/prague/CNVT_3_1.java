@@ -103,7 +103,7 @@ public class CNVT_3_1 extends Codex
 			CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
 
 			// spawn the animated bed sheet in at the player's spot
-			bedSheetGuid = christofActor.SpawnThing("chrisAwakenSheet");
+			bedSheetGuid = christofActor.SpawnThing(CodexTemplate.CHRISAWAKENSHEET);
 			bedSheet = new CodexThing(bedSheetGuid);
 			bedSheet.SetThingFlags(THING_FLAG_SAVENEVER);
 
@@ -145,7 +145,7 @@ public class CNVT_3_1 extends Codex
 				// First scream, wake Chris up
 				CodexSound snd1 = new CodexSound("Anezka_Scream_8.wav", (float)2048.0, (float)4096.0, 100, 0, 0, anezkaActor.GetGUID());
 				//christofActor.SetRenderFlags(THING_RENDERFLAG_DONTRENDER);
-				//chrisHead = new CodexActor(christofActor.SpawnThing("ChrisAwakenCloseup"));
+				//chrisHead = new CodexActor(christofActor.SpawnThing(CodexTemplate.CHRISAWAKENCLOSEUP));
 
 				//chrisHead.PlayMotionSetMode(MOTION_SPECIAL1, false, (float)30.0);
 				//CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "WakeUpChris.ncp", 30);
@@ -314,7 +314,7 @@ public class CNVT_3_1 extends Codex
 					case 0:
 
 						// Christof drops his sword here
-						swordGuid = christofActor.SpawnThing("broadsword");
+						swordGuid = christofActor.SpawnThing(CodexTemplate.BROADSWORD);
 						sword = new CodexThing(swordGuid);
 						sword.SetThingFlags(THING_FLAG_SAVENEVER);
 						

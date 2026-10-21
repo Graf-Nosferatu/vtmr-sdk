@@ -115,7 +115,7 @@ public class UNIV_14_3 extends Codex
 
 				case 1:
 
-					_Ecaterina.OverrideActorWeapon("weapChalice", false, false);
+					_Ecaterina.OverrideActorWeapon(CodexTemplate.WEAPCHALICE, false, false);
 					_Ecaterina.PlayMotionSetMode(MOTION_GESTURE4, false, (float)30.0);
 
 					SetTimer(7, TIMER_ID_ENDCONVERSATION);

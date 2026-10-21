@@ -19,7 +19,7 @@ public class EffectDiscEyesOfChaos extends Codex
 		CodexActor _Target = new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("yellowMagic");
+		_Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		
 		// Running effect
 	}

@@ -35,7 +35,7 @@ public class DisciplinePsychicProjection extends Discipline
 
 		try
 		{
-			int projGuid = casterThing.SpawnThingNear("astralProjection", 0.0f, 0);
+			int projGuid = casterThing.SpawnThingNear(CodexTemplate.ASTRALPROJECTION, 0.0f, 0);
 			CodexActor target = new CodexActor(projGuid);
 
 			// start the effect

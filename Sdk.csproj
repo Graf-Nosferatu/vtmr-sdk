@@ -52,6 +52,11 @@
 		<Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir).vscode\generateCodexEffect.ps1&quot;" />
 	</Target>
 
+	<Target Name="GenerateCodexTemplate" BeforeTargets="BeforeCompile">
+		<Message Importance="High" Text="CodexTemplate: generating..." />
+		<Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir).vscode\generateCodexTemplate.ps1&quot;" />
+	</Target>
+
 	<Target Name="BuildCodex" AfterTargets="Build" Condition="'$(ModDir)' != ''">
 		<Message Importance="High" Text="Codex: building..." />
 		<Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir).vscode\buildCodexList.ps1&quot; -outPath &quot;$(ProjectDir)$(ModDir)\Codex&quot;" />

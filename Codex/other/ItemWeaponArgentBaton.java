@@ -32,7 +32,7 @@ public class ItemWeaponArgentBaton extends Codex
 			damaged.AddActorEffectByValue(CodexEffect.EF_ITEM_ARGENTBATON, 0, value, damagerGUID, 0);
 
 			// do visuals
-			damaged.SpawnThing("blackMagic");
+			damaged.SpawnThing(CodexTemplate.BLACKMAGIC);
 		}
 	}
  

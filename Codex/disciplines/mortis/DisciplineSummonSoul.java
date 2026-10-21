@@ -50,7 +50,7 @@ public class DisciplineSummonSoul extends Discipline
 
 		try
 		{
-			int petGuid = casterThing.SpawnThingNear("wraith", 0.0f, 0);
+			int petGuid = casterThing.SpawnThingNear(CodexTemplate.WRAITH, 0.0f, 0);
 			if(petGuid != 0)
 			{
 				CodexActor petActor = new CodexActor(petGuid);

@@ -83,7 +83,7 @@ public class LOT_UTWN_9_1 extends Codex
 		{
 			chronScript.Step(chronScript.UTWN_BILLSPAWNEDIN);
 
-			_Bill = new CodexActor(_billSpawnSpot.SpawnThing("Bill"));
+			_Bill = new CodexActor(_billSpawnSpot.SpawnThing(CodexTemplate.BILL));
 			_Bill.SetActorFlags(THING_AF_INVUL);
 
 			_BloodHuntGuy1.SetActorFlags(THING_AF_AIPAUSED);

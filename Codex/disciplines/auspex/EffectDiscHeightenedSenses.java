@@ -29,7 +29,7 @@ public class EffectDiscHeightenedSenses extends Codex
 		CaptureThing(actorGuid);
 
 		// running pad effect
-		padGuid = _Actor.SpawnThing("rosettePad");
+		padGuid = _Actor.SpawnThing(CodexTemplate.ROSETTEPAD);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

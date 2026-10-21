@@ -134,7 +134,7 @@ public class TrapFloorPlateZap extends Codex
 				dudeToZap.AttachThing(beamGuid, dudeToZap.FindBone(MOTIONTAG_HELMET), offset, ATTACH_FLAG_AUTOREMOVE);
 
 				// create a smoke plume at their position
-				smokeGuid = beam.SpawnThing("smokeplume");
+				smokeGuid = beam.SpawnThing(CodexTemplate.SMOKEPLUME);
 
 				// attach that smoke to the player
 				dudeToZap.AttachThing(smokeGuid, dudeToZap.FindBone(MOTIONTAG_HELMET), offset, ATTACH_FLAG_AUTOREMOVE);

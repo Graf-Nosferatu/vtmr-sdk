@@ -19,7 +19,7 @@ public class EffectDiscInvisibility extends Codex
 	public void effectstarted(int actorGuid, int effectGuid, int creatorGuid, int duration)
 	{
 		// placeholder effect
-		//_Creator.SpawnThing("yellowMagic");
+		//_Creator.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		
 		// Running effect
 	}

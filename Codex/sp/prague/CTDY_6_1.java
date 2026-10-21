@@ -252,7 +252,7 @@ public class CTDY_6_1 extends Codex
 
 				case 8:
 
-					_Christof.OverrideActorWeapon("weapLocket", false, false);
+					_Christof.OverrideActorWeapon(CodexTemplate.WEAPLOCKET, false, false);
 					_Christof.PlayMotionSetMode(MOTION_SPECIAL18, false, (float)30.0);
 					CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
 					break;

@@ -49,7 +49,7 @@ public class FredVarneyCigar extends Codex
 	{
 		if(bearer != null)
 		{
-			smokeGuid = bearer.SpawnThing("cigarSmoke");
+			smokeGuid = bearer.SpawnThing(CodexTemplate.CIGARSMOKE);
 			int boneNum = bearer.FindBone(MOTIONTAG_LFINGERS);
 
 			float[] offset = new float[3];

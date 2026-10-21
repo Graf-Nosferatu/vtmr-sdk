@@ -17,7 +17,7 @@ public class ItemGangrelEye extends Codex
 	{
 		CodexThing gangrelEye = new CodexThing(GetClassThing());
 
-		gleamGuid = gangrelEye.SpawnThing("gangrelEyeEffect");
+		gleamGuid = gangrelEye.SpawnThing(CodexTemplate.GANGRELEYEEFFECT);
 		int boneNum = gangrelEye.FindBone(MOTIONTAG_USER0);
 
 		float[] offset = new float[3];

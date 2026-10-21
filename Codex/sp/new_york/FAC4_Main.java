@@ -105,7 +105,7 @@ public class FAC4_Main extends Codex
 			case TIMER_ID_ORSITOSS:
 
 				AIOff();
-				_Christof.OverrideActorWeapon("Punch", false, false);
+				_Christof.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
 
 				CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "OrsiToss.ncp", 30);
 							
@@ -158,9 +158,9 @@ public class FAC4_Main extends Codex
 
 			case TIMER_ID_SPLASH:
 
-				_splashGhost.SpawnThing("moltenSpray");
-				_splashGhost.SpawnThing("moltenSplash");
-				_splashGhost.SpawnThing("moltenSplash");
+				_splashGhost.SpawnThing(CodexTemplate.MOLTENSPRAY);
+				_splashGhost.SpawnThing(CodexTemplate.MOLTENSPLASH);
+				_splashGhost.SpawnThing(CodexTemplate.MOLTENSPLASH);
 				_Christof.CancelOverrideActorWeapon();
 				_Orsi.Remove();
 				break;
@@ -322,9 +322,9 @@ public class FAC4_Main extends Codex
 			SetTimer(0, TIMER_ID_ORSITOSS);
 		}
 
-		_kazi = new CodexActor(_kaziGhost.SpawnThing("kazi"));
-		_teta = new CodexActor(_tetaGhost.SpawnThing("teta"));
-		_zil = new CodexActor(_zilGhost.SpawnThing("zil"));
+		_kazi = new CodexActor(_kaziGhost.SpawnThing(CodexTemplate.KAZI));
+		_teta = new CodexActor(_tetaGhost.SpawnThing(CodexTemplate.TETA));
+		_zil = new CodexActor(_zilGhost.SpawnThing(CodexTemplate.ZIL));
 
 		CaptureThing(_kazi.GetGUID());
 		CaptureThing(_teta.GetGUID());

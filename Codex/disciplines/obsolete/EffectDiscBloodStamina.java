@@ -20,7 +20,7 @@ public class EffectDiscBloodStamina extends Codex
 
 		// initial effect
 		_Creator.SetShell("redCloudShell", 0x5000, 0, 1, 1, 1);
-		_Creator.SpawnThing("redMagic");
+		_Creator.SpawnThing(CodexTemplate.REDMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

@@ -63,14 +63,14 @@ public class ConveyerHold extends Codex
 				{
 					case 1: // spikes/blood
 						_spikes.MoveToFrame(1, 300); // trigger spikes
-						_spikesBlood.SpawnThing("blood0"); // trigger blood
+						_spikesBlood.SpawnThing(CodexTemplate.BLOOD0); // trigger blood
 
 						// random blood spurts on model
 						for(boneNum = 0; boneNum < 20; boneNum++)
 						{
 							if(Math.random() < 0.33)
 							{
-								bloodGuid = _heldObject.SpawnThing("blood0");
+								bloodGuid = _heldObject.SpawnThing(CodexTemplate.BLOOD0);
 
 								CodexThing tempBlood = new CodexThing(bloodGuid);
 								orient[0] = ((float)Math.random() * 360 - 180);
@@ -86,13 +86,13 @@ public class ConveyerHold extends Codex
 
 					case 2: // roller/blood
 						// trigger blood
-						_rollerBlood.SpawnThing("blood0"); // trigger blood;
+						_rollerBlood.SpawnThing(CodexTemplate.BLOOD0); // trigger blood;
 						// random blood drips on model
 						for(boneNum = 0; boneNum < 20; boneNum++)
 						{
 							if(Math.random() < 0.33)
 							{
-								bloodGuid = _heldObject.SpawnThing("blood");
+								bloodGuid = _heldObject.SpawnThing(CodexTemplate.BLOOD);
 								_heldObject.AttachThing(bloodGuid, boneNum, offset, ATTACH_FLAG_AUTOREMOVE);
 							}
 						}
@@ -104,7 +104,7 @@ public class ConveyerHold extends Codex
 						break;
 
 					case 7: // steam 1
-						_steam1.SpawnThing("steamBlast"); // trigger steam 1
+						_steam1.SpawnThing(CodexTemplate.STEAMBLAST); // trigger steam 1
 						SetTimer(2, 7, frameNum);
 						break;
 
@@ -113,7 +113,7 @@ public class ConveyerHold extends Codex
 						break;
 
 					case 10: // steam 2
-						_steam2.SpawnThing("steamBlast"); // trigger steam 2
+						_steam2.SpawnThing(CodexTemplate.STEAMBLAST); // trigger steam 2
 						SetTimer(2, 10, frameNum);
 						break;
 
@@ -153,7 +153,7 @@ public class ConveyerHold extends Codex
 				{
 					if(Math.random() < 0.33)
 					{
-						int gunkGuid = _heldObject.SpawnThing("blood");
+						int gunkGuid = _heldObject.SpawnThing(CodexTemplate.BLOOD);
 						_heldObject.AttachThing(gunkGuid, boneNum, offset, ATTACH_FLAG_AUTOREMOVE + 0x2000);
 					}
 				}
@@ -161,7 +161,7 @@ public class ConveyerHold extends Codex
 				break;
 
 			case 10:
-				int steamGuid = _heldObject.SpawnThing("steamBlast");
+				int steamGuid = _heldObject.SpawnThing(CodexTemplate.STEAMBLAST);
 				_heldObject.AttachThing(steamGuid, -1, offset, ATTACH_FLAG_AUTOREMOVE);
 				_conveyer.MoveToFrame((int)arg0 + 1, 112);
 				break;

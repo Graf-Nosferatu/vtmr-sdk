@@ -20,7 +20,7 @@ public class EffectDiscHeal extends Codex
 		
 		// initial effect
 		_Creator.SetShell("redCloudShell_b", 0x5000, 0, 1, 1, 1);
-		_Creator.SpawnThing("blueMagic");
+		_Creator.SpawnThing(CodexTemplate.BLUEMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

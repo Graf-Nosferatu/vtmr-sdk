@@ -27,10 +27,10 @@ public class EffectDiscTheftOfVitae extends Codex
 
 		// placeholder effect
 		_Creator.SetShell("redCloudShell", 0x5000, 0, .9f, 1, 1);
-		_Target.SpawnThing("redMagic");
+		_Target.SpawnThing(CodexTemplate.REDMAGIC);
 
 		// Running effect
-		beamGuid = _Target.SpawnThing("bloodStream");
+		beamGuid = _Target.SpawnThing(CodexTemplate.BLOODSTREAM);
 		CodexThing beam = new CodexThing(beamGuid);
 		float[]	offset = new float[3];
 

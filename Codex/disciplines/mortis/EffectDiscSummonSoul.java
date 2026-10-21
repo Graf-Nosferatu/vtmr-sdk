@@ -19,7 +19,7 @@ public class EffectDiscSummonSoul extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("invshockwave");
+		_Creator.SpawnThing(CodexTemplate.INVSHOCKWAVE);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

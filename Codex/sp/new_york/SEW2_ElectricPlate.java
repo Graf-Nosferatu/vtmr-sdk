@@ -48,7 +48,7 @@ public class SEW2_ElectricPlate extends Codex
 			_bTrapStarted = true;
 
 			// spawn a beam at the floor mover's position
-			_beamGuid = _floorMover.SpawnThing("bluelightning");
+			_beamGuid = _floorMover.SpawnThing(CodexTemplate.BLUELIGHTNING);
 			_beam = new CodexThing(_beamGuid);
 
 			// hide beam immediately

@@ -100,7 +100,7 @@ public class HHX1_23_1 extends Codex
 			_etriusDoor.SetShell("shellSprite_blue", 0x1000, .2f, .2f, 1, 1);
 
 			// spawn effect
-			_arcDoorEffectGuid = _etriusDoor.SpawnThing("ArcanulumDoorEffect");
+			_arcDoorEffectGuid = _etriusDoor.SpawnThing(CodexTemplate.ARCANULUMDOOREFFECT);
 
 			offset[0] = -160; 
 			offset[1] = 0; 
@@ -161,7 +161,7 @@ public class HHX1_23_1 extends Codex
 				CodexConsole.PrintNLS(CodexPlayer.GetCurrentPlayer(), 0, "HHX1_ARCPIECE1PLACED");
 
 				// placeholder effect
-				_arcanulumPiece1.SpawnThing("redMagic");
+				_arcanulumPiece1.SpawnThing(CodexTemplate.REDMAGIC);
 
 				new CodexSound("teleport_03.wav", (float)2048.0, (float)4096.0, 100, 0, 0, _floorArcanulum.GetGUID());
 			}
@@ -176,7 +176,7 @@ public class HHX1_23_1 extends Codex
 				CodexConsole.PrintNLS(CodexPlayer.GetCurrentPlayer(), 0, "HHX1_ARCPIECE2PLACED");
 
 				// placeholder effect
-				_arcanulumPiece2.SpawnThing("greenMagic");
+				_arcanulumPiece2.SpawnThing(CodexTemplate.GREENMAGIC);
 
 				new CodexSound("teleport_03.wav", (float)2048.0, (float)4096.0, 100, 0, 0, _floorArcanulum.GetGUID());
 			}
@@ -191,7 +191,7 @@ public class HHX1_23_1 extends Codex
 				CodexConsole.PrintNLS(CodexPlayer.GetCurrentPlayer(), 0, "HHX1_ARCPIECE3PLACED");
 
 				// placeholder effect
-				_arcanulumPiece3.SpawnThing("blueMagic");
+				_arcanulumPiece3.SpawnThing(CodexTemplate.BLUEMAGIC);
 
 				new CodexSound("teleport_03.wav", (float)2048.0, (float)4096.0, 100, 0, 0, _floorArcanulum.GetGUID());
 			}

@@ -181,7 +181,7 @@ public class SOC1_Father extends Codex
 		
 			case TIMER_ID_BROKEVATS:
 
-				_Blood = new CodexThing(_BloodSpawnSpot.SpawnThing("bloodPool"));
+				_Blood = new CodexThing(_BloodSpawnSpot.SpawnThing(CodexTemplate.BLOODPOOL));
 
 				float vecScale[] = new float[3];
 

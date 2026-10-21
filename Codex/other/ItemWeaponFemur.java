@@ -32,7 +32,7 @@ public class ItemWeaponFemur extends Codex
 			damaged.AddActorEffectByValue(CodexEffect.EF_ITEM_FEMUR, 0, value, damagerGUID, 0);
 
 			// do visuals
-			damaged.SpawnThing("blackMagic");
+			damaged.SpawnThing(CodexTemplate.BLACKMAGIC);
 		}
 	}
  

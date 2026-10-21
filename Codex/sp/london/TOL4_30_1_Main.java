@@ -124,7 +124,7 @@ public class TOL4_30_1_Main extends Codex
 				{
 					case 0:
 
-						_Christof.OverrideActorWeapon("weapHeart", false, false);
+						_Christof.OverrideActorWeapon(CodexTemplate.WEAPHEART, false, false);
 						_Christof.PlayMotionSetMode(MOTION_SPECIAL24, false, (float)30.0);
 						CodexCamera.SetupCutscene(starterGuid, christofGUID, pinkGUID);
 						CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_B, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 1, 0);

@@ -33,7 +33,7 @@ public class DisciplineFlameRing extends Discipline
 
 		try
 		{
-			casterThing.SpawnThing("exp_flamering");
+			casterThing.SpawnThing(CodexTemplate.EXP_FLAMERING);
 
 			// cast text
 			DisplayCast(DISCIPLINE_NAME, level);

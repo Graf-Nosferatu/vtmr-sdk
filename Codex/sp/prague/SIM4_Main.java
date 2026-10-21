@@ -248,7 +248,7 @@ public class SIM4_Main extends Codex
 
 				case 1:
 
-					_Christof.OverrideActorWeapon("weapLocket", false, false);
+					_Christof.OverrideActorWeapon(CodexTemplate.WEAPLOCKET, false, false);
 					_Christof.PlayMotionSetMode(MOTION_ACTION6, false, (float)30.0);
 					break;
 			}

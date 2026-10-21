@@ -148,10 +148,10 @@ public class WAR3_Main extends Codex
 		{
 			CodexSequence.SetChronicleFlag(chronScript.WAR3_BIGAL);
 
-			_Christof.OverrideActorWeapon("Punch", false, false);
-			_Pink.OverrideActorWeapon("Punch", false, false);
-			_Samuel.OverrideActorWeapon("Punch", false, false);
-			_Lily.OverrideActorWeapon("Punch", false, false);
+			_Christof.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
+			_Pink.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
+			_Samuel.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
+			_Lily.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
 
 			BigAlConversation(causeGUID, 0);
 		}
@@ -546,7 +546,7 @@ public class WAR3_Main extends Codex
 						case 11:
 
 							// Fade Pink out
-							_Pink.SpawnThing("blueMagic");
+							_Pink.SpawnThing(CodexTemplate.BLUEMAGIC);
 							_Pink.SetAlpha(.1f, 2000f);
 							break;
 

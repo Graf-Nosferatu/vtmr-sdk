@@ -26,10 +26,10 @@ public class EffectDiscFeralWhispers extends Codex
 		CodexActor _Creator	= new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("yellowMagic");
+		_Creator.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		
 		// running pad effect
-		padGuid = _Target.SpawnThing("ringOfWolvesYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFWOLVESYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

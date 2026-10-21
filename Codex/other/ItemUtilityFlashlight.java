@@ -17,7 +17,7 @@ public class ItemUtilityFlashlight extends Codex
 	{
 		CodexThing flashlight = new CodexThing(GetClassThing());
 
-		flameGuid = flashlight.SpawnThing("flashlightEffect");
+		flameGuid = flashlight.SpawnThing(CodexTemplate.FLASHLIGHTEFFECT);
 		int boneNum = flashlight.FindBone(MOTIONTAG_USER0);
 
 		float[] offset = new float[3];

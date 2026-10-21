@@ -10,6 +10,6 @@ public class EffectDiscBloodHealing extends Codex
 		
 		// initial effect
 		caster.SetShell( "redCloudShell", 0x5000, 0, 1, 1, 1 );
-		caster.SpawnThing( "redMagic" );
+		caster.SpawnThing( CodexTemplate.REDMAGIC );
 	}
 }

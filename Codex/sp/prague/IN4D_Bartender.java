@@ -89,7 +89,7 @@ public class IN4D_Bartender extends Codex
 			bBartenderConversation = false;
 			CodexCamera.Release(starterGuid);
 
-			_spawnSpot.SpawnThing("potionmajorhealth");
+			_spawnSpot.SpawnThing(CodexTemplate.POTIONMAJORHEALTH);
 		}
 
 		if(bBartender2Conversation)
@@ -99,7 +99,7 @@ public class IN4D_Bartender extends Codex
 			CodexCamera.Release(starterGuid);
 
 			if(!CodexSequence.GetChronicleFlag(chronScript.INN4_FIRSTBARKEEP))
-				_spawnSpot.SpawnThing("potionmajorhealth");
+				_spawnSpot.SpawnThing(CodexTemplate.POTIONMAJORHEALTH);
 		}
 	}
 

@@ -49,7 +49,7 @@ public class TorchBearer extends Codex
 	{
 		if(bearer != null)
 		{
-			flameGuid = bearer.SpawnThing("torchFlame");
+			flameGuid = bearer.SpawnThing(CodexTemplate.TORCHFLAME);
 			int boneNum = bearer.FindBone(MOTIONTAG_USER0);
 
 			float[] offset = new float[3];

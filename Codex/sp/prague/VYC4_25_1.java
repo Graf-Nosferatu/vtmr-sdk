@@ -244,7 +244,7 @@ public class VYC4_25_1 extends Codex
 						//_Libussa.SetShell("LensFlare1_green", 0x1000, 0, 1, 1, 1);
 /*					
 						// spawn a beam from the sarcophagus
-						beamGuid = _sarcophagus.SpawnThing("fogStream");
+						beamGuid = _sarcophagus.SpawnThing(CodexTemplate.FOGSTREAM);
 						beam = new CodexThing(beamGuid);
 
 						// allocate two frames for the beam (0th frame is its "origin" and the 1st is its target)

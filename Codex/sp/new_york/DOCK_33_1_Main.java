@@ -97,7 +97,7 @@ public class DOCK_33_1_Main extends Codex
 		if(!CodexSequence.GetChronicleFlag(chronScript.DEVN_GETCODES))
 		{
 			_georgeThorne.LookAtThing(warehouseGuid);
-			_georgeThorne.OverrideActorWeapon("weapGoggles", false, false);
+			_georgeThorne.OverrideActorWeapon(CodexTemplate.WEAPGOGGLES, false, false);
 			_georgeThorne.PlayMotionSetMode(MOTION_SPECIAL5, false, (float)30.0);
 
 			SetTimer((float)(minFrequency + Math.random() * (maxFrequency - minFrequency)), TIMER_ID_STANDANDPEEK);

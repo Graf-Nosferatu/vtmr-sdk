@@ -63,7 +63,7 @@ public class ANZK_14_1 extends Codex
 		
 		_Christof = new CodexActor(CodexThing.GuidFromCastID("Christof"));
 		_Christof.EnableActorWeapon(false);
-		_Christof.OverrideActorWeapon("Punch", false, false);
+		_Christof.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
 
 		CodexPlayer.TeleportPartyToConversation(CodexPlayer.GetCurrentPlayer(), 0);
 		_Christof.PlayMotionSetMode(MOTION_SPECIAL6, false, (float)30.0);

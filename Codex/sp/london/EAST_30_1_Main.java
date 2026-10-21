@@ -42,7 +42,7 @@ public class EAST_30_1_Main extends Codex
 		{
 			bTriggered = true;
 			// bewm.
-			_werewolfGhost.SpawnThing("werewolf");
+			_werewolfGhost.SpawnThing(CodexTemplate.WEREWOLF);
 			new CodexSound("explosion_firey", 1000, 3000, 100, 0, 0, _werewolfGhost.GetGUID());
 
 			_fence1.Trigger(0, 0, 0, 0, 0, 0);

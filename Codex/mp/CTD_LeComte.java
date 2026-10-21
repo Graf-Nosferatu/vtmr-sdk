@@ -202,7 +202,7 @@ public class CTD_LeComte extends Codex
 			////////////////////////////////////////////////////////////////////
 			if(CodexSequence.GetChronicleFlag(chronScript.OUBLIETTE_LECOMTELETTER))
 			{
-				_monocleSpot.SpawnThing("monacleclarity");
+				_monocleSpot.SpawnThing(CodexTemplate.MONACLECLARITY);
 
 				RetrieveMonocle(starterGuid);
 			}

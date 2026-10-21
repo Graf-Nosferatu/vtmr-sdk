@@ -80,8 +80,8 @@ public class Discipline extends Codex
 	protected	static final float		CLOAKTHEGATHERING_ALPHA_NONE		= 1.0f;
 	protected	static final float[]	CLOAKTHEGATHERING_ALPHAS			= { 0.25f, 0.20f, 0.15f, 0.10f, 0.05f };
 
-	protected	static final String[]	FERALCLAWS_TEMPLATES				= { "Claw01", "Claw02", "Claw03", "Claw04", "Claw05" };
-	protected	static final String[]	FLASH_TEMPLATES						= { "exp_flash", "exp_flash", "exp_flash", "exp_flash", "exp_flash" };
+	protected	static final String[]	FERALCLAWS_TEMPLATES				= { CodexTemplate.CLAW01, CodexTemplate.CLAW02, CodexTemplate.CLAW03, CodexTemplate.CLAW04, CodexTemplate.CLAW05 };
+	protected	static final String[]	FLASH_TEMPLATES						= { CodexTemplate.EXP_FLASH, CodexTemplate.EXP_FLASH, CodexTemplate.EXP_FLASH, CodexTemplate.EXP_FLASH, CodexTemplate.EXP_FLASH };
 
 	protected	static final int[]		FIREBALL_DAMAGES					= { 10, 20, 30, 40, 50 };
 
@@ -94,11 +94,11 @@ public class Discipline extends Codex
 	protected	static final float		OBFUSCATE_ALPHA_NONE				= 1.0f;
 	protected	static final float[]	OBFUSCATE_ALPHAS					= { 0.25f, 0.20f, 0.15f, 0.10f, 0.05f };
 
-	protected	static final String[]	PLAGUEWIND_TEMPLATES				= { "proj_plaguewind0", "proj_plaguewind1", "proj_plaguewind2", "proj_plaguewind3", "proj_plaguewind4" };
+	protected	static final String[]	PLAGUEWIND_TEMPLATES				= { CodexTemplate.PROJ_PLAGUEWIND0, CodexTemplate.PROJ_PLAGUEWIND1, CodexTemplate.PROJ_PLAGUEWIND2, CodexTemplate.PROJ_PLAGUEWIND3, CodexTemplate.PROJ_PLAGUEWIND4 };
 
-	protected	static final String[]	TRUEFAITH_TEMPLATES					= { "exp_truefaith", "exp_truefaith1", "exp_truefaith2", "exp_truefaith3", "exp_truefaith4" };
+	protected	static final String[]	TRUEFAITH_TEMPLATES					= { CodexTemplate.EXP_TRUEFAITH, CodexTemplate.EXP_TRUEFAITH1, CodexTemplate.EXP_TRUEFAITH2, CodexTemplate.EXP_TRUEFAITH3, CodexTemplate.EXP_TRUEFAITH4 };
 	
-	protected	static final String[]	EYESOFTHEBEAST_TEMPLATES			= { "exp_eyesofthebeast", "exp_eyesofthebeast1", "exp_eyesofthebeast2", "exp_eyesofthebeast3", "exp_eyesofthebeast4" };
+	protected	static final String[]	EYESOFTHEBEAST_TEMPLATES			= { CodexTemplate.EXP_EYESOFTHEBEAST, CodexTemplate.EXP_EYESOFTHEBEAST1, CodexTemplate.EXP_EYESOFTHEBEAST2, CodexTemplate.EXP_EYESOFTHEBEAST3, CodexTemplate.EXP_EYESOFTHEBEAST4 };
 
 	// --------------------------------------------------------------------------------------------
 

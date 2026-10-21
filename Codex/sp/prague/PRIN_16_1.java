@@ -208,7 +208,7 @@ public class PRIN_16_1 extends Codex
 							// Christof reacts with pain
 							_Brandl.StopActorAction();
 							_Christof.PlayMotionSetMode(MOTION_HURT, false, (float)30.0);
-							_Christof.SpawnThing("redMagic");
+							_Christof.SpawnThing(CodexTemplate.REDMAGIC);
 							CodexCamera.SetupCutscene(starterGuid, christofGUID, ecaterinaGUID);
 							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_B, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
 							CodexSound snd2 = new CodexSound("Christof_Grunt_14.wav", (float)2048.0, (float)4096.0, 100, 0, 0, _Christof.GetGUID());

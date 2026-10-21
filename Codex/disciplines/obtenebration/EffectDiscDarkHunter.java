@@ -19,7 +19,7 @@ public class EffectDiscDarkHunter extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// intial effect
-		_Creator.SpawnThing("redMagic");
+		_Creator.SpawnThing(CodexTemplate.REDMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

@@ -57,13 +57,13 @@ public class SEW2_ElectricVertical extends Codex
 			_bTrapStarted = true;
 
 			// spawn a beam at each mover's position
-			_beam1Guid = _mover1.SpawnThing("bluelightning");
+			_beam1Guid = _mover1.SpawnThing(CodexTemplate.BLUELIGHTNING);
 			_beam1 = new CodexThing(_beam1Guid);
-			_beam2Guid = _mover2.SpawnThing("bluelightning");
+			_beam2Guid = _mover2.SpawnThing(CodexTemplate.BLUELIGHTNING);
 			_beam2 = new CodexThing(_beam2Guid);
-			_beam3Guid = _mover3.SpawnThing("bluelightning");
+			_beam3Guid = _mover3.SpawnThing(CodexTemplate.BLUELIGHTNING);
 			_beam3 = new CodexThing(_beam3Guid);
-			_beam4Guid = _mover4.SpawnThing("bluelightning");
+			_beam4Guid = _mover4.SpawnThing(CodexTemplate.BLUELIGHTNING);
 			_beam4 = new CodexThing(_beam4Guid);
 
 			// allocate two frames for each beam (0th frame is its "origin" and the 1st is its target)

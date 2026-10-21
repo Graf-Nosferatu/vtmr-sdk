@@ -123,7 +123,7 @@ public class FLS1_Main extends Codex
 
 				// remove VukStunt, spawn ZuloStunt in his spot
 				_Christof.StopActorAction();
-				_ZuloStunt = new CodexActor(_VukStunt.SpawnThing("ZuloTransform"));
+				_ZuloStunt = new CodexActor(_VukStunt.SpawnThing(CodexTemplate.ZULOTRANSFORM));
 				CaptureThing(_ZuloStunt.GetGUID());
 
 				_VukStunt.Remove();
@@ -150,7 +150,7 @@ public class FLS1_Main extends Codex
 			case TIMER_ID_RELEASE:
 
 				// remove ZuloStunt, spawn Zulo in his spot
-				_Zulo = new CodexActor(_ZuloStunt.SpawnThing("Zulo"));
+				_Zulo = new CodexActor(_ZuloStunt.SpawnThing(CodexTemplate.ZULO));
 				_zuloGuid = _Zulo.GetGUID();
 				CaptureThing(_Zulo.GetGUID());
 
@@ -220,7 +220,7 @@ public class FLS1_Main extends Codex
 
 		// change Vuk into Zulo shape here
 
-		_VukStunt = new CodexActor(_Vukodlak.SpawnThing("VukodlakTransform"));
+		_VukStunt = new CodexActor(_Vukodlak.SpawnThing(CodexTemplate.VUKODLAKTRANSFORM));
 		CaptureThing(_VukStunt.GetGUID());
 
 		_Vukodlak.Remove();

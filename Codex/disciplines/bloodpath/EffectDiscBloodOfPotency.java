@@ -23,13 +23,13 @@ public class EffectDiscBloodOfPotency extends Codex
 		CodexActor _Creator	= new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("redMagic");
+		_Creator.SpawnThing(CodexTemplate.REDMAGIC);
 
 		// running shell effect
 		_Creator.SetShell("redCloudShell", 0x1000, 0, .3f, 1, 1);
 
 		// running pad effect
-		padGuid = _Creator.SpawnThing("ankhsPadRed");
+		padGuid = _Creator.SpawnThing(CodexTemplate.ANKHSPADRED);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

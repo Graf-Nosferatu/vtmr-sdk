@@ -26,7 +26,7 @@ public class EffectDiscPrisonOfIce extends Codex
 		target = new CodexActor(actorGuid);
 
 		// initial effect
-		target.SpawnThing("blueMagic");
+		target.SpawnThing(CodexTemplate.BLUEMAGIC);
 //		target.SetShell("redCloudShell_b", 0x1000, 0, .3f, 1, 1);
 		target.SetShell("iceShell", 0x1000, 0, .3f, 1, 1);
 		

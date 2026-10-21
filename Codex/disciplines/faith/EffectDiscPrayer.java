@@ -19,7 +19,7 @@ public class EffectDiscPrayer extends Codex
 		CodexActor _Target = new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("blueMagic");
+		_Target.SpawnThing(CodexTemplate.BLUEMAGIC);
 		_Target.SetShell("redCloudShell_b", 0x5000, 0, 2, 1, 1);
 	}
 

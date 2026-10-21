@@ -23,13 +23,13 @@ public class EffectDiscHeartOfStone extends Codex
 		CodexActor _Creator	= new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("redMagic");
+		_Creator.SpawnThing(CodexTemplate.REDMAGIC);
 		
 		// flash shell at startup
 		_Creator.SetShell("redCloudShell", 0x5000, 0, .9f, 1, 1);
 		
 		// running pad effect
-		padGuid = _Creator.SpawnThing("ankhs2Pad");
+		padGuid = _Creator.SpawnThing(CodexTemplate.ANKHS2PAD);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

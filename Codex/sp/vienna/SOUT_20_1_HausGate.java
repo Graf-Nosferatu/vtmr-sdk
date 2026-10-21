@@ -70,7 +70,7 @@ public class SOUT_20_1_HausGate extends Codex
 		//////////////////////////////////////////////////////////////////////////
 
 		// spawn a beam at the player's position
-		beamGuid = player.SpawnThing("bluelightning");
+		beamGuid = player.SpawnThing(CodexTemplate.BLUELIGHTNING);
 		beam = new CodexThing(beamGuid);
 
 		// allocate two frames for the beam (0th frame is its "origin" and the 1st is its target)
@@ -87,7 +87,7 @@ public class SOUT_20_1_HausGate extends Codex
 		player.AttachThing(beamGuid, player.FindBone(MOTIONTAG_HELMET), offset, ATTACH_FLAG_AUTOREMOVE);
 
 		// create a smoke plume at their position
-		smokeGuid = player.SpawnThing("smokeplume");
+		smokeGuid = player.SpawnThing(CodexTemplate.SMOKEPLUME);
 
 		// attach that smoke to the player
 		player.AttachThing(smokeGuid, player.FindBone(MOTIONTAG_HELMET), offset, ATTACH_FLAG_AUTOREMOVE);

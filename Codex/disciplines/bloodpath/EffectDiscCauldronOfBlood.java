@@ -24,10 +24,10 @@ public class EffectDiscCauldronOfBlood extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// placeholder effect
-		_Target.SpawnThing("redMagic");
+		_Target.SpawnThing(CodexTemplate.REDMAGIC);
 
 		// running pad effect
-		padGuid = _Target.SpawnThing("ankhsPadRed");
+		padGuid = _Target.SpawnThing(CodexTemplate.ANKHSPADRED);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

@@ -22,7 +22,7 @@ public class ItemWeaponSatchel extends Codex
 		CodexThing satchel = new CodexThing(guid);
 
 		// FIXME!! spawn explosion here
-		satchel.SpawnThing("exp_grenade");
+		satchel.SpawnThing(CodexTemplate.EXP_GRENADE);
 
 		// remove the satchel object
 		satchel.Remove();

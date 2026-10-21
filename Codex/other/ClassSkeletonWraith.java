@@ -22,6 +22,6 @@ public class ClassSkeletonWraith extends Codex
 		CodexVector position = new CodexVector(skeletonThing.GetPosition());
 		CodexVector orientation = new CodexVector(skeletonThing.GetPosition());
 
-		int wraithGuid = world.CreateThing("Szlachta", position.AsArray(), orientation.AsArray());
+		int wraithGuid = world.CreateThing(CodexTemplate.SZLACHTA, position.AsArray(), orientation.AsArray());
 	}	
 }

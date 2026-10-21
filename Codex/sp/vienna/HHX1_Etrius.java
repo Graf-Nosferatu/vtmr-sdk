@@ -115,7 +115,7 @@ public class HHX1_Etrius extends Codex
 			_Etrius.SetCollideType(THING_COLLIDE_CYL);
 
 			_Etrius.SetShell("BlueLightning", 0x5000, 0, 1, 1, 1);
-			_Etrius.SpawnThing("blueMagic");
+			_Etrius.SpawnThing(CodexTemplate.BLUEMAGIC);
 
 			CodexSound snd1 = new CodexSound("teleport_02.wav", (float)2048.0, (float)4096.0, 100, 0, 0, _Etrius.GetGUID());
 
@@ -155,7 +155,7 @@ public class HHX1_Etrius extends Codex
 
 			_Etrius.SetAlpha((float)0.6);
 
-			_Etrius.SpawnThing("blueMagic");
+			_Etrius.SpawnThing(CodexTemplate.BLUEMAGIC);
 			_Etrius.SetShell("BlueLightning", 0x5000, 0, 1, 1, 1);
 
 			Etrius3Conversation(causeID, 0);
@@ -203,7 +203,7 @@ public class HHX1_Etrius extends Codex
 				DropErikInventory();
 
 				// spawn a beam at the player's position
-				beamGuid = _Etrius.SpawnThing("blueLightningTwo");
+				beamGuid = _Etrius.SpawnThing(CodexTemplate.BLUELIGHTNINGTWO);
 				beam = new CodexThing(beamGuid);
 
 				_Erik.SetShell("redCloudShell_b", 0x5000, 0, 1, 1, 1);
@@ -241,7 +241,7 @@ public class HHX1_Etrius extends Codex
 				CodexSound snd5 = new CodexSound("Erik_Scream_3.wav", (float)2048.0, (float)4096.0, 100, 0, 0, _Erik.GetGUID());
 				_Etrius.DetachThing(beamGuid);
 				_Erik.SetShell("shellSprite_white", 0x5000, 0, 1, 3, 1);
-				_Erik.SpawnThing("blueMagic");
+				_Erik.SpawnThing(CodexTemplate.BLUEMAGIC);
 				break;
 
 			case TIMER_ID_PARTYREACTION:
@@ -261,7 +261,7 @@ public class HHX1_Etrius extends Codex
 				// remove erik, spawn flying garoyle in his spot
 				_Christof.StopActorAction();
 				_Erik.Remove();
-				_erikGargoyle = new CodexActor(_GargoyleSpawnSpot.SpawnThing("Gargoyle_Erik"));
+				_erikGargoyle = new CodexActor(_GargoyleSpawnSpot.SpawnThing(CodexTemplate.GARGOYLE_ERIK));
 				_erikGargoyleGuid = _erikGargoyle.GetGUID();
 				CaptureThing(_erikGargoyle.GetGUID());
 
@@ -275,7 +275,7 @@ public class HHX1_Etrius extends Codex
 
 				CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "HexEtriusLookAtErik.ncp", 30);
 				_erikGargoyle.SetShell("shellSprite_white", 0x5000, 0, 1, 1, 1);
-				_erikGargoyle.SpawnThing("blueMagic");
+				_erikGargoyle.SpawnThing(CodexTemplate.BLUEMAGIC);
 				SetTimer((float)6.0, TIMER_ID_GARGOYLE);
 				break;
 
@@ -530,7 +530,7 @@ public class HHX1_Etrius extends Codex
 						case 2:
 
 							_Etrius.SetShell("BlueLightning", 0x5000, 0, 1, 1, 1);
-							_Etrius.SpawnThing("blueMagic");
+							_Etrius.SpawnThing(CodexTemplate.BLUEMAGIC);
 							SetTimer(0.1f, TIMER_ID_ETRIUSREMOVE);
 							break;
 

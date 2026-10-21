@@ -24,16 +24,16 @@ public class EffectDiscAwe extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("yellowMagic");
+		_Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		
 		// running pad effect
-		padGuid = _Target.SpawnThing("ringOfEyesYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFEYESYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;
 		_Target.AttachThing(padGuid, -1, offset, ATTACH_FLAG_AUTOREMOVE);
 
-		secondaryGuid = _Target.SpawnThing("yellowMagic");
+		secondaryGuid = _Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 
 		CaptureThing(actorGuid);
 

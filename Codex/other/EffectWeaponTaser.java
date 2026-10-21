@@ -27,7 +27,7 @@ public class EffectWeaponTaser extends Codex
 		_Target		= new CodexActor(actorGuid);
 
 		// Running effect
-		beamGuid = _Creator.SpawnThing("blueLightningOne");
+		beamGuid = _Creator.SpawnThing(CodexTemplate.BLUELIGHTNINGONE);
 		CodexThing beam = new CodexThing(beamGuid);
 		float[]	offset = new float[3];
 

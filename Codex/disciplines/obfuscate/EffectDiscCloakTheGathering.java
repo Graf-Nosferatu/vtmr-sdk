@@ -19,7 +19,7 @@ public class EffectDiscCloakTheGathering extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("yellowMagic");
+		_Creator.SpawnThing(CodexTemplate.YELLOWMAGIC);
 	}
 
 	public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

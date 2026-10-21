@@ -27,11 +27,11 @@ public class EffectWeaponAinkurn extends Codex
 		_Target		= new CodexActor(actorGuid);
 
 		// placeholder effect
-		_Creator.SpawnThing("redMagic");
-		_Target.SpawnThing("redMagic");
+		_Creator.SpawnThing(CodexTemplate.REDMAGIC);
+		_Target.SpawnThing(CodexTemplate.REDMAGIC);
 
 		// Running effect
-		beamGuid = _Target.SpawnThing("bloodStream");
+		beamGuid = _Target.SpawnThing(CodexTemplate.BLOODSTREAM);
 		CodexThing beam = new CodexThing(beamGuid);
 		float[]	offset = new float[3];
 

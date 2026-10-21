@@ -24,10 +24,10 @@ public class EffectDiscEntrancement extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Target.SpawnThing("flamewave");
+		_Target.SpawnThing(CodexTemplate.FLAMEWAVE);
 		
 		// running pad effect
-		padGuid = _Target.SpawnThing("ringOfEyesBlue");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFEYESBLUE);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

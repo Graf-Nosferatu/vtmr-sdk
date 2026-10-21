@@ -283,7 +283,7 @@ public class SEW4_Main extends Codex
 						case 0:
 
 							// Plug it in, Sam
-							_Samuel.OverrideActorWeapon("weapTransmitter", false, false);
+							_Samuel.OverrideActorWeapon(CodexTemplate.WEAPTRANSMITTER, false, false);
 							_Samuel.PlayMotionSetMode(MOTION_GESTURE3, false, (float)30.0);
 							CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "Transponder.ncp", 30);
 							SetTimer((float)1.0, TIMER_ID_REMOVETRANS);

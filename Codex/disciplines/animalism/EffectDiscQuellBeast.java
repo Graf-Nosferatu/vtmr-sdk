@@ -19,7 +19,7 @@ public class EffectDiscQuellBeast extends Codex
 		CodexActor _Target = new CodexActor(actorGuid);
 
 		// placeholder effect
-		_Target.SpawnThing("blueMagic");
+		_Target.SpawnThing(CodexTemplate.BLUEMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

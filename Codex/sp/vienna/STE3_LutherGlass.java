@@ -208,7 +208,7 @@ public class STE3_LutherGlass extends Codex
 				Luther.AddActorEffectByValue(CodexEffect.EF_DMG_SUN, 0, 2.5f, 0, 0);
 
 				// spawn in some smoke from luther
-				Luther.SpawnThing("smokePlume");
+				Luther.SpawnThing(CodexTemplate.SMOKEPLUME);
 
 				// start playing luther's death animation
 				Luther.PlayMotionSetMode(MOTION_SPECIAL4, false, (float)30.0);

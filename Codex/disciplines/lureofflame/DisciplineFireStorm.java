@@ -54,8 +54,8 @@ public class DisciplineFireStorm extends Discipline
 		try
 		{
 			// create an explosion
-			CodexThing storm = new CodexThing(casterThing.SpawnThing("firestorm"));
-			CodexThing explosion = new CodexThing(casterThing.SpawnThing("exp_firestorm"));
+			CodexThing storm = new CodexThing(casterThing.SpawnThing(CodexTemplate.FIRESTORM));
+			CodexThing explosion = new CodexThing(casterThing.SpawnThing(CodexTemplate.EXP_FIRESTORM));
 
 			// place it on the target
 			float [] pos = new float[3];

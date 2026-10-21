@@ -19,7 +19,7 @@ public class EffectDiscBeckoning extends Codex
 		CodexActor _Caster	= new CodexActor(creatorGuid);
 		
 		// initial effect
-		_Caster.SpawnThing("yellowMagic");
+		_Caster.SpawnThing(CodexTemplate.YELLOWMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

@@ -23,7 +23,7 @@ public class EffectDiscTorch extends Codex
 		CodexActor _Creator	= new CodexActor(creatorGuid);
 
 		// create a dynamic light and attach it to the caster
-		flameGuid = _Creator.SpawnThing("disciplineTorch");
+		flameGuid = _Creator.SpawnThing(CodexTemplate.DISCIPLINETORCH);
 		//int boneNum = _Creator.FindBone(MOTIONTAG_USER0);
 		float[] offset = new float[3];
 		offset[0] = 32; offset[1] = 32; offset[2] = 64; 

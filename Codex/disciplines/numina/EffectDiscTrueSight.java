@@ -23,10 +23,10 @@ public class EffectDiscTrueSight extends Codex
 		CodexActor _Creator	= new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("blueMagic");
+		_Creator.SpawnThing(CodexTemplate.BLUEMAGIC);
 		
 		// Running pad effect
-		padGuid = _Creator.SpawnThing("ankhsPad");
+		padGuid = _Creator.SpawnThing(CodexTemplate.ANKHSPAD);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

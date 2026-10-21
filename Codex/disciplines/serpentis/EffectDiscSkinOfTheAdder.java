@@ -25,11 +25,11 @@ public class EffectDiscSkinOfTheAdder extends Codex
 		CodexActor _Creator	= new CodexActor(_creatorGuid);
 		
 		// initial effect
-		_Creator.SpawnThing("greenMagic");
+		_Creator.SpawnThing(CodexTemplate.GREENMAGIC);
 		_Creator.SetShell("snakeSkinShell", 0x1000, 0, .3f, 1, 1);
 
 		// running pad effect
-		padGuid = _Creator.SpawnThing("ringOfSerpentsGreen");
+		padGuid = _Creator.SpawnThing(CodexTemplate.RINGOFSERPENTSGREEN);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

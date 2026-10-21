@@ -165,7 +165,7 @@ public class ANZK_8_4 extends Codex
 			case 12:
 
 				// Delay while Christof moves toward Anezka
-				_Christof.OverrideActorWeapon("Punch", false, false);
+				_Christof.OverrideActorWeapon(CodexTemplate.PUNCH, false, false);
 				pos = _Anezka.GetFramePosition(2);
 				_Christof.SendActorToPos(pos, (float)90.0);
 				CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
@@ -235,7 +235,7 @@ public class ANZK_8_4 extends Codex
 
 			case 22:
 
-				_Anezka.OverrideActorWeapon("weapLocket", false, false);
+				_Anezka.OverrideActorWeapon(CodexTemplate.WEAPLOCKET, false, false);
 				CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0);
 				break;
 

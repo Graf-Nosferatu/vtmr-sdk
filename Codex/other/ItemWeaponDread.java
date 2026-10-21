@@ -43,7 +43,7 @@ public class ItemWeaponDread extends Codex
 			damaged.AddActorEffectByLevel(CodexEffect.EF_ITEM_DREAD, DREAD_DURATIONS[level], level, damagedGUID, 0);
  
 			// do visuals
-			damaged.SpawnThing("redMagic");
+			damaged.SpawnThing(CodexTemplate.REDMAGIC);
 		}
 	}
  

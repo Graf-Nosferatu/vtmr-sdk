@@ -23,13 +23,13 @@ public class EffectDiscPotence extends Codex
 		CodexActor _Creator	 = new CodexActor(actorGuid);
 		
 		// initial effect
-		_Creator.SpawnThing("ringTower");
+		_Creator.SpawnThing(CodexTemplate.RINGTOWER);
 
 		// running shell effect
 		_Creator.SetShell("redCloudShell_b", 0x1000, 0, .3f, 1, 1);
 
 		// running pad effect
-		padGuid = _Creator.SpawnThing("sawToothBlue");
+		padGuid = _Creator.SpawnThing(CodexTemplate.SAWTOOTHBLUE);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

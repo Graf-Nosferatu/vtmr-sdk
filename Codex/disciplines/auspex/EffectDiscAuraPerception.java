@@ -19,7 +19,7 @@ public class EffectDiscAuraPerception extends Codex
 		CodexActor _Target = new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("blueMagic");
+		_Target.SpawnThing(CodexTemplate.BLUEMAGIC);
 		
 		// Running effect
 	}

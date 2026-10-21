@@ -200,7 +200,7 @@ public class CNVT_7_1 extends Codex
 
 			AIOn();
 			bEcaterinaConversation = false;
-			_Anezka.OverrideActorWeapon("weapLocket", false, false);
+			_Anezka.OverrideActorWeapon(CodexTemplate.WEAPLOCKET, false, false);
 
 			// Fade out
 			CodexCamera.AddFade(CodexPlayer.GetCurrentPlayer(), (float)255.0, (float)0.0, (float)2.0, false);

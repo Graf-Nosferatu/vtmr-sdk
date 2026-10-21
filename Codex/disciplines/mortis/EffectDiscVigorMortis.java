@@ -20,7 +20,7 @@ public class EffectDiscVigorMortis extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Target.SpawnThing("blackMagic");
+		_Target.SpawnThing(CodexTemplate.BLACKMAGIC);
 
 		// assign the creator's team to the possessed actor
 		_Target.SetActorTeam(_Creator.GetActorTeam());

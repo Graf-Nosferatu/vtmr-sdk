@@ -19,7 +19,7 @@ public class EffectDiscBlackDeath extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);		
 
 		// initial effect
-		_Target.SpawnThing("blackMagic");
+		_Target.SpawnThing(CodexTemplate.BLACKMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

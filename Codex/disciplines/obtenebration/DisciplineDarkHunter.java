@@ -50,7 +50,7 @@ public class DisciplineDarkHunter extends Discipline
 
 		try
 		{
-			int petGuid = casterThing.SpawnThingNear("darkhunter", 0.0f, 0);
+			int petGuid = casterThing.SpawnThingNear(CodexTemplate.DARKHUNTER, 0.0f, 0);
 			if(petGuid != 0)
 			{
 				CodexActor petActor = new CodexActor(petGuid);

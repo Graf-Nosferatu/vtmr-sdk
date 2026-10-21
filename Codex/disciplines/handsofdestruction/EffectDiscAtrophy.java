@@ -23,11 +23,11 @@ public class EffectDiscAtrophy extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 		
 		// initial effect
-		_Target.SpawnThing("invshockwave_y");
+		_Target.SpawnThing(CodexTemplate.INVSHOCKWAVE_Y);
 		_Target.SetShell("redCloudShell_y", 0x1000, 0, 1, 1, 1);
 
 		// running pad effect
-		padGuid = _Target.SpawnThing("swirlingSkullsYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.SWIRLINGSKULLSYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

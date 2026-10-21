@@ -107,7 +107,7 @@ public class UNIV_14_1 extends Codex
 			CodexCamera.Release(starterGuid);
 
 			// spawn the letter in and show it  anezka in read interface
-			_anezkaLetterSpot.SpawnThing("AnezkaLetter_2");
+			_anezkaLetterSpot.SpawnThing(CodexTemplate.ANEZKALETTER_2);
 
 			ExecuteText(starterGuid, 0, "AnezkaLetter2");
 		}

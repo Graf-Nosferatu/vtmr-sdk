@@ -210,7 +210,7 @@ public class DEVN_33_2 extends Codex
 						case 22:
 
 							// give sammy the transponder to show/hold
-							_Samuel.OverrideActorWeapon("weapTransmitter", false, false);
+							_Samuel.OverrideActorWeapon(CodexTemplate.WEAPTRANSMITTER, false, false);
 
 							CodexCamera.SetupCutscene(starterGuid, samuelGUID, 0);
 							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0);

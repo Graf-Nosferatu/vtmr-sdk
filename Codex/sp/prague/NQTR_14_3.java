@@ -185,7 +185,7 @@ public class NQTR_14_3 extends Codex
 				case 0:
 
 					CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "JosefDrinksVitae.ncp", 30);
-					_Josef.OverrideActorWeapon("weapChaliceEmpty", false, false);
+					_Josef.OverrideActorWeapon(CodexTemplate.WEAPCHALICEEMPTY, false, false);
 					_Josef.PlayMotionSetMode(MOTION_SPECIAL1, false, (float)30.0);
 					break;
 			}

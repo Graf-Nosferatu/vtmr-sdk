@@ -223,7 +223,7 @@ public class SEW3_Main extends Codex
 
 				LakeConversation(thingGuid, 0);
 
-				_AlligatorWalk = new CodexActor(_AlligatorSwim.SpawnThing("alligator"));
+				_AlligatorWalk = new CodexActor(_AlligatorSwim.SpawnThing(CodexTemplate.ALLIGATOR));
 				_AlligatorSwim.Remove();
 
 				_Pink.StopActorAction();

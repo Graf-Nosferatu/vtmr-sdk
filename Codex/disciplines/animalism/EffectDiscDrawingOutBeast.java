@@ -19,7 +19,7 @@ public class EffectDiscDrawingOutBeast extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("redMagic");
+		_Target.SpawnThing(CodexTemplate.REDMAGIC);
 		_Target.SetShell("redCloudShell", 0x5000, 0, 1, 1, 1);
 
 	}

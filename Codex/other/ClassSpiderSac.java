@@ -27,11 +27,11 @@ public class ClassSpiderSac extends Codex
 			sack.SpawnThing("dust");
 
 			// create the baby spiders
-			sack.SpawnThing("ghoulSpiderBaby");
-			sack.SpawnThing("ghoulSpiderBaby");
-			sack.SpawnThing("ghoulSpiderBaby");
-			sack.SpawnThing("ghoulSpiderBaby");
-			sack.SpawnThing("ghoulSpiderBaby");
+			sack.SpawnThing(CodexTemplate.GHOULSPIDERBABY);
+			sack.SpawnThing(CodexTemplate.GHOULSPIDERBABY);
+			sack.SpawnThing(CodexTemplate.GHOULSPIDERBABY);
+			sack.SpawnThing(CodexTemplate.GHOULSPIDERBABY);
+			sack.SpawnThing(CodexTemplate.GHOULSPIDERBABY);
 			
 			sack.Remove();
 

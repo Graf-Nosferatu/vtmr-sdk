@@ -18,8 +18,8 @@ public class EffectDiscCallLightning extends Codex
 	{
 		CodexActor _Target = new CodexActor(actorGuid);
 		
-		int beamGuid = _Target.SpawnThing("blueLightningOne");
-		int cloudGuid = _Target.SpawnThing("lightningCloud");
+		int beamGuid = _Target.SpawnThing(CodexTemplate.BLUELIGHTNINGONE);
+		int cloudGuid = _Target.SpawnThing(CodexTemplate.LIGHTNINGCLOUD);
 		CodexThing beam = new CodexThing(beamGuid);
 		CodexThing cloud = new CodexThing(cloudGuid);
 		float[]	offset = new float[3];

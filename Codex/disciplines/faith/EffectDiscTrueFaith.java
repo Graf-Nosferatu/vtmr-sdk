@@ -24,7 +24,7 @@ public class EffectDiscTrueFaith extends Codex
 		CodexActor caster = new CodexActor(actorGuid);
 		_explosionGuid = caster.GetActorEffectIntParam(effectGuid);
 
-		domeGuid = caster.SpawnThing("holyHalfdome");
+		domeGuid = caster.SpawnThing(CodexTemplate.HOLYHALFDOME);
 
 		CodexThing Dome = new CodexThing(domeGuid);
 		Dome.SetAlpha(0.05f);

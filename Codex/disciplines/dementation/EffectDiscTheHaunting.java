@@ -23,10 +23,10 @@ public class EffectDiscTheHaunting extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("invshockwave");
+		_Target.SpawnThing(CodexTemplate.INVSHOCKWAVE);
 		
 		// running ring effect
-		padGuid = _Target.SpawnThing("ringOfSkullsBlue");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFSKULLSBLUE);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

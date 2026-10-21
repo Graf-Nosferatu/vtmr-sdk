@@ -18,7 +18,7 @@ public class EffectItemBlackGloves extends Codex
 	{ 
 		CodexActor wearer = new CodexActor(actorGuid);
 
-		wearer.OverrideActorWeapon("Claw", true, true);
+		wearer.OverrideActorWeapon(CodexTemplate.CLAW, true, true);
 		wearer.SetActorFlags(THING_AF_NOSHAPEDISC);
 	}
 

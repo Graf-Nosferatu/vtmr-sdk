@@ -148,7 +148,7 @@ public class FeederRatClassWander extends Codex
 		{
 			CodexPlayer player = new CodexPlayer(clickerGuid);
 
-			int ratItemGuid = ratThing.SpawnThing("vitaeRat");
+			int ratItemGuid = ratThing.SpawnThing(CodexTemplate.VITAERAT);
 			player.AddToActorInventory(ratItemGuid);
 
 			// finally, remove the rat actor...

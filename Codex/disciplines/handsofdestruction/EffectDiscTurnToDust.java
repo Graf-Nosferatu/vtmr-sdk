@@ -20,7 +20,7 @@ public class EffectDiscTurnToDust extends Codex
 		CodexActor _Target = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Target.SpawnThing("invshockwave");
+		_Target.SpawnThing(CodexTemplate.INVSHOCKWAVE);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

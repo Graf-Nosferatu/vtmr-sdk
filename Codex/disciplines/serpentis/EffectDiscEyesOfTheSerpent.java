@@ -23,10 +23,10 @@ public class EffectDiscEyesOfTheSerpent extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("greenMagic");
+		_Target.SpawnThing(CodexTemplate.GREENMAGIC);
 		
 		// Running pad effect
-		padGuid = _Target.SpawnThing("ringOfSerpentsGreen");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFSERPENTSGREEN);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

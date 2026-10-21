@@ -62,8 +62,8 @@ public class STOR_38_1_Main extends Codex
 
 		if(!CodexSequence.GetChronicleFlag(chronScript.STOR_SPAWNGOONS))
 		{
-			_goon1 = new CodexActor(_ghost1.SpawnThing("ventrue_bat"));
-			_goon2 = new CodexActor(_ghost2.SpawnThing("ventrue_bat"));
+			_goon1 = new CodexActor(_ghost1.SpawnThing(CodexTemplate.VENTRUE_BAT));
+			_goon2 = new CodexActor(_ghost2.SpawnThing(CodexTemplate.VENTRUE_BAT));
 
 			CaptureThing(_goon1.GetGUID());
 			CaptureThing(_goon2.GetGUID());
@@ -87,7 +87,7 @@ public class STOR_38_1_Main extends Codex
 			// remove the easel with the painting on it
 			_easel.Remove();
 			// spawn in the easel sans Vuk painting
-			_alexandra.SpawnThing("easelEmpty");	
+			_alexandra.SpawnThing(CodexTemplate.EASELEMPTY);	
 
 			CodexSequence.SetChronicleFlag(chronScript.STOR_HAVEPAINTING);
 

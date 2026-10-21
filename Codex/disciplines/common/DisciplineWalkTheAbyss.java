@@ -36,7 +36,7 @@ public class DisciplineWalkTheAbyss extends CodexDiscipline
 	public int cast( int level, int casterGuid )
 	{
 		if( createTeleport ) {
-			CodexSequence.CreateTeleporter( casterGuid, "havenPortal", "havenPortal", 0, 0 );
+			CodexSequence.CreateTeleporter( casterGuid, CodexTemplate.HAVENPORTAL, CodexTemplate.HAVENPORTAL, 0, 0 );
 		}
 		else {
 			CodexSequence.Vault( casterGuid );

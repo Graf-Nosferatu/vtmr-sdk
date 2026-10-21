@@ -23,10 +23,10 @@ public class EffectDiscEyesOfTheBeast extends Codex
 		CodexActor _Creator	= new CodexActor(creatorGuid);
 
 		// initial effect
-		_Creator.SpawnThing("redMagic");
+		_Creator.SpawnThing(CodexTemplate.REDMAGIC);
 		
 		// running ring effect
-		padGuid = _Creator.SpawnThing("ringOfWolvesRed");
+		padGuid = _Creator.SpawnThing(CodexTemplate.RINGOFWOLVESRED);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

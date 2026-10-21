@@ -87,7 +87,7 @@ public class SET4_31_1_Main extends Codex
 				CodexCamera.PlayPath(CodexPlayer.GetCurrentPlayer(), GetGUID(), "LucretiaBarter.ncp", 30);
 
 				// Lucretia turns into a Giant Cobra
-				stuntCobraGuid = _lucretia.SpawnThing("giantCobra_stuntDouble");
+				stuntCobraGuid = _lucretia.SpawnThing(CodexTemplate.GIANTCOBRA_STUNTDOUBLE);
 				_stuntCobra = new CodexActor(stuntCobraGuid);
 
 				_lucretia.SetShell("redCloudShell_g", 0x5080, 0, 1, 5, 1);
@@ -103,7 +103,7 @@ public class SET4_31_1_Main extends Codex
 
 			case TIMER_ID_CHANGED:
 
-				cobraGuid = _stuntCobra.SpawnThing("giantCobra");
+				cobraGuid = _stuntCobra.SpawnThing(CodexTemplate.GIANTCOBRA);
 				_Cobra = new CodexActor(cobraGuid);
 				CaptureThing(cobraGuid);
 				
@@ -198,7 +198,7 @@ public class SET4_31_1_Main extends Codex
 		}
 		else if(guid == _servant.GetGUID())
 		{
-			_lucretiaHeart = new CodexItem(_servant.SpawnThing("heartlucretia"));
+			_lucretiaHeart = new CodexItem(_servant.SpawnThing(CodexTemplate.HEARTLUCRETIA));
 
 			_lucretiaHeart.SetShell("shellSprite_white", 0x9000, 0, .7f, 1, 1);
 
@@ -311,7 +311,7 @@ public class SET4_31_1_Main extends Codex
 					{
 						case 0:
 
-							_Pink.OverrideActorWeapon("weapHeart", false, false);
+							_Pink.OverrideActorWeapon(CodexTemplate.WEAPHEART, false, false);
 							_lucretia.PlayMotionSetMode(MOTION_GESTURE2, false, (float)30.0);
 							CodexCamera.SetupCutscene(starterGuid, christofGUID, lucretiaGUID);
 							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUMLOW, CAM_DIST_FULL, 0, 0);
@@ -386,7 +386,7 @@ public class SET4_31_1_Main extends Codex
 							_Pink.CancelOverrideActorWeapon();
 							CodexCamera.SetupCutscene(starterGuid, servantGUID, 0);
 							CodexCamera.SetShot(starterGuid, CAM_SHOT_POV_A, CAM_ANGLE_MEDIUM, CAM_DIST_FULL, 0, 0);
-							_servant.OverrideActorWeapon("weapCatchHeart", false, false);
+							_servant.OverrideActorWeapon(CodexTemplate.WEAPCATCHHEART, false, false);
 							_servant.PlayMotionSetMode(MOTION_SPECIAL1, false, (float)30.0);
 							break;
 
@@ -438,7 +438,7 @@ public class SET4_31_1_Main extends Codex
 					{
 						case 0:
 
-							_Christof.OverrideActorWeapon("weapHeart", false, false);
+							_Christof.OverrideActorWeapon(CodexTemplate.WEAPHEART, false, false);
 							_Christof.PlayMotionSetMode(MOTION_SPECIAL24, false, (float)30.0);
 							
 							CodexCamera.SetupCutscene(starterGuid, speakerGuid, 0);

@@ -23,10 +23,10 @@ public class EffectDiscVoiceOfMadness extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("yellowMagic");
+		_Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		
 		// running ring effect
-		padGuid = _Target.SpawnThing("ringOfSkullsYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFSKULLSYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

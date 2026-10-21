@@ -23,11 +23,11 @@ public class EffectDiscPassion extends Codex
 		CodexActor _Target	= new CodexActor(actorGuid);
 
 		// initial effect
-		_Target.SpawnThing("yellowMagic");
+		_Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		_Target.SetShell("redCloudShell", 0x5000, 0, .9f, 1, 1);
 		
 		// running pad effect
-		padGuid = _Target.SpawnThing("ringOfSkullsYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.RINGOFSKULLSYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

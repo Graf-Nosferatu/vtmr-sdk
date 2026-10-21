@@ -24,10 +24,10 @@ public class EffectDiscPossession extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Target.SpawnThing("yellowMagic");
+		_Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 
 		// Running pad effect
-		padGuid = _Target.SpawnThing("ankhs2PadYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.ANKHS2PADYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

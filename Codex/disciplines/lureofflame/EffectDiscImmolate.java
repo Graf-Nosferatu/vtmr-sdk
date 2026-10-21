@@ -18,6 +18,6 @@ public class EffectDiscImmolate extends Codex
 	{
 		CodexActor _Target	= new CodexActor(actorGuid);
 
-		_Target.SpawnThing("ringTowerFlame");
+		_Target.SpawnThing(CodexTemplate.RINGTOWERFLAME);
 	}
 }

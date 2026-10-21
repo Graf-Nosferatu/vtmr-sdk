@@ -329,7 +329,7 @@ public class ORSI_20_5_MeetOrsi extends Codex
 					{
 						case 0:
 
-							_Orsi.OverrideActorWeapon("weapChaliceEmpty", false, false);
+							_Orsi.OverrideActorWeapon(CodexTemplate.WEAPCHALICEEMPTY, false, false);
 							_Orsi.PlayMotionSetMode(MOTION_SPECIAL2, false, (float)30.0);
 
 							CodexCamera.SetupCutscene(starterGuid, christofGUID, orsiGUID);
@@ -431,7 +431,7 @@ public class ORSI_20_5_MeetOrsi extends Codex
 						case 0:
 
 							_Orsi.LookAtThing(christofGUID);
-							_Orsi.OverrideActorWeapon("weapChaliceShackles", false, false);
+							_Orsi.OverrideActorWeapon(CodexTemplate.WEAPCHALICESHACKLES, false, false);
 							_Orsi.PlayMotionSetMode(MOTION_SPECIAL2, false, (float)30.0);
 							CodexCamera.SetupCutscene(starterGuid, christofGUID, orsiGUID);
 							CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUMHIGH, CAM_DIST_LONG, 1, 0);

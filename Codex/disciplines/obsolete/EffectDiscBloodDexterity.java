@@ -19,7 +19,7 @@ public class EffectDiscBloodDexterity extends Codex
 		CodexActor _Caster = new CodexActor(creatorGuid);
 
 		// initial effect
-		_Caster.SpawnThing("redMagic");
+		_Caster.SpawnThing(CodexTemplate.REDMAGIC);
 		_Caster.SetShell("redCloudShell", 0x5000, 0, 1, 1, 1);
 	}
 

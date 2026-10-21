@@ -19,7 +19,7 @@ public class EffectDiscHatchTheViper extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 		
 		// placeholder effect
-		_Creator.SpawnThing("greenMagic");
+		_Creator.SpawnThing(CodexTemplate.GREENMAGIC);
 	}
 
 	//public void effectended(int actorGuid, int effectGuid, int creatorGuid, int reason)

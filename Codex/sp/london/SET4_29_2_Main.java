@@ -115,7 +115,7 @@ public class SET4_29_2_Main extends Codex
 				tempPos[1] = targetPos[1];
 				tempPos[2] = targetPos[2];
 
-				viper1 = new CodexActor(_lucretia.SpawnThing("viper"));
+				viper1 = new CodexActor(_lucretia.SpawnThing(CodexTemplate.VIPER));
 				viper1.SetCollideType(THING_COLLIDE_NONE);
 				viper1.SendActorToPos(tempPos, (float)150.0);
 				viper1.SetAlpha(0, 3000);
@@ -124,7 +124,7 @@ public class SET4_29_2_Main extends Codex
 				tempPos[1] = targetPos[1] + 256;
 				tempPos[2] = targetPos[2];
 
-				viper2 = new CodexActor(_lucretia.SpawnThing("viper"));
+				viper2 = new CodexActor(_lucretia.SpawnThing(CodexTemplate.VIPER));
 				viper2.SetCollideType(THING_COLLIDE_NONE);
 				viper2.SendActorToPos(tempPos, (float)150.0);
 				viper2.SetAlpha(0, 3000);
@@ -133,7 +133,7 @@ public class SET4_29_2_Main extends Codex
 				tempPos[1] = targetPos[1] - 256;
 				tempPos[2] = targetPos[2];
 
-				viper3 = new CodexActor(_lucretia.SpawnThing("viper"));
+				viper3 = new CodexActor(_lucretia.SpawnThing(CodexTemplate.VIPER));
 				viper3.SetCollideType(THING_COLLIDE_NONE);
 				viper3.SendActorToPos(tempPos, (float)150.0);
 				viper3.SetAlpha(0, 3000);
@@ -142,7 +142,7 @@ public class SET4_29_2_Main extends Codex
 				tempPos[1] = targetPos[1] - 512;
 				tempPos[2] = targetPos[2];
 
-				viper4 = new CodexActor(_lucretia.SpawnThing("viper"));
+				viper4 = new CodexActor(_lucretia.SpawnThing(CodexTemplate.VIPER));
 				viper4.SetCollideType(THING_COLLIDE_NONE);
 				viper4.SendActorToPos(tempPos, (float)150.0);
 				viper4.SetAlpha(0, 3000);
@@ -151,7 +151,7 @@ public class SET4_29_2_Main extends Codex
 				tempPos[1] = targetPos[1] + 512;
 				tempPos[2] = targetPos[2];
 
-				viper5 = new CodexActor(_lucretia.SpawnThing("viper"));
+				viper5 = new CodexActor(_lucretia.SpawnThing(CodexTemplate.VIPER));
 				viper5.SetCollideType(THING_COLLIDE_NONE);
 				viper5.SendActorToPos(tempPos, (float)150.0);
 				viper5.SetAlpha(0, 3000);
@@ -160,7 +160,7 @@ public class SET4_29_2_Main extends Codex
 				tempPos[1] = targetPos[1] - 128;
 				tempPos[2] = targetPos[2];
 
-				viper6 = new CodexActor(_lucretia.SpawnThing("viper"));
+				viper6 = new CodexActor(_lucretia.SpawnThing(CodexTemplate.VIPER));
 				viper6.SetCollideType(THING_COLLIDE_NONE);
 				viper6.SendActorToPos(tempPos, (float)150.0);
 				viper6.SetAlpha(0, 3000);

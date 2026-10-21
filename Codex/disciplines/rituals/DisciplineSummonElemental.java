@@ -50,7 +50,7 @@ public class DisciplineSummonElemental extends Discipline
 
 		try
 		{
-			int petGuid = casterThing.SpawnThingNear("elemental", 0.0f, 0);
+			int petGuid = casterThing.SpawnThingNear(CodexTemplate.ELEMENTAL, 0.0f, 0);
 			if(petGuid != 0)
 			{
 				CodexActor petActor = new CodexActor(petGuid);

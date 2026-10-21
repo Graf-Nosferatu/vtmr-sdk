@@ -32,10 +32,10 @@ public class EffectDiscMajesty extends Codex
 		CodexActor caster	= new CodexActor(_casterGuid);
 
 		// initial effect
-		caster.SpawnThing("yellowMagic");
+		caster.SpawnThing(CodexTemplate.YELLOWMAGIC);
 		
 		// Running effect
-		padGuid = caster.SpawnThing("ankhsPadYellow");
+		padGuid = caster.SpawnThing(CodexTemplate.ANKHSPADYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;

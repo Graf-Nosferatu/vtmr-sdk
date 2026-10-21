@@ -16,13 +16,13 @@ public class EffectDiscFortitude extends Codex
 		CodexActor caster = new CodexActor( casterGuid );
 
 		// initial effect
-		caster.SpawnThing( "invshockwave" );
+		caster.SpawnThing( CodexTemplate.INVSHOCKWAVE );
 
 		// flash shell at startup
 		caster.SetShell( "redCloudShell_b", 0x5000, 0, 0.9f, 1, 1 );
 
 		// running pad effect
-		padGuid = caster.SpawnThing( "sawToothBlue" );
+		padGuid = caster.SpawnThing( CodexTemplate.SAWTOOTHBLUE );
 		caster.AttachThing( padGuid, -1, ZERO_OFFSET, ATTACH_FLAG_AUTOREMOVE );
 
 		soak = caster.GetActorEffectValue( effectGuid ) * 100f;

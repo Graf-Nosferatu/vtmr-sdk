@@ -123,7 +123,7 @@ public class STHM_6_1 extends Codex
 			{
 				case 0:
 
-					_ArchBishop.OverrideActorWeapon("weapCross", false, false);
+					_ArchBishop.OverrideActorWeapon(CodexTemplate.WEAPCROSS, false, false);
 					CodexCamera.SetupCutscene(starterGuid, christofGUID, archbishopGUID);
 					CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_C, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);
 					break;

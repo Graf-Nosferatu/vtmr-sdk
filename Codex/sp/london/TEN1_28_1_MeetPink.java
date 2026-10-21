@@ -100,7 +100,7 @@ public class TEN1_28_1_MeetPink extends Codex
 				{
 					case 0:
 
-						_Pink.OverrideActorWeapon("weapMug", false, false);
+						_Pink.OverrideActorWeapon(CodexTemplate.WEAPMUG, false, false);
 						_Pink.PlayMotionSetMode(MOTION_SPECIAL2, false, (float)30.0);
 						CodexCamera.SetupCutscene(starterGuid, christofGUID, pinkGUID);
 						CodexCamera.SetShot(starterGuid, CAM_SHOT_ANGULAR_A, CAM_ANGLE_MEDIUM, CAM_DIST_MEDIUM, 0, 0);

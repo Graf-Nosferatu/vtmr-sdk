@@ -41,12 +41,12 @@ public class DisciplineFireball extends Discipline
 			// fire the projectile
 			float[] fireOffset = new float[3];
 			fireOffset[0] = 0; fireOffset[1] = 50; fireOffset[2] = 20;
-			int projectileGuid = casterThing.FireProjectileAtThing("proj_fireball", targetGuid, fireOffset);
+			int projectileGuid = casterThing.FireProjectileAtThing(CodexTemplate.PROJ_FIREBALL, targetGuid, fireOffset);
 
 			// lets alter the damage of the projectile
 			CodexProjectile projectile = new CodexProjectile(projectileGuid);
 
-			int smokeTrailGuid = projectile.SpawnThing("trail_fireball");
+			int smokeTrailGuid = projectile.SpawnThing(CodexTemplate.TRAIL_FIREBALL);
 			fireOffset[0] = 0; fireOffset[1] = 0; fireOffset[2] = 0;
 			projectile.AttachThing(smokeTrailGuid, -1, fireOffset, ATTACH_FLAG_AUTOREMOVE);
 

@@ -27,10 +27,10 @@ public class EffectDiscTongueOfTheAsp extends Codex
 
 		// placeholder effect
 		_Creator.SetShell("redCloudShell_g", 0x5000, 0, .9f, 1, 1);
-		_Target.SpawnThing("greenMagic");
+		_Target.SpawnThing(CodexTemplate.GREENMAGIC);
 
 		// Running effect
-		beamGuid = _Target.SpawnThing("fogStream");
+		beamGuid = _Target.SpawnThing(CodexTemplate.FOGSTREAM);
 		CodexThing beam = new CodexThing(beamGuid);
 		float[]	offset = new float[3];
 

@@ -17,9 +17,9 @@ public class ClassDarkHunter extends Codex
 
 		if(spectralThing != null)
 		{
-			int trailGuid = spectralThing.SpawnThing("trail_shadow");
-			//int rfingersGuid = spectralThing.SpawnThing("trail_shadowHands");
-			//int lfingersGuid = spectralThing.SpawnThing("trail_shadowHands");
+			int trailGuid = spectralThing.SpawnThing(CodexTemplate.TRAIL_SHADOW);
+			//int rfingersGuid = spectralThing.SpawnThing(CodexTemplate.TRAIL_SHADOWHANDS);
+			//int lfingersGuid = spectralThing.SpawnThing(CodexTemplate.TRAIL_SHADOWHANDS);
 
 			int boneNum0 = spectralThing.FindBone(MOTIONTAG_USER1);
 			//int boneNum1 = spectralThing.FindBone(MOTIONTAG_RFINGERS);

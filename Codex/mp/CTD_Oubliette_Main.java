@@ -276,7 +276,7 @@ public class CTD_Oubliette_Main extends Codex
 		{
 			case TIMER_ID_HIDEMELMOTH:
 
-				_Melmoth.SpawnThing("blueMagic");
+				_Melmoth.SpawnThing(CodexTemplate.BLUEMAGIC);
 				_Melmoth.SetRenderFlags(THING_RENDERFLAG_DONTRENDER);
 				break;
 		}

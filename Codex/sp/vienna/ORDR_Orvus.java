@@ -233,7 +233,7 @@ public class ORDR_Orvus extends CodexBuySell
 
 				case 10:
 					owner.PlayMotionSetMode( MOTION_SPELL, false, 30f );
-					owner.SpawnThing( "blueMagic" );
+					owner.SpawnThing( CodexTemplate.BLUEMAGIC );
 					CodexCamera.SetShot( starterGuid, CAM_SHOT_POV_C, CAM_ANGLE_MEDIUM, CAM_DIST_CLOSEUP, 0, 0 );
 					break;
 

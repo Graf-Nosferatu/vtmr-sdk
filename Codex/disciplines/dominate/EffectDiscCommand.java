@@ -24,13 +24,13 @@ public class EffectDiscCommand extends Codex
 		CodexActor _Creator = new CodexActor(creatorGuid);
 
 		// running pad effect
-		padGuid = _Target.SpawnThing("rosettePadYellow");
+		padGuid = _Target.SpawnThing(CodexTemplate.ROSETTEPADYELLOW);
 
 		float[] offset = new float[3];
 		offset[0] = offset[1] = offset[2] = 0.0f;
 		_Target.AttachThing(padGuid, -1, offset, ATTACH_FLAG_AUTOREMOVE);
 
-		_Target.SpawnThing("yellowMagic");
+		_Target.SpawnThing(CodexTemplate.YELLOWMAGIC);
 
 		// assign the creator's team to the possessed actor
 		_Target.SetActorTeam(_Creator.GetActorTeam());

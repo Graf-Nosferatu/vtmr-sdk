@@ -37,7 +37,7 @@ public class SteamBlast extends Codex
 	public void timer(int timerID, float arg0, float arg1, float arg2, float arg3)
 	{
 		// create the steamburst and play the sound
-		generatorThing.SpawnThing("steamBlast");
+		generatorThing.SpawnThing(CodexTemplate.STEAMBLAST);
 		new CodexSound(_soundName, _minDist, _maxDist, _volume, _pan, _flags, generatorThing.GetGUID());
 
 		// prepare for the next one

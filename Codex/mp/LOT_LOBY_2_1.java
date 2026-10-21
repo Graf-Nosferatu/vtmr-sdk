@@ -604,11 +604,11 @@ public class LOT_LOBY_2_1 extends Codex
 							///////////////////////////////////////////////////////////
 							// show mr. schrek at the appropriate time in the conversation
 							///////////////////////////////////////////////////////////
-							//schreckGuid = _SchreckSpot.SpawnThing("MrSchreck");
+							//schreckGuid = _SchreckSpot.SpawnThing(CodexTemplate.MRSCHRECK);
 							//_Schreck = new CodexActor(schreckGuid);
 							//CaptureThing(_Schreck.GetGUID());
 
-							_Schreck.SpawnThing("blueMagic");
+							_Schreck.SpawnThing(CodexTemplate.BLUEMAGIC);
 							_Schreck.ClearRenderFlags(THING_RENDERFLAG_DONTRENDER);
 							_Schreck.SetCollideType(THING_COLLIDE_CYL);
 							_Schreck.ClearActorFlags(THING_AF_AIPAUSED); 
