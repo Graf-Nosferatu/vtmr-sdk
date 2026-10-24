@@ -2996,10 +2996,6 @@ partial class NLString
 			Eng	= "Insulated Light Helm",
 			Rus	= "Магический легкий шлем"
 		},
-		lighthelmsun = new( Game, lighthelmsun ) {
-			Eng	= "Insulated Light Helm",
-			Rus	= "Магический легкий шлем"
-		},
 		lighthelmcold = new( Game, lighthelmcold ) {
 			Eng	= "Insulated Light Helm",
 			Rus	= "Магический легкий шлем"
@@ -3013,10 +3009,6 @@ partial class NLString
 			Rus	= "Магический полный шлем"
 		},
 		fullhelmfire = new( Game, fullhelmfire ) {
-			Eng	= "Insulated Full Helm",
-			Rus	= "Магический полный шлем"
-		},
-		fullhelmsun = new( Game, fullhelmsun ) {
 			Eng	= "Insulated Full Helm",
 			Rus	= "Магический полный шлем"
 		},
@@ -3184,109 +3176,21 @@ partial class NLString
 			Eng	= "Rusty Broadsword",
 			Rus	= "Ржавый палаш"
 		},
-		bastardswordfine = new( Game, bastardswordfine ) {
-			Eng	= "Fine Bastard Sword",
-			Rus	= "Отличный полуторный меч"
-		},
-		broadswordfine = new( Game, broadswordfine ) {
-			Eng	= "Fine Broadsword",
-			Rus	= "Отличный палаш"
-		},
-		claymorefine = new( Game, claymorefine ) {
-			Eng	= "Fine Claymore",
-			Rus	= "Отличный клеймор"
-		},
-		falchionfine = new( Game, falchionfine ) {
-			Eng	= "Fine Falchion",
-			Rus	= "Отличный фальшион"
-		},
-		flambergefine = new( Game, flambergefine ) {
-			Eng	= "Fine Flamberge",
-			Rus	= "Отличный фламберг"
-		},
-		greatswordfine = new( Game, greatswordfine ) {
-			Eng	= "Fine Greatsword",
-			Rus	= "Отличный двуручный меч"
-		},
-		rapierfine = new( Game, rapierfine ) {
-			Eng	= "Fine Rapier",
-			Rus	= "Отличная рапира"
-		},
-		scimitarfine = new( Game, scimitarfine ) {
-			Eng	= "Fine Scimitar",
-			Rus	= "Отличный ятаган"
-		},
-		bastardswordexq = new( Game, bastardswordexq ) {
-			Eng	= "Exquisite Bastard Sword",
-			Rus	= "Изысканный полуторный меч"
-		},
-		broadswordexq = new( Game, broadswordexq ) {
-			Eng	= "Exquisite Broadsword",
-			Rus	= "Изысканный палаш"
-		},
-		claymoreexq = new( Game, claymoreexq ) {
-			Eng	= "Exquisite Claymore",
-			Rus	= "Изысканный клеймор"
-		},
-		falchionexq = new( Game, falchionexq ) {
-			Eng	= "Exquisite Falchion",
-			Rus	= "Изысканный фальшион"
-		},
-		flambergeexq = new( Game, flambergeexq ) {
-			Eng	= "Exquisite Flamberge",
-			Rus	= "Изысканный фламберг"
-		},
-		greatswordexq = new( Game, greatswordexq ) {
-			Eng	= "Exquisite Greatsword",
-			Rus	= "Изысканный двуручный меч"
-		},
-		rapierexq = new( Game, rapierexq ) {
-			Eng	= "Exquisite Rapier",
-			Rus	= "Изысканная рапира"
-		},
-		scimitarexq = new( Game, scimitarexq ) {
-			Eng	= "Exquisite Scimitar",
-			Rus	= "Изысканный ятаган"
-		},
-		broadswordsilver = new( Game, broadswordsilver ) {
-			Eng	= "Silver Broadsword",
-			Rus	= "Серебряный палаш"
-		},
 		battleaxe = new( Game, battleaxe ) {
 			Eng	= "Battle Axe",
 			Rus	= "Боевой топор"
-		},
-		handaxe = new( Game, handaxe ) {
-			Eng	= "Hand Axe",
-			Rus	= "Топор"
 		},
 		axe = new( Game, axe ) {
 			Eng	= "Hand Axe",
 			Rus	= "Топор"
 		},
-		axefine = new( Game, axefine ) {
-			Eng	= "Fine Axe",
-			Rus	= "Отличный топор"
-		},
-		axeexq = new( Game, axeexq ) {
-			Eng	= "Exquisite Axe",
-			Rus	= "Изысканный топор"
-		},
 		axerusty = new( Game, axerusty ) {
 			Eng	= "Rusty Axe",
 			Rus	= "Ржавый топор"
 		},
-		axesilver = new( Game, axesilver ) {
-			Eng	= "Silver Axe",
-			Rus	= "Серебряный топор"
-		},
 		battleaxefine = new( Game, battleaxefine ) {
 			Eng	= "Fine Battle Axe",
 			Rus	= "Отличный боевой топор"
-		},
-		battleaxeexq = new( Game, battleaxeexq ) {
-			Eng	= "Exquisite Battle Axe",
-			Rus	= "Изысканный боевой топор"
 		},
 		dagger = new( Game, dagger ) {
 			Eng	= "Dagger",
@@ -3315,58 +3219,6 @@ partial class NLString
 		daggerrusty = new( Game, daggerrusty ) {
 			Eng	= "Rusty Dagger",
 			Rus	= "Ржавый кинжал"
-		},
-		daggerfine = new( Game, daggerfine ) {
-			Eng	= "Fine Dagger",
-			Rus	= "Отличный кинжал"
-		},
-		dirkfine = new( Game, dirkfine ) {
-			Eng	= "Fine Dirk",
-			Rus	= "Отличный кортик"
-		},
-		morodaggerfine = new( Game, morodaggerfine ) {
-			Eng	= "Fine Moro Dagger",
-			Rus	= "Отличный кинжал Моро"
-		},
-		poignardfine = new( Game, poignardfine ) {
-			Eng	= "Fine Poignard",
-			Rus	= "Отличный стилет"
-		},
-		daggerexq = new( Game, daggerexq ) {
-			Eng	= "Exquisite Dagger",
-			Rus	= "Изысканный кинжал"
-		},
-		dirkexq = new( Game, dirkexq ) {
-			Eng	= "Exquisite Dirk",
-			Rus	= "Изысканный кортик"
-		},
-		poignardexq = new( Game, poignardexq ) {
-			Eng	= "Exquisite Poignard",
-			Rus	= "Изысканный стилет"
-		},
-		morodaggerexq = new( Game, morodaggerexq ) {
-			Eng	= "Exquisite Moro Dagger",
-			Rus	= "Изысканный кинжал Моро"
-		},
-		daggerpoison = new( Game, daggerpoison ) {
-			Eng	= "Poisoned Dagger",
-			Rus	= "Отравленный кинжал"
-		},
-		dirkpoison = new( Game, dirkpoison ) {
-			Eng	= "Poisoned Dirk",
-			Rus	= "Отравленный кортик"
-		},
-		morodaggerpoison = new( Game, morodaggerpoison ) {
-			Eng	= "Poisoned Moro Dagger",
-			Rus	= "Отравленный кинжал Моро"
-		},
-		poignardpoison = new( Game, poignardpoison ) {
-			Eng	= "Poison Poignard",
-			Rus	= "Отравленный стилет"
-		},
-		daggersilver = new( Game, daggersilver ) {
-			Eng	= "Silver Dagger",
-			Rus	= "Серебряный кинжал"
 		},
 		mace = new( Game, mace ) {
 			Eng	= "Flanged Mace",
@@ -3400,30 +3252,6 @@ partial class NLString
 			Eng	= "Sap Gloves",
 			Rus	= "Боевые перчатки"
 		},
-		macefine = new( Game, macefine ) {
-			Eng	= "Fine Flanged Mace",
-			Rus	= "Отличная ребристая булава"
-		},
-		pointymacefine = new( Game, pointymacefine ) {
-			Eng	= "Fine Spiked Mace",
-			Rus	= "Отличная шипастая булава"
-		},
-		warhammerfine = new( Game, warhammerfine ) {
-			Eng	= "Fine Warhammer",
-			Rus	= "Отличный боевой молот"
-		},
-		maceexq = new( Game, maceexq ) {
-			Eng	= "Exquisite Flanged Mace",
-			Rus	= "Изысканная ребристая булава"
-		},
-		pointymaceexq = new( Game, pointymaceexq ) {
-			Eng	= "Exquisite Spiked Mace",
-			Rus	= "Изысканная шипастая булава"
-		},
-		warhammerexq = new( Game, warhammerexq ) {
-			Eng	= "Exquisite Warhammer",
-			Rus	= "Изысканный боевой молот"
-		},
 		longbow = new( Game, longbow ) {
 			Eng	= "Longbow",
 			Rus	= "Большой лук"
@@ -3448,10 +3276,6 @@ partial class NLString
 			Eng	= "Incendiary Crossbow",
 			Rus	= "Зажигательный арбалет"
 		},
-		crossbowsilver = new( Game, crossbowsilver ) {
-			Eng	= "Silver Crossbow",
-			Rus	= "Серебряный арбалет"
-		},
 		crossbowmag = new( Game, crossbowmag ) {
 			Eng	= "Magnesium Crossbow",
 			Rus	= "Магниевый арбалет"
@@ -3468,49 +3292,17 @@ partial class NLString
 			Eng	= "Halberd",
 			Rus	= "Алебарда"
 		},
-		halberdfine = new( Game, halberdfine ) {
-			Eng	= "Fine Halberd",
-			Rus	= "Отличная алебарда"
-		},
-		halberdexq = new( Game, halberdexq ) {
-			Eng	= "Exquisite Halberd",
-			Rus	= "Изысканная алебарда"
-		},
 		bastion = new( Game, bastion ) {
 			Eng	= "Bastion",
 			Rus	= "Бастион"
-		},
-		bastionfine = new( Game, bastionfine ) {
-			Eng	= "Fine Bastion",
-			Rus	= "Отличный бастион"
-		},
-		bastionexq = new( Game, bastionexq ) {
-			Eng	= "Exquisite Bastion",
-			Rus	= "Изысканный бастион"
 		},
 		spear = new( Game, spear ) {
 			Eng	= "Spear",
 			Rus	= "Копье"
 		},
-		spearfine = new( Game, spearfine ) {
-			Eng	= "Fine Spear",
-			Rus	= "Отличное копье"
-		},
-		spearexq = new( Game, spearexq ) {
-			Eng	= "Exquisite Spear",
-			Rus	= "Изысканное копье"
-		},
 		lance = new( Game, lance ) {
 			Eng	= "Lance",
 			Rus	= "Пика"
-		},
-		lancefine = new( Game, lancefine ) {
-			Eng	= "Fine Lance",
-			Rus	= "Отличная пика"
-		},
-		lanceexq = new( Game, lanceexq ) {
-			Eng	= "Exquisite Lance",
-			Rus	= "Изысканная пика"
 		},
 		pitchfork = new( Game, pitchfork ) {
 			Eng	= "Pitchfork",
@@ -3520,14 +3312,6 @@ partial class NLString
 			Eng	= "Poleaxe",
 			Rus	= "Бердыш"
 		},
-		poleaxefine = new( Game, poleaxefine ) {
-			Eng	= "Fine Poleaxe",
-			Rus	= "Отличный бердыш"
-		},
-		poleaxeexq = new( Game, poleaxeexq ) {
-			Eng	= "Exquisite Poleaxe",
-			Rus	= "Изысканный бердыш"
-		},
 		quarterstaff = new( Game, quarterstaff ) {
 			Eng	= "Quarterstaff",
 			Rus	= "Дубина"
@@ -3536,69 +3320,25 @@ partial class NLString
 			Eng	= "Revolver",
 			Rus	= "Револьвер"
 		},
-		revolversighted = new( Game, revolversighted ) {
-			Eng	= "Sighted Revolver",
-			Rus	= "Меткий револьвер"
-		},
-		revolvermodified = new( Game, revolvermodified ) {
-			Eng	= "Modified Revolver",
-			Rus	= "Модиф. револьвер"
-		},
 		pistol = new( Game, pistol ) {
 			Eng	= "Pistol",
 			Rus	= "Пистолет"
-		},
-		pistolsighted = new( Game, pistolsighted ) {
-			Eng	= "Sighted Pistol",
-			Rus	= "Меткий пистолет"
-		},
-		pistolmodified = new( Game, pistolmodified ) {
-			Eng	= "Modified Pistol",
-			Rus	= "Модиф. пистолет"
-		},
-		pistoldragonsbreath = new( Game, pistoldragonsbreath ) {
-			Eng	= "Dragonsbreath Pistol",
-			Rus	= "Пистолет Дыхание Дракона"
 		},
 		submachinegun = new( Game, submachinegun ) {
 			Eng	= "Submachinegun",
 			Rus	= "Автомат"
 		},
-		submachinegunmodified = new( Game, submachinegunmodified ) {
-			Eng	= "Modified Submachinegun",
-			Rus	= "Модиф. автомат"
-		},
 		rifle = new( Game, rifle ) {
 			Eng	= "Rifle",
 			Rus	= "Винтовка"
-		},
-		riflesighted = new( Game, riflesighted ) {
-			Eng	= "Sighted Rifle",
-			Rus	= "Меткая винтовка"
-		},
-		riflemodified = new( Game, riflemodified ) {
-			Eng	= "Modified Rifle",
-			Rus	= "Модиф. винтовка"
 		},
 		assaultrifle = new( Game, assaultrifle ) {
 			Eng	= "Assault Rifle",
 			Rus	= "Штурмовая винтовка"
 		},
-		assaultriflesighted = new( Game, assaultriflesighted ) {
-			Eng	= "Sighted Assault Rifle",
-			Rus	= "Меткая штурмовая винтовка"
-		},
-		assaultriflemodified = new( Game, assaultriflemodified ) {
-			Eng	= "Modified Assault Rifle",
-			Rus	= "Модиф. штурмовая винтовка"
-		},
 		shotgun = new( Game, shotgun ) {
 			Eng	= "Shotgun",
 			Rus	= "Дробовик"
-		},
-		shotgunmodified = new( Game, shotgunmodified ) {
-			Eng	= "Modified Shotgun",
-			Rus	= "Модиф. дробовик"
 		},
 		rocketlauncher = new( Game, rocketlauncher ) {
 			Eng	= "Rocket Launcher",
@@ -3623,10 +3363,6 @@ partial class NLString
 		chaingun = new( Game, chaingun ) {
 			Eng	= "Chaingun",
 			Rus	= "Пулемет"
-		},
-		chaingunmodified = new( Game, chaingunmodified ) {
-			Eng	= "Modified Chaingun",
-			Rus	= "Модиф. пулемет"
 		},
 		incinerator = new( Game, incinerator ) {
 			Eng	= "Incinerator",
@@ -3948,14 +3684,6 @@ partial class NLString
 			Eng	= "Silver Watch",
 			Rus	= "Серебряные часы"
 		},
-		magnum = new( Game, magnum ) {
-			Eng	= "Magnum",
-			Rus	= "Магнум"
-		},
-		bronzearmor = new( Game, bronzearmor ) {
-			Eng	= "Bronze Armor",
-			Rus	= "Бронзовая броня"
-		},
 		compositebow = new( Game, compositebow ) {
 			Eng	= "Composite Bow",
 			Rus	= "Композитный лук"
@@ -3971,10 +3699,6 @@ partial class NLString
 		punch = new( Game, punch ) {
 			Eng	= "Punch",
 			Rus	= "Пробойник"
-		},
-		demoshield = new( Game, demoshield ) {
-			Eng	= "Shield",
-			Rus	= "Щит"
 		},
 		woodbuckler = new( Game, woodbuckler ) {
 			Eng	= "Wood Buckler",
@@ -4192,22 +3916,6 @@ partial class NLString
 			Eng	= "Berserker Axe",
 			Rus	= "Топор Берсерка"
 		},
-		broadswordholy = new( Game, broadswordholy ) {
-			Eng	= "Blessed Broadsword",
-			Rus	= "Благослов. палаш"
-		},
-		greatswordholy = new( Game, greatswordholy ) {
-			Eng	= "Blessed Greatsword",
-			Rus	= "Благослов. двуручный меч"
-		},
-		maceholy = new( Game, maceholy ) {
-			Eng	= "Blessed Mace",
-			Rus	= "Благослов. булава"
-		},
-		pointymaceholy = new( Game, pointymaceholy ) {
-			Eng	= "Blessed Spiked Mace",
-			Rus	= "Благослов. шипастая булава"
-		},
 		broadsworddread = new( Game, broadsworddread ) {
 			Eng	= "Dread Broadsword",
 			Rus	= "Палаш ужаса"
@@ -4232,30 +3940,6 @@ partial class NLString
 			Eng	= "Evil Axe",
 			Rus	= "Дьявольский топор"
 		},
-		scimitarflame = new( Game, scimitarflame ) {
-			Eng	= "Flaming Scimitar",
-			Rus	= "Пылающий ятаган"
-		},
-		broadswordflame = new( Game, broadswordflame ) {
-			Eng	= "Flaming Broadsword",
-			Rus	= "Пылающий палаш"
-		},
-		lighthelmholy = new( Game, lighthelmholy ) {
-			Eng	= "Blessed Light Helm",
-			Rus	= "Благослов. легкий шлем"
-		},
-		lighthelmunholy = new( Game, lighthelmunholy ) {
-			Eng	= "Unholy Light Helm",
-			Rus	= "Нечестивый легкий шлем"
-		},
-		fullhelmholy = new( Game, fullhelmholy ) {
-			Eng	= "Blessed Full Helm",
-			Rus	= "Благослов. полный шлем"
-		},
-		fullhelmunholy = new( Game, fullhelmunholy ) {
-			Eng	= "Unholy Full Helm",
-			Rus	= "Нечестивый полный шлем"
-		},
 		shieldholy = new( Game, shieldholy ) {
 			Eng	= "Blessed Shield",
 			Rus	= "Благослов. щит"
@@ -4271,54 +3955,6 @@ partial class NLString
 		greatshieldunholy = new( Game, greatshieldunholy ) {
 			Eng	= "Unholy Great Shield",
 			Rus	= "Нечестивый большой щит"
-		},
-		leatherclothingholy = new( Game, leatherclothingholy ) {
-			Eng	= "Blessed Leather Armor",
-			Rus	= "Благослов. кожаные доспехи"
-		},
-		studdedleatherholy = new( Game, studdedleatherholy ) {
-			Eng	= "Blessed Studded Leather Armor",
-			Rus	= "Благослов. клепаные кожаные доспехи"
-		},
-		scalemailholy = new( Game, scalemailholy ) {
-			Eng	= "Blessed Scalemail",
-			Rus	= "Благослов. чешуя"
-		},
-		chainmailholy = new( Game, chainmailholy ) {
-			Eng	= "Blessed Chainmail",
-			Rus	= "Благослов. кольчуга"
-		},
-		halfplateholy = new( Game, halfplateholy ) {
-			Eng	= "Blessed Half Plate",
-			Rus	= "Благослов. полупластины"
-		},
-		platemailholy = new( Game, platemailholy ) {
-			Eng	= "Blessed Platemail",
-			Rus	= "Благослов. нагрудник"
-		},
-		leatherclothingunholy = new( Game, leatherclothingunholy ) {
-			Eng	= "Unholy Leather Armor",
-			Rus	= "Нечестивые кожаные доспехи"
-		},
-		studdedleatherunholy = new( Game, studdedleatherunholy ) {
-			Eng	= "Unholy Studded Leather Armor",
-			Rus	= "Нечестивые клепаные кожаные доспехи"
-		},
-		scalemailunholy = new( Game, scalemailunholy ) {
-			Eng	= "Unholy Scalemail",
-			Rus	= "Нечестивая чешуя"
-		},
-		chainmailunholy = new( Game, chainmailunholy ) {
-			Eng	= "Unholy Chainmail",
-			Rus	= "Нечестивая кольчуга"
-		},
-		halfplateunholy = new( Game, halfplateunholy ) {
-			Eng	= "Unholy Half Plate",
-			Rus	= "Нечестивые полупластины"
-		},
-		platemailunholy = new( Game, platemailunholy ) {
-			Eng	= "Unholy Platemail",
-			Rus	= "Нечестивый нагрудник"
 		},
 		holyrelic = new( Game, holyrelic ) {
 			Eng	= "Holy Relic",

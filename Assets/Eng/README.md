@@ -18,3 +18,5 @@ Increased the bonus at level 5. The duration no longer depends on the level and 
 - Fixed: the buy/sell price ratio (you can no longer buy cheap and sell high with a high 'Manipulation' rating)
 - Added: trading is now conducted by the party player with the highest 'Manipulation' stat
 - Changed: the start/end of trading has been significantly accelerated (the animation of the ‘Otto’ van plays once until the next reload or transition to another level)
+#### Equipment
+- Deleted: enhanced weapons and armors
