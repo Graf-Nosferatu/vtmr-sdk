@@ -1,7 +1,9 @@
 ## Vampire: The Masquerade — Redemption
 All fixes are primarily intended for single-player mode and most of them require starting a new game
 ### Installation
-Unpack the contents of the archive into the root folder with the installed game
+- [Steam](https://store.steampowered.com/app/559680/) or [GOG](https://www.gog.com/en/game/vampire_the_masquerade_redemption) version of the game
+- [Unofficial widescreen fixes](https://www.moddb.com/addons/unofficial-widescreen-fixes)
+- Unpack the contents of the archive into the root folder with the installed game
 #### Blood Pool
 - Fixed: 'Christof' blood pool is now the same as that of the other party members
 - Fixed: 'Christof' blood pool is correctly recalculated after turning into a vampire (if experience points had been invested in 'Faith')
@@ -20,3 +22,8 @@ Increased the bonus at level 5. The duration no longer depends on the level and 
 - Changed: the start/end of trading has been significantly accelerated (the animation of the ‘Otto’ van plays once until the next reload or transition to another level)
 #### Equipment
 - Deleted: enhanced weapons and armors
+#### Experimental
+The following changes are integrated into widescreen fix by behar, because without it the widescreen interface would not work correctly
+- Increased the number of slots for items (without hotkeys) to 7
+- Increased the number of slots for disciplines (without hotkeys) to 10
+- Increased the angle of the camera's ascend

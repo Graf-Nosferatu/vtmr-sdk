@@ -1,0 +1,86 @@
+;
+; Single Player Status Bar
+;
+name=statusBarSP
+pos=0,0
+
+quad mat=StatusBarSP pos=-64,0 size=768,139
+
+; Widescreen
+;quad mat=widescreen_black_256x128 pos=-256,0 size=256,128
+;quad mat=widescreen_black_256x128 pos=640,0 size=256,128
+
+element scrollslider name=sbScrollSlider pos=474,93 size=8,8 bitmap=StatusBarSlider.tga
+element scrollbar name=sbScrollBar pos=474,93 size=8,42 flags=0x02 vertical=1 slider=sbScrollSlider
+element textbox name=sbTextbox pos=164,94 size=308,41 flags=0x02 font=defaultFont10 maxItems=100 textboxflags=0x04 vscrollbar=sbScrollBar
+
+;element textbox name=sbDescription0 pos=164,95 size=308,40 flags=0x02 maxItems=3 textboxflags=0x03 font=defaultFont15
+
+element checkbox name=sbInventoryButton flags=0x02 checkedbitmap=spsbInventoryButtonDep.tga pos=129,84 size=26,32 hintstring=UI_HINT_INVENTORYBUTTON
+element checkbox name=sbCharacterButton flags=0x02 checkedbitmap=spsbCharacterButtonDep.tga pos=99,84 size=26,32 hintstring=UI_HINT_CHARACTERBUTTON
+element checkbox name=sbQuestButton flags=0x02 checkedbitmap=spsbQuestButtonDep.tga flash=ButtonFlash pos=99,47 size=26,32 hintstring=UI_HINT_QUESTBUTTON
+element checkbox name=sbDisciplineButton flags=0x02 pos=129,47 size=26,32 checkedbitmap=spsbDisciplinesButtonDep.tga hintstring=UI_HINT_DISCIPLINEBUTTON
+element button name=sbMapButton flags=0x02 depressed=spsbMapButtonDep pos=114,10 size=26,32 hintstring=UI_HINT_MAPBUTTON
+
+element icongrid name=sbQuickuse pos=496,84 size=189,32 gridsize=7,1 flags=0x02
+
+; discipline slots
+element disciplineslot name=sbDiscipline0 pos=547,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline1 pos=577,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline2 pos=607,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline3 pos=637,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline4 pos=667,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline5 pos=547,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline6 pos=577,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline7 pos=607,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline8 pos=637,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline9 pos=667,7 size=27,32 flags=0x02
+
+; "current" discipline
+element disciplineslot name=sbCurrentDiscipline pos=495,19 size=40,48 flags=0x02
+
+; here are the party command buttons
+element checkbox name=sbAttackRadio flags=0x06 checkedbitmap=spsbAttackButtonDep.tga pos=65,82 size=26,32 hintstring=UI_HINT_OFFENSIVE
+element checkbox name=sbNeutralRadio flags=0x06 checkedbitmap=spsbNeutralButtonDep.tga pos=36,82 size=26,32 hintstring=UI_HINT_NEUTRAL
+element checkbox name=sbDefenseRadio flags=0x06 checkedbitmap=spsbDefensiveButtonDep.tga pos=7,82 size=26,32 hintstring=UI_HINT_DEFENSIVE
+element button name=sbRegroupButton flags=0x06 depressed=spsbRegroupButtonDep.tga pos=29,19 size=40,48 hintstring=UI_HINT_REGROUP
+
+; status indicators backgrounds
+element imagearray name=statusIndicators0 flags=0x08 image0=statusIndicators0 image1=statusIndicatorsSelected0 size=66,11 pos=164,2
+element imagearray name=statusIndicators1 flags=0x08 image0=statusIndicators1 image1=statusIndicatorsSelected1 size=66,11 pos=164,2
+element imagearray name=statusIndicators2 flags=0x08 image0=statusIndicators2 image1=statusIndicatorsSelected2 size=66,11 pos=164,2
+element imagearray name=statusIndicators3 flags=0x08 image0=statusIndicators3 image1=statusIndicatorsSelected3 size=66,11 pos=164,2
+
+element static name=statusHotspot0 flags=0x08 size=64,70 pos=164,4
+element static name=statusHotspot1 flags=0x08 size=64,70 pos=164,4
+element static name=statusHotspot2 flags=0x08 size=64,70 pos=164,4
+element static name=statusHotspot3 flags=0x08 size=64,70 pos=164,4
+
+; status indicators
+element progressbar name=statusHealth0 size=52,3 pos=169,9 fillbitmap=StatusIndicators_Health flags=0x02 hintstring=UI_STATUSIND_HINT parent=statusIndicators0
+element progressbar name=statusBlood0 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Blood flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators0
+element progressbar name=statusMana0 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Mana flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators0
+element progressbar name=statusFrenzy0 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Frenzy flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators0
+element progressbar name=statusFaith0 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Faith flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators0
+element checkbox name=statusParty0 pos=223,4 size=5,7 checkedbitmap=StatusIndicators_party flags=0x06 hintstring=UI_STATUSIND_HINT parent=statusIndicators0
+
+element progressbar name=statusHealth1 size=52,3 pos=169,9 fillbitmap=StatusIndicators_Health flags=0x02 hintstring=UI_STATUSIND_HINT parent=statusIndicators1
+element progressbar name=statusBlood1 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Blood flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators1
+element progressbar name=statusMana1 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Mana flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators1
+element progressbar name=statusFrenzy1 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Frenzy flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators1
+element progressbar name=statusFaith1 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Faith flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators1
+element checkbox name=statusParty1 pos=223,4 size=5,7 checkedbitmap=StatusIndicators_party flags=0x06 hintstring=UI_STATUSIND_HINT parent=statusIndicators1
+
+element progressbar name=statusHealth2 size=52,3 pos=169,9 fillbitmap=StatusIndicators_Health flags=0x02 hintstring=UI_STATUSIND_HINT parent=statusIndicators2
+element progressbar name=statusBlood2 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Blood flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators2
+element progressbar name=statusMana2 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Mana flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators2
+element progressbar name=statusFrenzy2 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Frenzy flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators2
+element progressbar name=statusFaith2 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Faith flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators2
+element checkbox name=statusParty2 pos=223,4 size=5,7 checkedbitmap=StatusIndicators_party flags=0x06 hintstring=UI_STATUSIND_HINT parent=statusIndicators2
+
+element progressbar name=statusHealth3 size=52,3 pos=169,9 fillbitmap=StatusIndicators_Health flags=0x02 hintstring=UI_STATUSIND_HINT parent=statusIndicators3
+element progressbar name=statusBlood3 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Blood flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators3
+element progressbar name=statusMana3 size=52,3 pos=169,6 fillbitmap=StatusIndicators_Mana flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators3
+element progressbar name=statusFrenzy3 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Frenzy flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators3
+element progressbar name=statusFaith3 size=52,3 pos=169,3 fillbitmap=StatusIndicators_Faith flags=0x0A hintstring=UI_STATUSIND_HINT parent=statusIndicators3
+element checkbox name=statusParty3 pos=223,4 size=5,7 checkedbitmap=StatusIndicators_party flags=0x06 hintstring=UI_STATUSIND_HINT parent=statusIndicators3

@@ -1,0 +1,68 @@
+;
+; Multiplayer Status Bar
+;
+
+name=statusBarMP
+pos=0,0
+
+quad mat=statusBarMP_01.tga pos=0,0 size=256,128
+quad mat=statusBarMP_02.tga pos=256,0 size=256,128
+quad mat=statusBarSP_03.tga pos=512,0 size=128,128
+quad mat=StatusBarSP_04 pos=144,128 size=128,16
+quad mat=StatusBarSP_05 pos=272,128 size=128,16
+quad mat=StatusBarSP_06 pos=400,128 size=64,16
+quad mat=StatusBarSP_07 pos=464,128 size=32,16
+
+; Widescreen
+quad mat=widescreen_black_256x128 pos=-256,0 size=256,128
+quad mat=widescreen_black_256x128 pos=640,0 size=256,128
+
+; Game Messages Textbox
+element scrollslider name=sbTextScrollSlider pos=474,93 size=8,8 bitmap=StatusBarSlider
+element scrollbar name=sbTextScrollBar pos=474,93 size=8,42 flags=0x02 vertical=1 slider=sbTextScrollSlider
+element textbox name=sbTextbox pos=164,94 size=308,41 flags=0x02 font=defaultFont10 maxItems=100 textboxflags=0x04 vscrollbar=sbTextScrollBar
+
+; Chat textbox
+element scrollslider name=sbChatScrollSlider pos=474,2 size=8,8 bitmap=StatusBarSlider
+element scrollbar name=sbChatScrollBar pos=474,2 size=8,88 flags=0x02 vertical=1 slider=sbChatScrollSlider
+element textbox name=sbChatbox pos=164,17 size=305,70 color=255,0,0,0 font=defaultFont10 maxItems=100 textboxflags=4 vscrollbar=sbChatScrollBar
+
+; Chat edit box
+element edit name=sbChatEdit pos=164,0 size=305,12 flags=0x02
+
+element checkbox name=sbInventoryButton flags=0x02 checkedbitmap=spsbInventoryButtonDep.tga pos=129,84 size=26,32 hintstring=UI_HINT_INVENTORYBUTTON
+element checkbox name=sbCharacterButton flags=0x02 checkedbitmap=spsbCharacterButtonDep.tga pos=99,84 size=26,32 hintstring=UI_HINT_CHARACTERBUTTON
+element checkbox name=sbQuestButton flags=0x02 checkedbitmap=spsbQuestButtonDep.tga pos=99,47 size=26,32 hintstring=UI_HINT_QUESTBUTTON
+element checkbox name=sbDisciplineButton flags=0x02 pos=129,47 size=26,32 checkedbitmap=spsbDisciplinesButtonDep.tga hintstring=UI_HINT_DISCIPLINEBUTTON
+
+element button name=sbMapButton flags=0x02 depressed=spsbMapButtonDep pos=114,10 size=26,32 hintstring=UI_HINT_MAPBUTTON
+
+element icongrid name=sbQuickuse pos=496,84 size=189,32 gridsize=7,1 flags=0x02
+
+; discipline slots
+element disciplineslot name=sbDiscipline0 pos=547,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline1 pos=577,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline2 pos=607,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline3 pos=637,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline4 pos=667,42 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline5 pos=547,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline6 pos=577,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline7 pos=607,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline8 pos=637,7 size=27,32 flags=0x02
+element disciplineslot name=sbDiscipline9 pos=667,7 size=27,32 flags=0x02
+
+; "current" discipline
+element disciplineslot name=sbCurrentDiscipline pos=495,19 size=40,48 flags=0x02
+
+; head hotspot
+element static name=sbHeadHotspot pos=9,32 size=80,88
+
+; this button switches to storyteller mode
+element button name=sbSTButton pos=36,4 size=26,23 bitmap=stsbStoryteller depressed=stsbStorytellerDep hintstring=UI_HINT_STSTORYTELLERBUTTON flags=0x08
+
+;status indicator
+element progressbar name=statusHealth0 size=52,3 pos=23,38 fillbitmap=StatusIndicators_Health flags=0x02
+element progressbar name=statusBlood0 size=52,3 pos=23,35 fillbitmap=StatusIndicators_Blood flags=0x0A
+element progressbar name=statusFrenzy0 size=52,3 pos=23,32 fillbitmap=StatusIndicators_Frenzy flags=0x0A
+element progressbar name=statusMana0 size=52,3 pos=23,35 fillbitmap=StatusIndicators_Mana flags=0x0A
+element progressbar name=statusFaith0 size=52,3 pos=23,32 fillbitmap=StatusIndicators_Faith flags=0x0A
