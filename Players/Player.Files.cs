@@ -35,7 +35,7 @@ partial class Player
 	}
 
 
-	private static void SavePlayer( Player? player, [CallerArgumentExpression( nameof( player ) )] String name = "" )
+	private static void SavePlayer( Player player, [CallerArgumentExpression( nameof( player ) )] String name = "" )
 	{
 		IEnumerable<String> EnumeratePlayer()
 		{
@@ -71,7 +71,7 @@ partial class Player
 			}
 		}
 
-		String path = Path.Create( Sdk.ModPath, DirectoryName, FileNameOf( name ) );
+		String path = Path.Create( Sdk.ModPath, DirectoryName, FileNameOf( player, name ) );
 		File.WriteAllLines( path, EnumeratePlayer() );
 	}
 }

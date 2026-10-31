@@ -1,5 +1,9 @@
 using System;
+using System.Drawing;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using Sdk.Explosions;
 using Sdk.Players;
 using Sdk.Treasures;
 
@@ -20,14 +24,6 @@ public static class CallerArgumentExtensions
 	}
 
 
-	public static String FileNameOf( String name )
-	{
-		name = NameOf( name );
-
-		return $"{name}.npc";
-	}
-
-
 	public static Int32 NumberOf( String name )
 	{
 		var index = name.LastIndexOf( "class", StringComparison.OrdinalIgnoreCase ) + 5;
@@ -38,12 +34,30 @@ public static class CallerArgumentExtensions
 
 	public static String FileNameOf( Player? player, [CallerArgumentExpression( nameof( player ) )] String name = "" )
 	{
-		return FileNameOf( name );
+		name = NameOf( name );
+
+		return $"{name}.npc";
+	}
+
+
+	public static String FileNameOf( Explosion? explosion, [CallerArgumentExpression( nameof( explosion ) )] String name = "" )
+	{
+		name = NameOf( name );
+
+		return $"{name}.nex";
 	}
 
 
 	public static Int32 NumberOf( TreasureClass? treasureClass, [CallerArgumentExpression( nameof( treasureClass ) )] String name = "" )
 	{
 		return NumberOf( name );
+	}
+
+
+	public static Color ColorOf( String color )
+	{
+		Int32[] rgb = [..Regex.Matches( color, @"\d+" ).Select( m => Int32.Parse( m.Value ) )];
+
+		return Color.FromArgb( rgb[0], rgb[1], rgb[2] );
 	}
 }

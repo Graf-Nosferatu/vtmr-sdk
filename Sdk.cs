@@ -4,6 +4,7 @@ using System.Reflection;
 using Sdk.Clans;
 using Sdk.Disciplines;
 using Sdk.Effects;
+using Sdk.Explosions;
 using Sdk.Players;
 using Sdk.Stores;
 using Sdk.Strings;
@@ -33,6 +34,7 @@ public static class Sdk
 		Clan.Save();
 		Discipline.Save();
 		Effect.Save();
+		Explosion.Save();
 		Player.Save();
 		Store.Save();
 		NLString.Save();

@@ -1,12 +1,7 @@
-using System;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 using Sdk.Clans;
 using Sdk.Disciplines;
 using Sdk.Effects;
-using Sdk.Extensions;
+using Sdk.Explosions;
 using Sdk.Players;
 using Sdk.Strings;
 using Sdk.Treasures;
@@ -16,14 +11,6 @@ namespace Sdk.Templates;
 
 partial class Template
 {
-	private static Color ColorOf( String color )
-	{
-		Int32[] rgb = [..Regex.Matches( color, @"\d+" ).Select( m => Int32.Parse( m.Value ) )];
-
-		return Color.FromArgb( rgb[0], rgb[1], rgb[2] );
-	}
-
-
 	public static Template
 #region Global
 		_actor = new( Global, _actor, "Actors..." ) {
@@ -997,59 +984,41 @@ partial class Template
 			TYPE				= ENUM_TYPE.EXPLOSION,
 			EDITORCATEGORY		= ENUM_EDITORCATEGORY.Abstract,
 		},
-			exp_alpha1 = new( Global, exp_alpha1 ) {
-				PARENT				= nameof( Template._explosion ),
-				MODEL				= "barrel3.nod",
-				EXPLOSION_NAME		= "alpha1.nex",
-				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
-			},
-			exp_alpha2 = new( Global, exp_alpha2 ) {
-				PARENT				= nameof( Template._explosion ),
-				MODEL				= "barrel3.nod",
-				EXPLOSION_NAME		= "alpha2.nex",
-				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
-			},
-			exp_alpha3 = new( Global, exp_alpha3 ) {
-				PARENT				= nameof( Template._explosion ),
-				MODEL				= "barrel3.nod",
-				EXPLOSION_NAME		= "alpha3.nex",
-				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
-			},
 			exp_eyesofthebeast = new( Global, exp_eyesofthebeast ) {
 				PARENT				= nameof( Template._explosion ),
 				TIMER				= 30000,
 				DYNA_INTENSITY		= 20,
 				DYNA_COLOR			= ColorOf( "rgb(250, 45, 20)" ),
 				DYNA_RADIUS			= 64,
-				EXPLOSION_NAME		= "eyesOfTheBeast.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.eyesofthebeast ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_CONTAINERS | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROJECTILES | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROPS | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 			},
 				exp_eyesofthebeast1 = new( Global, exp_eyesofthebeast1 ) {
 					PARENT				= nameof( Template.exp_eyesofthebeast ),
 					TIMER				= 60000,
-					EXPLOSION_NAME		= "eyesOfTheBeast1.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.eyesofthebeast1 ),
 				},
 				exp_eyesofthebeast2 = new( Global, exp_eyesofthebeast2 ) {
 					PARENT				= nameof( Template.exp_eyesofthebeast ),
 					TIMER				= 90000,
-					EXPLOSION_NAME		= "eyesOfTheBeast2.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.eyesofthebeast2 ),
 				},
 				exp_eyesofthebeast3 = new( Global, exp_eyesofthebeast3 ) {
 					PARENT				= nameof( Template.exp_eyesofthebeast ),
 					TIMER				= 120000,
-					EXPLOSION_NAME		= "eyesOfTheBeast3.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.eyesofthebeast3 ),
 				},
 				exp_eyesofthebeast4 = new( Global, exp_eyesofthebeast4 ) {
 					PARENT				= nameof( Template.exp_eyesofthebeast ),
 					TIMER				= 150000,
-					EXPLOSION_NAME		= "eyesOfTheBeast4.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.eyesofthebeast4 ),
 				},
 			exp_fireball = new( Global, exp_fireball ) {
 				PARENT				= nameof( Template._explosion ),
 				DYNA_INTENSITY		= 150,
 				DYNA_COLOR			= ColorOf( "rgb(224, 194, 27)" ),
 				DYNA_RADIUS			= 100,
-				EXPLOSION_NAME		= "fireball.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.fireball ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
@@ -1057,7 +1026,7 @@ partial class Template
 				PARENT				= nameof( Template._explosion ),
 				FOLEY				= "expFirestorm.nag",
 				WALLMARK			= "BulletMark1",
-				EXPLOSION_NAME		= "firestorm.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.firestorm ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
@@ -1065,7 +1034,7 @@ partial class Template
 				PARENT				= nameof( Template._explosion ),
 				DYNA_INTENSITY		= 1,
 				DYNA_COLOR			= ColorOf( "rgb(219, 196, 64)" ),
-				EXPLOSION_NAME		= "flamering.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.flamering ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 			},
 			exp_flamethrowerfx = new( Global, exp_flamethrowerfx ) {
@@ -1073,15 +1042,7 @@ partial class Template
 				DYNA_INTENSITY		= 60,
 				DYNA_COLOR			= ColorOf( "rgb(255, 255, 128)" ),
 				DYNA_RADIUS			= 150,
-				EXPLOSION_NAME		= "throwerFX.nex",
-				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
-			},
-			exp_flametrapfx = new( Global, exp_flametrapfx ) {
-				PARENT				= nameof( Template._explosion ),
-				DYNA_INTENSITY		= 60,
-				DYNA_COLOR			= ColorOf( "rgb(255, 255, 128)" ),
-				DYNA_RADIUS			= 150,
-				EXPLOSION_NAME		= "flameTrapFX.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.throwerfx ),
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
 			exp_flash = new( Global, exp_flash ) {
@@ -1090,7 +1051,7 @@ partial class Template
 				FOLEY				= "expFlash.nag",
 				DYNA_INTENSITY		= 1,
 				DYNA_COLOR			= ColorOf( "rgb(219, 219, 230)" ),
-				EXPLOSION_NAME		= "flash.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.flash ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_CONTAINERS | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROJECTILES | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROPS | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 			},
 			exp_grenade = new( Global, exp_grenade ) {
@@ -1098,7 +1059,7 @@ partial class Template
 				MODEL				= "explosion1.nod",
 				FOLEY				= "expGrenade.nag",
 				WALLMARK			= "BulletMark1",
-				EXPLOSION_NAME		= "grenadeEXP.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.grenadeexp ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
@@ -1107,7 +1068,7 @@ partial class Template
 				MODEL				= "explosion1.nod",
 				FOLEY				= "expGrenade.nag",
 				WALLMARK			= "BulletMark1",
-				EXPLOSION_NAME		= "hazmatExplosion.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.hazmatexplosion ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
@@ -1116,7 +1077,7 @@ partial class Template
 				MODEL				= "explosion1.nod",
 				FOLEY				= "expHolyWater.nag",
 				WALLMARK			= "ExplosionMark1",
-				EXPLOSION_NAME		= "holyWaterExp.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.holywaterexp ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_CONTAINERS | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROJECTILES | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROPS | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
@@ -1125,7 +1086,7 @@ partial class Template
 				DYNA_INTENSITY		= 60,
 				DYNA_COLOR			= ColorOf( "rgb(255, 255, 128)" ),
 				DYNA_RADIUS			= 150,
-				EXPLOSION_NAME		= "incinFX.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.incinfx ),
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
 			exp_muzzlemagnum = new( Global, exp_muzzlemagnum ) {
@@ -1133,27 +1094,27 @@ partial class Template
 				DYNA_INTENSITY		= 60,
 				DYNA_COLOR			= ColorOf( "rgb(255, 255, 128)" ),
 				DYNA_RADIUS			= 150,
-				EXPLOSION_NAME		= "muzzleMagnum.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.muzzlemagnum ),
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
 				exp_muzzlerifle = new( Global, exp_muzzlerifle ) {
 					PARENT				= nameof( Template.exp_muzzlemagnum ),
-					EXPLOSION_NAME		= "muzzleRifle.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.muzzlerifle ),
 				},
 				exp_muzzlerocketlaun = new( Global, exp_muzzlerocketlaun ) {
 					PARENT				= nameof( Template.exp_muzzlemagnum ),
-					EXPLOSION_NAME		= "muzzleRocketLauncher.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.muzzlerocketlauncher ),
 				},
 				exp_muzzleshotgun = new( Global, exp_muzzleshotgun ) {
 					PARENT				= nameof( Template.exp_muzzlemagnum ),
-					EXPLOSION_NAME		= "muzzleShotgun.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.muzzleshotgun ),
 				},
 			exp_plaguewind = new( Global, exp_plaguewind ) {
 				PARENT				= nameof( Template._explosion ),
 				FOLEY				= "expPlagueWind.nag",
 				DYNA_INTENSITY		= 300,
 				DYNA_COLOR			= ColorOf( "rgb(125, 213, 38)" ),
-				EXPLOSION_NAME		= "plaguewind.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.plaguewind ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
@@ -1174,19 +1135,19 @@ partial class Template
 				MODEL				= "explosionSphere.nod",
 				FOLEY				= "expRocket.nag",
 				WALLMARK			= "BulletMark1",
-				EXPLOSION_NAME		= "rocketExp.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.rocketexp ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
 			exp_smokepuff = new( Global, exp_smokepuff ) {
 				PARENT				= nameof( Template._explosion ),
 				WALLMARK			= "BulletMark1",
-				EXPLOSION_NAME		= "smokepuff.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.smokepuff ),
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
 			exp_smokepuffs = new( Global, exp_smokepuffs ) {
 				PARENT				= nameof( Template._explosion ),
-				EXPLOSION_NAME		= "smokepuffs.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.smokepuffs ),
 				EDITORCATEGORY		= ENUM_EDITORCATEGORY.Dynamic,
 			},
 			exp_truefaith = new( Global, exp_truefaith ) {
@@ -1196,28 +1157,28 @@ partial class Template
 				DYNA_INTENSITY		= 0.5F,
 				DYNA_COLOR			= ColorOf( "rgb(219, 196, 64)" ),
 				DYNA_RADIUS			= 64,
-				EXPLOSION_NAME		= "truefaith.nex",
+				EXPLOSION_NAME		= FileNameOf( Explosion.truefaith ),
 				EXPLOSION_FLAGS		= FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_SELF | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_TEAM | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_CONTAINERS | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROJECTILES | FLAG_EXPLOSION_FLAGS.NO_DAMAGE_TO_PROPS | FLAG_EXPLOSION_FLAGS.WORLD_ORIENT,
 			},
 				exp_truefaith1 = new( Global, exp_truefaith1 ) {
 					PARENT				= nameof( Template.exp_truefaith ),
 					TIMER				= 5000,
-					EXPLOSION_NAME		= "truefaith1.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.truefaith1 ),
 				},
 				exp_truefaith2 = new( Global, exp_truefaith2 ) {
 					PARENT				= nameof( Template.exp_truefaith ),
 					TIMER				= 10000,
-					EXPLOSION_NAME		= "truefaith2.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.truefaith2 ),
 				},
 				exp_truefaith3 = new( Global, exp_truefaith3 ) {
 					PARENT				= nameof( Template.exp_truefaith ),
 					TIMER				= 15000,
-					EXPLOSION_NAME		= "truefaith3.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.truefaith3 ),
 				},
 				exp_truefaith4 = new( Global, exp_truefaith4 ) {
 					PARENT				= nameof( Template.exp_truefaith ),
 					TIMER				= 30000,
-					EXPLOSION_NAME		= "truefaith4.nex",
+					EXPLOSION_NAME		= FileNameOf( Explosion.truefaith4 ),
 				},
 		_gibs = new( Global, _gibs ) {
 			TYPE				= ENUM_TYPE.PROJECTILE,
